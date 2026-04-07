@@ -28,6 +28,627 @@ export const carTypes = [
   "Executive Van"
 ];
 
+export const vehicleTypeTabs = [
+  "All",
+  "Sedan",
+  "Hatchback",
+  "Coupe",
+  "Convertible",
+  "SUV",
+  "Crossover (CUV)",
+  "Pickup Truck",
+  "Minivan",
+  "Van",
+  "Bus",
+  "Electric Vehicles (EV)",
+  "Hybrid Vehicles",
+  "Plug-in Hybrid (PHEV)",
+  "Sports Cars",
+  "Supercars",
+  "Hypercars",
+  "Off-road vehicles",
+  "Commercial trucks",
+  "Emergency vehicles"
+];
+
+export const vehicleTypeGroups = [
+  {
+    title: "Passenger Cars",
+    types: ["Sedan", "Hatchback", "Coupe", "Convertible"]
+  },
+  {
+    title: "Utility Vehicles",
+    types: ["SUV", "Crossover (CUV)", "Pickup Truck"]
+  },
+  {
+    title: "Larger Vehicles",
+    types: ["Minivan", "Van", "Bus"]
+  },
+  {
+    title: "Electric & Hybrid Vehicles",
+    types: ["Electric Vehicles (EV)", "Hybrid Vehicles", "Plug-in Hybrid (PHEV)"]
+  },
+  {
+    title: "Performance Vehicles",
+    types: ["Sports Cars", "Supercars", "Hypercars"]
+  },
+  {
+    title: "Specialized Vehicles",
+    types: ["Off-road vehicles", "Commercial trucks", "Emergency vehicles"]
+  }
+];
+
+export const brandGroups = [
+  {
+    title: "Popular & Luxury Brands",
+    brands: [
+      "Toyota",
+      "Honda",
+      "Nissan",
+      "Hyundai",
+      "Kia",
+      "Ford",
+      "Chevrolet",
+      "Volkswagen",
+      "Peugeot",
+      "Renault"
+    ]
+  },
+  {
+    title: "Luxury Brands",
+    brands: [
+      "Mercedes-Benz",
+      "BMW",
+      "Audi",
+      "Lexus",
+      "Jaguar",
+      "Land Rover",
+      "Porsche",
+      "Bentley",
+      "Rolls-Royce"
+    ]
+  },
+  {
+    title: "Electric & Future Brands",
+    brands: ["Tesla", "Rivian", "Lucid Motors", "BYD", "NIO"]
+  },
+  {
+    title: "Sports & Exotic Brands",
+    brands: ["Ferrari", "Lamborghini", "McLaren", "Bugatti", "Aston Martin"]
+  }
+];
+
+const catalogTypeImageMap = {
+  Sedan:
+    "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1200&q=80",
+  Hatchback:
+    "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=80",
+  Coupe:
+    "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1200&q=80",
+  Convertible:
+    "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1200&q=80",
+  SUV:
+    "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1200&q=80",
+  "Crossover (CUV)":
+    "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1200&q=80",
+  "Pickup Truck":
+    "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=1200&q=80",
+  Minivan:
+    "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1200&q=80",
+  Van:
+    "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1200&q=80",
+  Bus:
+    "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1200&q=80",
+  "Electric Vehicles (EV)":
+    "https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1200&q=80",
+  "Hybrid Vehicles":
+    "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1200&q=80",
+  "Plug-in Hybrid (PHEV)":
+    "https://images.unsplash.com/photo-1503736334956-4c8f8e92946d?auto=format&fit=crop&w=1200&q=80",
+  "Sports Cars":
+    "https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&w=1200&q=80",
+  Supercars:
+    "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=1200&q=80",
+  Hypercars:
+    "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=1200&q=80",
+  "Off-road vehicles":
+    "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1200&q=80",
+  "Commercial trucks":
+    "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=1200&q=80",
+  "Emergency vehicles":
+    "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1200&q=80"
+};
+
+const brandAccentMap = {
+  Toyota: "from-luxury-blue/18 via-transparent to-luxury-gold/12",
+  Honda: "from-luxury-gold/16 via-transparent to-luxury-blue/14",
+  Nissan: "from-luxury-blue/14 via-transparent to-luxury-gold/14",
+  Hyundai: "from-luxury-blue/16 via-transparent to-luxury-gold/12",
+  Kia: "from-luxury-gold/12 via-transparent to-luxury-blue/16",
+  Ford: "from-luxury-blue/18 via-transparent to-luxury-gold/16",
+  Chevrolet: "from-luxury-gold/18 via-transparent to-luxury-blue/12",
+  Volkswagen: "from-luxury-blue/18 via-transparent to-luxury-gold/10",
+  Peugeot: "from-luxury-gold/14 via-transparent to-luxury-blue/16",
+  Renault: "from-luxury-blue/16 via-transparent to-luxury-gold/14",
+  "Mercedes-Benz": "from-luxury-blue/18 via-transparent to-luxury-gold/18",
+  BMW: "from-luxury-blue/20 via-transparent to-luxury-gold/12",
+  Audi: "from-luxury-blue/16 via-transparent to-luxury-gold/16",
+  Lexus: "from-luxury-gold/18 via-transparent to-luxury-blue/16",
+  Jaguar: "from-luxury-gold/18 via-transparent to-luxury-blue/18",
+  "Land Rover": "from-luxury-blue/14 via-transparent to-luxury-gold/18",
+  Porsche: "from-luxury-gold/20 via-transparent to-luxury-blue/16",
+  Bentley: "from-luxury-gold/20 via-transparent to-white/10",
+  "Rolls-Royce": "from-white/10 via-transparent to-luxury-gold/20",
+  Tesla: "from-luxury-blue/24 via-transparent to-white/10",
+  Rivian: "from-luxury-blue/14 via-transparent to-luxury-gold/20",
+  "Lucid Motors": "from-luxury-gold/18 via-transparent to-luxury-blue/14",
+  BYD: "from-luxury-blue/18 via-transparent to-luxury-gold/14",
+  NIO: "from-luxury-blue/18 via-transparent to-white/10",
+  Ferrari: "from-luxury-gold/18 via-transparent to-luxury-blue/12",
+  Lamborghini: "from-luxury-gold/22 via-transparent to-luxury-blue/14",
+  McLaren: "from-luxury-blue/18 via-transparent to-luxury-gold/18",
+  Bugatti: "from-luxury-blue/22 via-transparent to-luxury-gold/16",
+  "Aston Martin": "from-luxury-gold/18 via-transparent to-luxury-blue/16"
+};
+
+const brandCatalogDescriptions = {
+  Toyota: "Reliable global mobility with practical sedans, SUVs, and rugged icons.",
+  Honda: "Smart engineering, balanced performance, and everyday usability.",
+  Nissan: "Urban-friendly crossovers and dependable passenger vehicles.",
+  Hyundai: "Modern design-led vehicles spanning sedans, SUVs, and family transport.",
+  Kia: "Value-forward styling with practical family-focused body styles.",
+  Ford: "Global utility, everyday passenger cars, and pickup capability.",
+  Chevrolet: "Mainstream passenger and utility vehicles with broad appeal.",
+  Volkswagen: "European-inspired everyday cars and refined utility vehicles.",
+  Peugeot: "French design character across practical and family-oriented vehicles.",
+  Renault: "Compact mobility and efficient passenger-car engineering.",
+  "Mercedes-Benz": "Luxury sedans and SUVs defined by prestige and refinement.",
+  BMW: "Driver-focused premium sedans and SUVs with performance DNA.",
+  Audi: "Modern premium mobility with technical styling and strong utility options.",
+  Lexus: "Quiet luxury focused on comfort, reliability, and premium SUV ownership.",
+  Jaguar: "Elegant premium touring with sharp styling and heritage appeal.",
+  "Land Rover": "Luxury off-road capability and commanding SUV presence.",
+  Porsche: "Precision performance and premium sports-car culture.",
+  Bentley: "Ultra-luxury craftsmanship with grand touring presence.",
+  "Rolls-Royce": "The highest tier of handcrafted luxury motoring.",
+  Tesla: "Electric-first product design built around software and EV performance.",
+  Rivian: "Adventure-ready electric utility and off-road future mobility.",
+  "Lucid Motors": "Advanced luxury EV architecture with range and premium interior focus.",
+  BYD: "Electric and future-focused mobility at global scale.",
+  NIO: "Software-led EV innovation and premium electric design.",
+  Ferrari: "Heritage performance, emotional design, and exotic engineering.",
+  Lamborghini: "Extreme supercar theatre and dramatic design language.",
+  McLaren: "Technical supercar performance shaped by motorsport thinking.",
+  Bugatti: "Hypercar excess, speed, and rarity at the top of the market.",
+  "Aston Martin": "British grand touring elegance with sports-car pedigree."
+};
+
+const brandModelMap = {
+  Toyota: [
+    { name: "Corolla", types: ["Sedan"] },
+    { name: "Camry", types: ["Sedan"] },
+    { name: "RAV4", types: ["SUV", "Crossover (CUV)"] },
+    { name: "Highlander", types: ["SUV"] },
+    { name: "Land Cruiser", types: ["SUV", "Off-road vehicles"] }
+  ],
+  Honda: [
+    { name: "Civic", types: ["Sedan", "Hatchback"] },
+    { name: "Accord", types: ["Sedan"] },
+    { name: "CR-V", types: ["SUV", "Crossover (CUV)"] },
+    { name: "Pilot", types: ["SUV"] },
+    { name: "HR-V", types: ["Crossover (CUV)"] }
+  ],
+  "Mercedes-Benz": [
+    { name: "C-Class", types: ["Sedan"] },
+    { name: "E-Class", types: ["Sedan"] },
+    { name: "S-Class", types: ["Sedan"] },
+    { name: "GLE", types: ["SUV"] },
+    { name: "G-Wagon", types: ["SUV", "Off-road vehicles"] }
+  ],
+  BMW: [
+    { name: "3 Series", types: ["Sedan"] },
+    { name: "5 Series", types: ["Sedan"] },
+    { name: "7 Series", types: ["Sedan"] },
+    { name: "X5", types: ["SUV"] },
+    { name: "X6", types: ["SUV", "Sports Cars"] }
+  ],
+  Tesla: [
+    { name: "Model S", types: ["Electric Vehicles (EV)", "Sedan"] },
+    { name: "Model 3", types: ["Electric Vehicles (EV)", "Sedan"] },
+    { name: "Model X", types: ["Electric Vehicles (EV)", "SUV"] },
+    { name: "Model Y", types: ["Electric Vehicles (EV)", "Crossover (CUV)"] }
+  ],
+  Ford: [
+    { name: "Focus", types: ["Hatchback"] },
+    { name: "Fusion", types: ["Sedan"] },
+    { name: "Explorer", types: ["SUV"] },
+    { name: "Escape", types: ["Crossover (CUV)"] },
+    { name: "F-150", types: ["Pickup Truck", "Commercial trucks"] }
+  ],
+  Hyundai: [
+    { name: "Elantra", types: ["Sedan"] },
+    { name: "Sonata", types: ["Sedan"] },
+    { name: "Tucson", types: ["SUV", "Crossover (CUV)"] },
+    { name: "Santa Fe", types: ["SUV"] }
+  ],
+  Kia: [
+    { name: "Rio", types: ["Hatchback"] },
+    { name: "Sportage", types: ["SUV", "Crossover (CUV)"] },
+    { name: "Sorento", types: ["SUV"] },
+    { name: "Telluride", types: ["SUV"] }
+  ],
+  Lexus: [
+    { name: "RX", types: ["SUV"] },
+    { name: "ES", types: ["Sedan"] },
+    { name: "GX", types: ["SUV", "Off-road vehicles"] },
+    { name: "LX", types: ["SUV", "Off-road vehicles"] }
+  ],
+  Nissan: [
+    { name: "Altima", types: ["Sedan"] },
+    { name: "Maxima", types: ["Sedan"] },
+    { name: "Rogue", types: ["Crossover (CUV)"] },
+    { name: "Pathfinder", types: ["SUV"] }
+  ],
+  Chevrolet: [
+    { name: "Spark", types: ["Hatchback"] },
+    { name: "Aveo", types: ["Sedan"] },
+    { name: "Malibu", types: ["Sedan"] },
+    { name: "Impala", types: ["Sedan"] },
+    { name: "Camaro", types: ["Sports Cars", "Coupe"] },
+    { name: "Corvette", types: ["Sports Cars", "Supercars"] },
+    { name: "Equinox", types: ["SUV", "Crossover (CUV)"] },
+    { name: "Traverse", types: ["SUV"] },
+    { name: "Tahoe", types: ["SUV"] },
+    { name: "Suburban", types: ["SUV"] },
+    { name: "Silverado", types: ["Pickup Truck", "Commercial trucks"] }
+  ],
+  Volkswagen: [
+    { name: "Polo", types: ["Hatchback"] },
+    { name: "Golf", types: ["Hatchback"] },
+    { name: "Jetta", types: ["Sedan"] },
+    { name: "Passat", types: ["Sedan"] },
+    { name: "Arteon", types: ["Sedan"] },
+    { name: "Tiguan", types: ["SUV", "Crossover (CUV)"] },
+    { name: "Touareg", types: ["SUV"] },
+    { name: "T-Cross", types: ["Crossover (CUV)"] },
+    { name: "Taos", types: ["Crossover (CUV)"] }
+  ],
+  Peugeot: [
+    { name: "108", types: ["Hatchback"] },
+    { name: "208", types: ["Hatchback"] },
+    { name: "308", types: ["Hatchback"] },
+    { name: "408", types: ["Sedan"] },
+    { name: "508", types: ["Sedan"] },
+    { name: "2008", types: ["Crossover (CUV)"] },
+    { name: "3008", types: ["SUV", "Crossover (CUV)"] },
+    { name: "5008", types: ["SUV"] },
+    { name: "Landtrek", types: ["Pickup Truck", "Commercial trucks"] }
+  ],
+  Audi: [
+    { name: "A3", types: ["Sedan"] },
+    { name: "A4", types: ["Sedan"] },
+    { name: "A6", types: ["Sedan"] },
+    { name: "A8", types: ["Sedan"] },
+    { name: "Q3", types: ["SUV", "Crossover (CUV)"] },
+    { name: "Q5", types: ["SUV"] },
+    { name: "Q7", types: ["SUV"] },
+    { name: "Q8", types: ["SUV"] },
+    { name: "e-tron", types: ["Electric Vehicles (EV)", "SUV"] },
+    { name: "TT", types: ["Sports Cars", "Coupe"] },
+    { name: "R8", types: ["Supercars"] }
+  ],
+  Jaguar: [
+    { name: "XE", types: ["Sedan"] },
+    { name: "XF", types: ["Sedan"] },
+    { name: "XJ", types: ["Sedan"] },
+    { name: "F-Type", types: ["Sports Cars", "Coupe"] },
+    { name: "E-PACE", types: ["Crossover (CUV)"] },
+    { name: "F-PACE", types: ["SUV"] },
+    { name: "I-PACE", types: ["Electric Vehicles (EV)", "SUV"] }
+  ],
+  Renault: [
+    { name: "Kwid", types: ["Hatchback"] },
+    { name: "Clio", types: ["Hatchback"] },
+    { name: "Megane", types: ["Hatchback"] },
+    { name: "Talisman", types: ["Sedan"] },
+    { name: "Duster", types: ["SUV", "Off-road vehicles"] },
+    { name: "Captur", types: ["Crossover (CUV)"] },
+    { name: "Koleos", types: ["SUV"] },
+    { name: "Triber", types: ["Minivan"] }
+  ],
+  "Land Rover": [
+    { name: "Defender", types: ["SUV", "Off-road vehicles"] },
+    { name: "Discovery", types: ["SUV", "Off-road vehicles"] },
+    { name: "Discovery Sport", types: ["SUV"] },
+    { name: "Range Rover", types: ["SUV"] },
+    { name: "Range Rover Sport", types: ["SUV", "Sports Cars"] },
+    { name: "Range Rover Velar", types: ["SUV"] },
+    { name: "Range Rover Evoque", types: ["SUV", "Crossover (CUV)"] }
+  ],
+  Porsche: [
+    { name: "718 Cayman", types: ["Sports Cars", "Coupe"] },
+    { name: "718 Boxster", types: ["Sports Cars", "Convertible"] },
+    { name: "911", types: ["Sports Cars", "Coupe"] },
+    { name: "Panamera", types: ["Sedan"] },
+    { name: "Macan", types: ["SUV", "Crossover (CUV)"] },
+    { name: "Cayenne", types: ["SUV"] },
+    { name: "Taycan", types: ["Electric Vehicles (EV)", "Sedan"] }
+  ],
+  Bentley: [
+    { name: "Continental GT", types: ["Coupe", "Sports Cars"] },
+    { name: "Flying Spur", types: ["Sedan"] },
+    { name: "Bentayga", types: ["SUV"] },
+    { name: "Mulsanne", types: ["Sedan"] }
+  ],
+  "Rolls-Royce": [
+    { name: "Phantom", types: ["Sedan"] },
+    { name: "Ghost", types: ["Sedan"] },
+    { name: "Wraith", types: ["Coupe"] },
+    { name: "Dawn", types: ["Convertible"] },
+    { name: "Cullinan", types: ["SUV"] },
+    { name: "Boat Tail", types: ["Convertible", "Supercars"] }
+  ],
+  Rivian: [
+    { name: "R1T", types: ["Electric Vehicles (EV)", "Pickup Truck"] },
+    { name: "R1S", types: ["Electric Vehicles (EV)", "SUV"] }
+  ],
+  "Lucid Motors": [
+    { name: "Lucid Air Pure", types: ["Electric Vehicles (EV)", "Sedan"] },
+    { name: "Lucid Air Touring", types: ["Electric Vehicles (EV)", "Sedan"] },
+    { name: "Lucid Air Grand Touring", types: ["Electric Vehicles (EV)", "Sedan"] },
+    { name: "Lucid Air Dream Edition", types: ["Electric Vehicles (EV)", "Sedan"] }
+  ],
+  BYD: [
+    { name: "Tang", types: ["Electric Vehicles (EV)", "SUV"] },
+    { name: "Han", types: ["Electric Vehicles (EV)", "Sedan"] },
+    { name: "Atto 3", types: ["Electric Vehicles (EV)", "Crossover (CUV)"] },
+    { name: "Dolphin", types: ["Electric Vehicles (EV)", "Hatchback"] },
+    { name: "Seal", types: ["Electric Vehicles (EV)", "Sedan"] }
+  ],
+  Ferrari: [
+    { name: "296 GTB", types: ["Supercars"] },
+    { name: "F8 Tributo", types: ["Supercars"] },
+    { name: "Roma", types: ["Sports Cars", "Coupe"] },
+    { name: "SF90 Stradale", types: ["Hypercars"] },
+    { name: "Portofino M", types: ["Convertible", "Sports Cars"] },
+    { name: "812 Superfast", types: ["Supercars"] }
+  ],
+  NIO: [
+    { name: "ES6", types: ["Electric Vehicles (EV)", "SUV"] },
+    { name: "ES8", types: ["Electric Vehicles (EV)", "SUV"] },
+    { name: "EC6", types: ["Electric Vehicles (EV)", "Crossover (CUV)"] },
+    { name: "ET7", types: ["Electric Vehicles (EV)", "Sedan"] },
+    { name: "ET5", types: ["Electric Vehicles (EV)", "Sedan"] }
+  ],
+  Lamborghini: [
+    { name: "Aventador", types: ["Hypercars"] },
+    { name: "Huracan", types: ["Supercars"] },
+    { name: "Urus", types: ["SUV"] },
+    { name: "Gallardo", types: ["Sports Cars", "Coupe"] },
+    { name: "Sian", types: ["Hypercars"] }
+  ],
+  McLaren: [
+    { name: "570S", types: ["Sports Cars", "Coupe"] },
+    { name: "600LT", types: ["Supercars"] },
+    { name: "720S", types: ["Supercars"] },
+    { name: "GT", types: ["Sports Cars", "Coupe"] },
+    { name: "Artura", types: ["Plug-in Hybrid (PHEV)", "Supercars"] }
+  ],
+  Bugatti: [
+    { name: "Chiron", types: ["Hypercars"] },
+    { name: "Veyron", types: ["Hypercars"] },
+    { name: "Divo", types: ["Hypercars"] },
+    { name: "Centodieci", types: ["Hypercars"] },
+    { name: "La Voiture Noire", types: ["Hypercars"] }
+  ],
+  "Aston Martin": [
+    { name: "Vantage", types: ["Sports Cars", "Coupe"] },
+    { name: "DB11", types: ["Sports Cars", "Coupe"] },
+    { name: "DBX", types: ["SUV"] },
+    { name: "DBS Superleggera", types: ["Supercars"] },
+    { name: "Valkyrie", types: ["Hypercars"] }
+  ]
+};
+
+function slugify(value) {
+  return value.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, "");
+}
+
+export const fuelTypeOptions = [
+  "All Fuel Types",
+  "Petrol",
+  "Diesel",
+  "Hybrid",
+  "Electric"
+];
+
+export const priceRangeOptions = [
+  { label: "All Prices", value: "all", min: 0, max: Number.POSITIVE_INFINITY },
+  { label: "Under ₦30M", value: "under-30", min: 0, max: 30000000 },
+  { label: "₦30M - ₦60M", value: "30-60", min: 30000000, max: 60000000 },
+  { label: "₦60M - ₦120M", value: "60-120", min: 60000000, max: 120000000 },
+  { label: "₦120M+", value: "120-plus", min: 120000000, max: Number.POSITIVE_INFINITY }
+];
+
+const electricBrandSet = new Set(["Tesla", "Rivian", "Lucid Motors", "BYD", "NIO"]);
+const premiumBrandBasePrice = {
+  "Popular & Luxury Brands": 22000000,
+  "Luxury Brands": 60000000,
+  "Electric & Future Brands": 58000000,
+  "Sports & Exotic Brands": 150000000
+};
+const typePriceAdjustments = {
+  Sedan: 8000000,
+  Hatchback: 2000000,
+  Coupe: 30000000,
+  Convertible: 42000000,
+  SUV: 28000000,
+  "Crossover (CUV)": 18000000,
+  "Pickup Truck": 34000000,
+  Minivan: 26000000,
+  Van: 28000000,
+  Bus: 36000000,
+  "Electric Vehicles (EV)": 18000000,
+  "Hybrid Vehicles": 12000000,
+  "Plug-in Hybrid (PHEV)": 22000000,
+  "Sports Cars": 50000000,
+  Supercars: 110000000,
+  Hypercars: 220000000,
+  "Off-road vehicles": 35000000,
+  "Commercial trucks": 40000000,
+  "Emergency vehicles": 45000000
+};
+
+function inferFuelType(brand, modelName, types) {
+  if (electricBrandSet.has(brand) || types.includes("Electric Vehicles (EV)")) {
+    return "Electric";
+  }
+
+  if (types.includes("Plug-in Hybrid (PHEV)")) {
+    return "Hybrid";
+  }
+
+  if (
+    ["Toyota", "Lexus", "Hyundai", "Kia", "Honda"].includes(brand) &&
+    (types.includes("Sedan") || types.includes("SUV") || types.includes("Crossover (CUV)"))
+  ) {
+    return "Hybrid";
+  }
+
+  if (
+    types.includes("Pickup Truck") ||
+    types.includes("Commercial trucks") ||
+    types.includes("Off-road vehicles")
+  ) {
+    return "Diesel";
+  }
+
+  return "Petrol";
+}
+
+function estimateCatalogPrice(group, types, index) {
+  const groupBase = premiumBrandBasePrice[group] || 25000000;
+  const typeModifier = types.reduce(
+    (total, type) => total + (typePriceAdjustments[type] || 0),
+    0
+  );
+
+  return groupBase + typeModifier + index * 3500000;
+}
+
+function estimateRange(fuelType, types, index) {
+  if (fuelType === "Electric") {
+    return `Up to ${480 + index * 18} km`;
+  }
+
+  if (fuelType === "Hybrid") {
+    return `Up to ${760 + index * 12} km combined`;
+  }
+
+  if (types.includes("Hypercars")) {
+    return `High-performance touring range`;
+  }
+
+  return `Long-distance touring ready`;
+}
+
+function estimateHorsepower(group, types, index) {
+  const isExotic = group === "Sports & Exotic Brands";
+  const isLuxury = group === "Luxury Brands";
+  const isElectric = types.includes("Electric Vehicles (EV)");
+
+  if (types.includes("Hypercars")) {
+    return `${1100 + index * 40} hp`;
+  }
+
+  if (types.includes("Supercars")) {
+    return `${680 + index * 30} hp`;
+  }
+
+  if (isElectric) {
+    return `${420 + index * 25} hp`;
+  }
+
+  if (isExotic) {
+    return `${560 + index * 25} hp`;
+  }
+
+  if (isLuxury) {
+    return `${320 + index * 15} hp`;
+  }
+
+  return `${180 + index * 12} hp`;
+}
+
+function buildCatalogDescription(brand, modelName, types, fuelType) {
+  return `${modelName} is one of the ${brand} models in the integrated catalog, positioned around ${types.join(", ")} buyers with a ${fuelType.toLowerCase()} powertrain profile.`;
+}
+
+function buildModelHighlight(brand, fuelType, range) {
+  if (fuelType === "Electric") {
+    return `${brand} EV highlights include intelligent battery systems, fast charging, and ${range.toLowerCase()}.`;
+  }
+
+  if (fuelType === "Hybrid") {
+    return `${brand} hybrid-ready mobility blends fuel efficiency, refined cruising, and ${range.toLowerCase()}.`;
+  }
+
+  return `${brand} continues to stand out with balanced performance, recognizable design, and broad body-style options.`;
+}
+
+export const automotiveBrands = brandGroups.flatMap((group) =>
+  group.brands.map((brand) => {
+    const models = brandModelMap[brand] || [];
+
+    return {
+      id: slugify(brand),
+      name: brand,
+      group: group.title,
+      description: brandCatalogDescriptions[brand],
+      accent: brandAccentMap[brand] || "from-luxury-blue/18 via-transparent to-luxury-gold/14",
+      modelCount: models.length
+    };
+  })
+);
+
+export const automotiveCatalogModels = automotiveBrands.flatMap((brand) => {
+  const models = brandModelMap[brand.name] || [];
+
+  return models.map((model, index) => {
+    const primaryType = model.types[0];
+    const previewImage =
+      catalogTypeImageMap[primaryType] || catalogTypeImageMap.Sedan;
+    const fuelType = inferFuelType(brand.name, model.name, model.types);
+    const estimatedPrice = estimateCatalogPrice(brand.group, model.types, index);
+    const range = estimateRange(fuelType, model.types, index);
+    const horsepower = estimateHorsepower(brand.group, model.types, index);
+
+    return {
+      id: `${brand.id}-${slugify(model.name)}`,
+      brandId: brand.id,
+      brand: brand.name,
+      name: model.name,
+      displayName: `${brand.name} ${model.name}`,
+      group: brand.group,
+      types: model.types,
+      previewImage,
+      accent: brand.accent,
+      fuelType,
+      estimatedPrice,
+      formattedPrice: formatNaira(estimatedPrice),
+      horsepower,
+      range,
+      isElectric: fuelType === "Electric",
+      shortDescription: buildCatalogDescription(brand.name, model.name, model.types, fuelType),
+      highlight: buildModelHighlight(brand.name, fuelType, range),
+      statA: model.types[0],
+      statB: fuelType,
+      statC: range,
+      order: index
+    };
+  });
+});
+
 export const cars = [
   {
     id: "echelon-s",
