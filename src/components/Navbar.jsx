@@ -53,7 +53,7 @@ function Navbar() {
               DanAuto
             </p>
             <p className="text-[10px] uppercase tracking-[0.32em] text-white/45">
-              AI Luxury Mobility
+              Luxury Mobility
             </p>
           </div>
         </Link>
