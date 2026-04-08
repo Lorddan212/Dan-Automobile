@@ -19,6 +19,7 @@
 
   body {
     @apply min-h-screen font-sans text-white antialiased;
+    overflow-x: hidden;
     background-color: #05070c;
     background-image:
       radial-gradient(circle at top, rgba(125, 211, 252, 0.12), transparent 30%),
@@ -43,7 +44,7 @@
 @layer components {
   .site-shell {
     position: relative;
-    overflow: hidden;
+    overflow-x: hidden;
   }
 
   .site-shell::before {
@@ -79,7 +80,7 @@
   }
 
   .field-input {
-    @apply w-full rounded-[20px] border border-white/10 px-4 py-3 text-sm text-white transition;
+    @apply min-w-0 w-full rounded-[20px] border border-white/10 px-4 py-3 text-sm text-white transition;
     background-color: rgba(0, 0, 0, 0.25);
   }
 
@@ -94,6 +95,1882 @@
 
   .field-error {
     @apply mt-2 text-xs text-rose-300;
+  }
+}
+
+@layer components {
+  /* Shared: Buttons */
+  .button-base {
+    @apply relative inline-flex items-center justify-center overflow-hidden rounded-full px-6 py-3 text-xs font-medium uppercase tracking-[0.26em] transition duration-300 hover:-translate-y-0.5;
+  }
+
+  .button-primary {
+    @apply border border-luxury-gold/30 text-white hover:border-luxury-gold/50;
+    background-image: linear-gradient(135deg, rgba(201, 164, 92, 0.28), rgba(125, 211, 252, 0.18));
+    box-shadow: 0 18px 40px rgba(5, 7, 12, 0.35);
+  }
+
+  .button-secondary {
+    @apply border border-white/10 bg-white/[0.06] text-white hover:bg-white/[0.12];
+  }
+
+  .button-ghost {
+    @apply border border-transparent bg-transparent text-white/[0.75] hover:bg-white/[0.06] hover:text-white;
+  }
+
+  .button-shine {
+    @apply pointer-events-none absolute inset-0 opacity-0 transition duration-500;
+    background-image: linear-gradient(115deg, transparent 30%, rgba(255, 255, 255, 0.2) 50%, transparent 70%);
+  }
+
+  .button-base:hover .button-shine {
+    opacity: 1;
+    transform: translateX(1rem);
+  }
+
+  .button-content {
+    @apply relative z-10 flex items-center gap-2;
+  }
+
+  .button-disabled {
+    @apply cursor-not-allowed opacity-60;
+  }
+
+  /* Shared: Navbar */
+  .site-header {
+    @apply fixed inset-x-0 top-0 z-50 px-4 pt-4 sm:px-6 lg:px-8;
+  }
+
+  .site-nav {
+    @apply mx-auto flex max-w-7xl items-center justify-between rounded-full px-4 py-3 transition-all duration-500 sm:px-6;
+  }
+
+  .site-nav-scrolled {
+    @apply glass-panel shadow-luxury ring-1 ring-white/10;
+  }
+
+  .site-nav-resting {
+    @apply bg-transparent;
+  }
+
+  .brand-link {
+    @apply flex items-center gap-3;
+  }
+
+  .brand-mark {
+    @apply flex h-10 w-10 items-center justify-center rounded-full border border-luxury-gold/40 bg-white/10;
+    box-shadow: 0 0 28px rgba(201, 164, 92, 0.18);
+  }
+
+  .brand-mark-text {
+    @apply font-display text-sm font-semibold tracking-[0.28em] text-luxury-gold;
+  }
+
+  .brand-copy {
+    @apply min-w-0;
+  }
+
+  .brand-name {
+    @apply font-display text-sm uppercase tracking-[0.35em] text-white;
+  }
+
+  .brand-tagline {
+    @apply text-[10px] uppercase tracking-[0.32em] text-white/[0.45];
+  }
+
+  .desktop-nav {
+    @apply hidden items-center gap-2 xl:flex;
+  }
+
+  .nav-link {
+    @apply relative inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm uppercase tracking-[0.2em] transition-all duration-300;
+  }
+
+  .nav-link-active {
+    @apply bg-white/10 text-white ring-1 ring-luxury-gold/30;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 10px 24px rgba(0, 0, 0, 0.22);
+  }
+
+  .nav-link-idle {
+    @apply text-white/[0.6] hover:text-white;
+  }
+
+  .nav-toggle {
+    @apply flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white xl:hidden;
+  }
+
+  .mobile-menu {
+    @apply mx-auto mt-3 max-w-7xl overflow-hidden rounded-[28px] border border-white/10 bg-[#05070c]/90 p-4 shadow-luxury backdrop-blur-2xl xl:hidden;
+  }
+
+  .mobile-menu-list {
+    @apply flex flex-col gap-2;
+  }
+
+  .mobile-menu-link {
+    @apply inline-flex items-center gap-3 rounded-2xl border px-4 py-3 text-sm uppercase tracking-[0.24em] transition;
+  }
+
+  .mobile-menu-link-active {
+    @apply border-luxury-gold/30 bg-white/10 text-white;
+    box-shadow:
+      inset 0 1px 0 rgba(255, 255, 255, 0.08),
+      0 12px 28px rgba(0, 0, 0, 0.2);
+  }
+
+  .mobile-menu-link-idle {
+    @apply border-transparent text-white/[0.7] hover:border-white/10 hover:bg-white/5 hover:text-white;
+  }
+
+  /* Shared: Footer */
+  .site-footer {
+    @apply border-t border-white/10 px-4 pb-8 pt-14 sm:px-6 lg:px-8;
+  }
+
+  .site-footer-inner {
+    @apply mx-auto max-w-7xl px-2 py-2 sm:px-0;
+  }
+
+  .site-footer-grid {
+    @apply grid gap-10 lg:grid-cols-[1.15fr_0.85fr_0.9fr];
+  }
+
+  .site-footer-badge {
+    @apply inline-flex rounded-full border border-luxury-gold/20 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.32em] text-white/[0.7];
+  }
+
+  .site-footer-title {
+    @apply mt-5 max-w-md font-display text-3xl uppercase leading-tight text-white;
+  }
+
+  .site-footer-description {
+    @apply mt-4 max-w-lg text-sm leading-7 text-white/[0.55];
+  }
+
+  .site-footer-heading {
+    @apply text-sm uppercase tracking-[0.3em] text-white/[0.45];
+  }
+
+  .site-footer-links {
+    @apply mt-5 flex flex-col gap-3;
+  }
+
+  .site-footer-link {
+    @apply text-sm uppercase tracking-[0.24em] text-white/[0.7] transition hover:text-luxury-gold;
+  }
+
+  .site-footer-contact {
+    @apply mt-5 space-y-4 break-words text-sm leading-7 text-white/[0.6];
+  }
+
+  .site-footer-socials {
+    @apply mt-6 flex flex-wrap gap-3;
+  }
+
+  .site-footer-social-link {
+    @apply flex h-12 w-12 items-center justify-center rounded-full border border-white/10 bg-white/5 text-white/[0.78] transition duration-300 hover:-translate-y-1 hover:border-luxury-gold/40 hover:bg-white/[0.08] hover:text-luxury-gold;
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  }
+
+  .site-footer-social-icon {
+    @apply h-[18px] w-[18px];
+  }
+
+  .site-footer-bottom {
+    @apply mt-10 flex flex-col gap-3 border-t border-white/10 pt-6 text-xs uppercase tracking-[0.24em] text-white/[0.35] sm:flex-row sm:items-center sm:justify-between;
+  }
+
+  .site-footer-bottom-links {
+    @apply flex gap-4;
+  }
+
+  .site-footer-meta-link {
+    @apply transition hover:text-white/[0.6];
+  }
+
+  /* Shared: Loader */
+  .loader-compact {
+    @apply flex min-h-[40vh] items-center justify-center;
+  }
+
+  .loader-compact-shell {
+    @apply flex items-center gap-4 rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-xl;
+  }
+
+  .loader-compact-spinner {
+    @apply h-5 w-5 rounded-full border-2 border-luxury-gold/30 border-t-luxury-gold;
+  }
+
+  .loader-compact-text {
+    @apply text-xs uppercase tracking-[0.32em] text-white/[0.6];
+  }
+
+  .loader-screen {
+    @apply fixed inset-0 z-[100] flex items-center justify-center bg-[#04060b];
+  }
+
+  .loader-inner {
+    @apply relative text-center;
+  }
+
+  .loader-glow {
+    @apply absolute inset-0 rounded-full bg-luxury-blue/15 blur-3xl;
+  }
+
+  .loader-wordmark {
+    @apply relative bg-clip-text font-display text-4xl uppercase tracking-[0.55em] text-transparent sm:text-5xl;
+  }
+
+  .loader-progress-track {
+    @apply mx-auto mt-5 h-px w-32 overflow-hidden rounded-full bg-white/10;
+  }
+
+  .loader-progress-bar {
+    @apply h-full w-1/2 bg-gradient-to-r from-transparent via-luxury-gold to-transparent;
+  }
+
+  .loader-caption {
+    @apply mt-5 text-xs uppercase tracking-[0.32em] text-white/[0.45];
+  }
+
+  /* Shared: Filter Chips */
+  .filter-chip {
+    @apply rounded-full border px-4 py-2 text-[10px] uppercase tracking-[0.2em] transition;
+  }
+
+  .filter-chip-sm {
+    @apply text-xs tracking-[0.22em];
+  }
+
+  .filter-chip-idle {
+    @apply border-white/10 bg-white/5 text-white/[0.7] hover:border-white/20 hover:text-white;
+  }
+
+  .filter-chip-active-blue {
+    @apply border-luxury-blue bg-luxury-blue/10 text-white;
+  }
+
+  .filter-chip-active-gold {
+    @apply border-luxury-gold bg-luxury-gold/10 text-white;
+  }
+}
+
+@layer components {
+  /* Shared: Hero */
+  .hero-section {
+    @apply relative isolate overflow-hidden px-4 pb-24 pt-32 sm:px-6 lg:px-8 lg:pb-28 lg:pt-36;
+  }
+
+  .hero-background {
+    @apply pointer-events-none absolute inset-0;
+  }
+
+  .hero-bg-gradient {
+    @apply absolute inset-0 opacity-90 bg-hero-gradient;
+  }
+
+  .hero-bg-orb {
+    @apply absolute rounded-full blur-3xl;
+  }
+
+  .hero-bg-orb-left {
+    @apply left-[12%] top-[15%] h-40 w-40 bg-luxury-blue/10;
+  }
+
+  .hero-bg-orb-right {
+    @apply right-[10%] top-[10%] h-52 w-52 bg-luxury-gold/10;
+  }
+
+  .hero-bg-orb-bottom {
+    @apply bottom-[-3rem] left-1/2 h-56 w-56 -translate-x-1/2 bg-white/5;
+  }
+
+  .hero-shell {
+    @apply mx-auto grid max-w-7xl items-center gap-16 lg:grid-cols-[0.98fr_1.02fr];
+  }
+
+  .hero-content,
+  .hero-visual {
+    @apply relative z-10;
+  }
+
+  .hero-eyebrow {
+    @apply inline-flex items-center gap-2 rounded-full border border-luxury-gold/20 bg-white/5 px-4 py-2 text-xs uppercase tracking-[0.35em] text-luxury-mist/[0.8] backdrop-blur-xl;
+  }
+
+  .hero-title {
+    @apply mt-7 max-w-4xl font-display text-5xl uppercase leading-[0.95] text-white sm:text-6xl lg:text-7xl xl:text-[5.2rem];
+  }
+
+  .hero-description {
+    @apply mt-6 max-w-2xl text-base leading-8 text-white/[0.65] sm:text-lg;
+  }
+
+  .hero-actions {
+    @apply mt-10 flex flex-col gap-4 sm:flex-row;
+  }
+
+  .hero-visual-glow {
+    @apply pointer-events-none absolute inset-x-6 top-8 -z-10 h-[88%] rounded-[48px] blur-3xl;
+    background-image:
+      radial-gradient(circle at center, rgba(125, 211, 252, 0.14), transparent 42%),
+      radial-gradient(circle at 70% 30%, rgba(201, 164, 92, 0.16), transparent 32%);
+  }
+
+  .hero-visual-stack {
+    @apply flex flex-col gap-4 sm:gap-5;
+  }
+
+  .hero-visual-card {
+    @apply relative overflow-hidden rounded-[28px];
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
+  }
+
+  .hero-visual-card-left {
+    @apply mr-8 sm:mr-12 lg:mr-16;
+  }
+
+  .hero-visual-card-right {
+    @apply ml-8 sm:ml-12 lg:ml-16;
+  }
+
+  .hero-visual-card-featured {
+    @apply sm:rounded-[34px];
+  }
+
+  .hero-visual-image {
+    @apply w-full object-cover object-center transition duration-700;
+  }
+
+  .hero-visual-card:hover .hero-visual-image {
+    transform: scale(1.03);
+  }
+
+  .hero-visual-image-standard {
+    @apply h-24 sm:h-28 lg:h-24 xl:h-32;
+  }
+
+  .hero-visual-image-featured {
+    @apply h-36 sm:h-44 lg:h-40 xl:h-48;
+  }
+
+  .hero-visual-overlay {
+    @apply absolute inset-0;
+    background-image: linear-gradient(90deg, rgba(5, 7, 12, 0.72), rgba(5, 7, 12, 0.16) 45%, rgba(5, 7, 12, 0.55));
+  }
+
+  .hero-visual-caption {
+    @apply absolute bottom-3 left-4 right-4 flex items-end justify-between gap-4 sm:bottom-4 sm:left-5 sm:right-5;
+  }
+
+  .hero-visual-copy {
+    @apply min-w-0;
+  }
+
+  .hero-visual-label {
+    @apply text-[10px] uppercase tracking-[0.32em] text-luxury-blue/[0.85];
+  }
+
+  .hero-visual-name {
+    @apply mt-1 font-display text-lg uppercase text-white sm:text-xl;
+  }
+
+  .hero-visual-index {
+    @apply hidden text-[10px] uppercase tracking-[0.3em] text-white/[0.55] sm:inline;
+  }
+
+  /* Shared: Cards */
+  .car-card-scene,
+  .catalog-card-scene {
+    @apply perspective-1800;
+  }
+
+  .car-card,
+  .catalog-card {
+    @apply relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.045] shadow-luxury backdrop-blur-2xl;
+  }
+
+  .car-card {
+    @apply h-full;
+  }
+
+  .car-card-accent,
+  .catalog-card-accent {
+    @apply absolute inset-0 opacity-60;
+  }
+
+  .car-card-sheen,
+  .catalog-card-sheen {
+    @apply absolute inset-0;
+    background-image: linear-gradient(135deg, rgba(255, 255, 255, 0.18), transparent 40%, transparent 72%, rgba(255, 255, 255, 0.06));
+  }
+
+  .car-card-inner {
+    @apply relative flex h-full flex-col;
+  }
+
+  .car-card-media-wrap {
+    @apply relative overflow-hidden px-5 pt-5;
+  }
+
+  .car-card-media-frame,
+  .catalog-card-media-frame {
+    @apply overflow-hidden rounded-[24px] border border-white/10 bg-black/20;
+  }
+
+  .car-card-media {
+    @apply h-64 w-full object-cover object-center transition duration-700;
+  }
+
+  .car-card:hover .car-card-media {
+    transform: scale(1.1);
+  }
+
+  .car-card-type-tag {
+    @apply absolute left-10 top-10 rounded-full border border-white/10 bg-black/35 px-3 py-1 text-xs uppercase tracking-[0.28em] text-luxury-mist/[0.85] backdrop-blur-xl;
+  }
+
+  .car-card-body {
+    @apply flex flex-1 flex-col p-6;
+  }
+
+  .car-card-heading,
+  .catalog-card-heading {
+    @apply flex items-start justify-between gap-4;
+  }
+
+  .car-card-copy,
+  .catalog-card-copy {
+    @apply min-w-0;
+  }
+
+  .car-card-name,
+  .catalog-card-name {
+    @apply font-display text-3xl uppercase text-white;
+  }
+
+  .car-card-description,
+  .catalog-card-description {
+    @apply mt-2 text-sm leading-7 text-white/[0.6];
+  }
+
+  .car-card-price {
+    @apply text-sm font-medium text-luxury-gold;
+  }
+
+  .car-card-stats {
+    @apply mt-6 grid gap-3 sm:grid-cols-2;
+  }
+
+  .car-card-stat,
+  .catalog-card-stat,
+  .catalog-card-highlight {
+    @apply rounded-[22px] border border-white/10 bg-black/25 p-4;
+  }
+
+  .car-card-stat-shell,
+  .catalog-card-stat-shell,
+  .catalog-card-highlight-shell {
+    @apply flex items-center gap-3;
+  }
+
+  .catalog-card-highlight-shell {
+    @apply items-start;
+  }
+
+  .car-card-stat-copy,
+  .catalog-card-stat-copy,
+  .catalog-card-highlight-copy {
+    @apply min-w-0;
+  }
+
+  .car-card-stat-label,
+  .catalog-card-stat-label,
+  .catalog-card-highlight-label {
+    @apply text-xs uppercase tracking-[0.22em] text-white/[0.42];
+  }
+
+  .car-card-stat-value,
+  .catalog-card-stat-value {
+    @apply mt-1 text-sm font-medium text-white;
+  }
+
+  .car-card-stat-value {
+    @apply text-lg font-semibold;
+  }
+
+  .car-card-features,
+  .catalog-card-types,
+  .catalog-card-meta {
+    @apply mt-5 flex flex-wrap gap-2;
+  }
+
+  .catalog-card-meta {
+    @apply items-center gap-3;
+  }
+
+  .car-card-feature,
+  .catalog-card-type-pill,
+  .catalog-card-fuel-tag {
+    @apply rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs uppercase tracking-[0.22em] text-white/[0.65];
+  }
+
+  .catalog-card-type-pill,
+  .catalog-card-fuel-tag,
+  .catalog-card-price-tag,
+  .catalog-card-ev-tag {
+    @apply text-[10px];
+  }
+
+  .car-card-action {
+    @apply mt-8;
+  }
+
+  .car-card-link {
+    @apply inline-flex items-center gap-3 rounded-full border border-luxury-blue/20 bg-luxury-blue/10 px-5 py-3 text-sm uppercase tracking-[0.24em] text-white transition hover:border-luxury-blue/40 hover:bg-luxury-blue/15;
+  }
+
+  .car-card-link-icon {
+    @apply transition duration-300;
+  }
+
+  .car-card-link:hover .car-card-link-icon {
+    transform: translateX(0.25rem);
+  }
+
+  .catalog-card-media-wrap {
+    @apply relative overflow-hidden p-5;
+  }
+
+  .catalog-card-media {
+    @apply h-64 w-full object-cover object-center transition duration-700;
+  }
+
+  .catalog-card:hover .catalog-card-media {
+    transform: scale(1.05);
+  }
+
+  .catalog-card-media-overlay {
+    @apply absolute inset-0;
+    background-image: linear-gradient(180deg, rgba(5, 7, 12, 0.08), rgba(5, 7, 12, 0.72));
+  }
+
+  .catalog-card-brand-tag {
+    @apply absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-luxury-mist backdrop-blur-xl;
+  }
+
+  .catalog-card-body {
+    @apply relative px-6 pb-6;
+  }
+
+  .catalog-card-group-tag,
+  .catalog-card-ev-tag {
+    @apply rounded-full border border-luxury-blue/20 bg-luxury-blue/10 px-3 py-2 uppercase tracking-[0.22em] text-luxury-blue;
+  }
+
+  .catalog-card-price-tag {
+    @apply rounded-full border border-luxury-gold/20 bg-luxury-gold/10 px-4 py-2 uppercase tracking-[0.22em] text-luxury-gold;
+  }
+
+  .catalog-card-fuel-tag,
+  .catalog-card-ev-tag {
+    @apply px-4;
+  }
+
+  .catalog-card-ev-tag {
+    @apply inline-flex items-center gap-2 py-2;
+  }
+
+  .catalog-card-stats {
+    @apply mt-6 grid gap-3 sm:grid-cols-3;
+  }
+
+  .catalog-card-stat {
+    @apply rounded-[20px];
+  }
+
+  .catalog-card-highlight-icon,
+  .technology-card-icon,
+  .contact-card-icon,
+  .contact-experience-icon {
+    @apply icon-shell mt-1;
+  }
+
+  .catalog-card-highlight-text {
+    @apply mt-2 text-sm leading-7 text-white/[0.68];
+  }
+
+  /* Shared: Reusable Sections */
+  .showcase-section,
+  .about-section,
+  .technology-section,
+  .testimonials-section,
+  .home-services-section {
+    @apply px-4 py-24 sm:px-6 lg:px-8 lg:py-28;
+  }
+
+  .showcase-shell,
+  .about-page-story-shell,
+  .about-page-pillars-shell,
+  .cars-brand-shell,
+  .cars-results-shell {
+    @apply mx-auto max-w-7xl;
+  }
+
+  .showcase-header,
+  .home-services-header {
+    @apply flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between;
+  }
+
+  .showcase-copy,
+  .home-services-copy {
+    @apply max-w-2xl;
+  }
+
+  .showcase-eyebrow,
+  .about-media-eyebrow,
+  .testimonials-eyebrow,
+  .cars-eyebrow,
+  .gallery-eyebrow,
+  .about-page-story-eyebrow {
+    @apply inline-flex items-center gap-3 text-xl uppercase tracking-[0.75em] text-luxury-blue;
+  }
+
+  .showcase-title,
+  .home-services-title,
+  .technology-title,
+  .testimonials-title,
+  .gallery-title,
+  .services-title {
+    @apply mt-4 font-display text-4xl uppercase leading-tight text-white sm:text-5xl;
+  }
+
+  .showcase-description,
+  .home-cta-description,
+  .home-service-card-description,
+  .services-overview-card-description,
+  .technology-description,
+  .gallery-description,
+  .services-description {
+    @apply mt-5 text-base leading-8 text-white/[0.6];
+  }
+
+  .showcase-link,
+  .about-story-link {
+    @apply inline-flex items-center gap-3 self-start rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 text-xs uppercase tracking-[0.28em] text-white/[0.7] transition hover:border-luxury-gold/30 hover:text-white;
+  }
+
+  .showcase-grid,
+  .cars-results-grid {
+    @apply mt-12 grid gap-6 lg:grid-cols-3;
+  }
+}
+
+@layer components {
+  /* Section: About */
+  .about-panel {
+    @apply mx-auto max-w-7xl overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.04] shadow-luxury;
+  }
+
+  .about-grid,
+  .technology-shell {
+    @apply grid gap-12 lg:grid-cols-[0.95fr_1.05fr];
+  }
+
+  .about-grid {
+    @apply lg:gap-0;
+  }
+
+  .about-media {
+    @apply relative min-h-[24rem] overflow-hidden border-b border-white/10 lg:border-b-0 lg:border-r;
+  }
+
+  .about-media-image {
+    @apply h-full w-full object-cover;
+  }
+
+  .about-media-overlay {
+    @apply absolute inset-0;
+    background-image: linear-gradient(180deg, rgba(5, 7, 12, 0.2), rgba(5, 7, 12, 0.82));
+  }
+
+  .about-media-content {
+    @apply absolute bottom-0 left-0 p-8;
+  }
+
+  .about-media-title {
+    @apply mt-3 max-w-xs font-display text-3xl uppercase text-white;
+  }
+
+  .about-copy-panel {
+    @apply p-8 sm:p-10 lg:p-12;
+  }
+
+  .about-copy-eyebrow,
+  .technology-eyebrow,
+  .home-services-eyebrow,
+  .contact-eyebrow {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-luxury-gold;
+  }
+
+  .about-copy-title {
+    @apply mt-4 max-w-2xl font-display text-4xl uppercase leading-tight text-white sm:text-5xl;
+  }
+
+  .about-copy-description {
+    @apply mt-5 max-w-2xl text-base leading-8 text-white/[0.6];
+  }
+
+  .about-pillars-grid,
+  .about-stats-grid,
+  .home-highlights-grid,
+  .home-services-grid {
+    @apply mt-10 grid gap-4;
+  }
+
+  .about-pillars-grid {
+    @apply sm:grid-cols-2;
+  }
+
+  .about-stats-grid {
+    @apply sm:grid-cols-4;
+  }
+
+  .about-pillar-card,
+  .about-stat-card {
+    @apply rounded-[24px] border border-white/10 p-5;
+  }
+
+  .about-pillar-card {
+    @apply bg-white/[0.03];
+  }
+
+  .about-stat-card {
+    @apply bg-black/20;
+  }
+
+  .about-pillar-title {
+    @apply text-xs uppercase tracking-[0.26em] text-luxury-blue;
+  }
+
+  .about-pillar-description {
+    @apply mt-3 text-sm leading-7 text-white/[0.6];
+  }
+
+  .about-stat-value {
+    @apply font-display text-3xl uppercase text-white;
+  }
+
+  .about-stat-label {
+    @apply mt-2 text-xs uppercase tracking-[0.24em] text-white/[0.42];
+  }
+
+  .about-story-link {
+    @apply mt-8 border-luxury-gold/25 bg-luxury-gold/10 text-white hover:border-luxury-gold/45;
+  }
+
+  /* Section: Technology */
+  .technology-shell {
+    @apply mx-auto max-w-7xl items-center;
+  }
+
+  .technology-title {
+    @apply max-w-xl;
+  }
+
+  .technology-description {
+    @apply max-w-xl;
+  }
+
+  .technology-list {
+    @apply mt-10 grid gap-4;
+  }
+
+  .technology-card {
+    @apply glass-panel rounded-[26px] p-5;
+  }
+
+  .technology-card-shell {
+    @apply flex items-start gap-4;
+  }
+
+  .technology-card-header {
+    @apply flex flex-wrap items-center gap-3;
+  }
+
+  .technology-card-title {
+    @apply font-display text-xl uppercase text-white;
+  }
+
+  .technology-card-metric {
+    @apply rounded-full border border-luxury-blue/20 bg-luxury-blue/10 px-3 py-1 text-[10px] uppercase tracking-[0.26em] text-luxury-blue;
+  }
+
+  .technology-card-description {
+    @apply mt-3 text-sm leading-7 text-white/[0.58];
+  }
+
+  .technology-visual {
+    @apply relative overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.04] p-5 shadow-luxury;
+  }
+
+  .technology-visual-glow {
+    @apply absolute inset-0;
+    background-image:
+      radial-gradient(circle at 20% 20%, rgba(125, 211, 252, 0.18), transparent 25%),
+      radial-gradient(circle at 80% 20%, rgba(201, 164, 92, 0.16), transparent 28%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), rgba(255, 255, 255, 0.01));
+  }
+
+  .technology-visual-frame {
+    @apply relative overflow-hidden rounded-[28px] border border-white/10;
+  }
+
+  .technology-visual-image {
+    @apply h-[32rem] w-full object-cover object-center;
+  }
+
+  .technology-visual-overlay {
+    @apply absolute inset-0;
+    background-image: linear-gradient(180deg, rgba(5, 7, 12, 0.18), rgba(5, 7, 12, 0.8));
+  }
+
+  .technology-visual-content {
+    @apply absolute bottom-0 left-0 right-0 p-6 sm:p-8;
+  }
+
+  .technology-visual-stats {
+    @apply grid gap-3 sm:grid-cols-3;
+  }
+
+  .technology-visual-stat {
+    @apply rounded-[24px] border border-white/10 bg-black/35 p-4 backdrop-blur-xl;
+  }
+
+  .technology-visual-stat-label {
+    @apply text-xs uppercase tracking-[0.24em] text-white/[0.45];
+  }
+
+  .technology-visual-stat-value {
+    @apply mt-2 text-lg font-semibold text-white;
+  }
+
+  /* Section: Testimonials */
+  .testimonials-shell {
+    @apply mx-auto max-w-5xl;
+  }
+
+  .testimonials-header,
+  .testimonials-author {
+    @apply text-center;
+  }
+
+  .testimonials-card {
+    @apply relative mt-12 overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.04] p-6 shadow-luxury backdrop-blur-2xl sm:p-10;
+  }
+
+  .testimonials-card-glow {
+    @apply absolute inset-0;
+    background-image:
+      radial-gradient(circle at top, rgba(201, 164, 92, 0.14), transparent 30%),
+      linear-gradient(180deg, rgba(255, 255, 255, 0.04), transparent 35%, rgba(125, 211, 252, 0.08));
+  }
+
+  .testimonials-slide {
+    @apply relative;
+  }
+
+  .testimonials-stars,
+  .testimonials-dots {
+    @apply flex justify-center gap-2;
+  }
+
+  .testimonials-star {
+    @apply fill-luxury-gold text-luxury-gold;
+  }
+
+  .testimonials-quote {
+    @apply mx-auto mt-8 max-w-3xl text-center text-xl leading-9 text-white/[0.88] sm:text-2xl;
+  }
+
+  .testimonials-author {
+    @apply mt-8;
+  }
+
+  .testimonials-author-name {
+    @apply font-display text-2xl uppercase text-white;
+  }
+
+  .testimonials-author-role {
+    @apply mt-2 text-sm uppercase tracking-[0.28em] text-white/[0.45];
+  }
+
+  .testimonials-dots {
+    @apply relative mt-8;
+  }
+
+  .testimonials-dot {
+    @apply h-2 rounded-full transition-all duration-300;
+  }
+
+  .testimonials-dot-active {
+    @apply w-10 bg-luxury-gold;
+  }
+
+  .testimonials-dot-idle {
+    @apply w-2 bg-white/[0.25];
+  }
+
+  /* Page: Home */
+  .home-page {
+    @apply pb-8;
+  }
+
+  .home-highlights-section,
+  .gallery-grid-section,
+  .services-cards-section,
+  .services-categories-section,
+  .services-cta-section,
+  .contact-page,
+  .cars-results-section {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .home-highlights-section {
+    @apply py-8;
+  }
+
+  .home-highlights-grid {
+    @apply mx-auto max-w-7xl lg:grid-cols-3 gap-5;
+  }
+
+  .home-highlight-card {
+    @apply glass-panel rounded-[28px] p-6;
+  }
+
+  .home-highlight-title,
+  .home-service-card-title {
+    @apply mt-5 font-display text-2xl uppercase text-white;
+  }
+
+  .home-highlight-description,
+  .home-service-card-description {
+    @apply mt-3 text-sm leading-7 text-white/[0.6];
+  }
+
+  .home-services-panel,
+  .home-cta-panel,
+  .services-cta-panel {
+    @apply mx-auto max-w-7xl overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.04] p-8 shadow-luxury sm:p-10;
+  }
+
+  .home-services-grid {
+    @apply lg:grid-cols-3 gap-5;
+  }
+
+  .home-service-card {
+    @apply rounded-[28px] border border-white/10 bg-black/20 p-6;
+  }
+
+  .home-service-card-header {
+    @apply flex items-center gap-3;
+  }
+
+  .home-service-card-metric {
+    @apply rounded-full border border-luxury-blue/20 bg-luxury-blue/10 px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-luxury-blue;
+  }
+
+  .home-cta-section {
+    @apply px-4 pb-16 pt-6 sm:px-6 lg:px-8;
+  }
+
+  .home-cta-panel,
+  .services-cta-panel {
+    background-image:
+      radial-gradient(circle at top left, rgba(201, 164, 92, 0.12), transparent 28%),
+      radial-gradient(circle at bottom right, rgba(125, 211, 252, 0.12), transparent 28%),
+      rgba(255, 255, 255, 0.035);
+  }
+
+  .home-cta-layout,
+  .services-cta-layout {
+    @apply flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between;
+  }
+
+  .home-cta-copy,
+  .services-cta-copy {
+    @apply max-w-2xl;
+  }
+
+  .home-cta-eyebrow,
+  .services-cta-eyebrow {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-luxury-gold;
+  }
+
+  .services-cta-eyebrow {
+    @apply text-luxury-blue;
+  }
+
+  .home-cta-title,
+  .services-cta-title {
+    @apply mt-4 font-display text-4xl uppercase leading-tight text-white sm:text-5xl;
+  }
+
+  /* Page: Services */
+  .services-page {
+    @apply pb-12 pt-28 sm:pt-32;
+  }
+
+  .services-hero-section,
+  .gallery-hero-section,
+  .cars-hero-section {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .services-hero-shell,
+  .gallery-hero-shell,
+  .cars-hero-shell {
+    @apply mx-auto max-w-7xl px-2 py-10 sm:px-0 sm:py-12;
+  }
+
+  .services-eyebrow {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-luxury-gold;
+  }
+
+  .services-description,
+  .gallery-description {
+    @apply max-w-3xl text-white/[0.62];
+  }
+
+  .services-cards-section,
+  .services-categories-section,
+  .services-cta-section,
+  .gallery-grid-section {
+    @apply py-12;
+  }
+
+  .services-cards-grid {
+    @apply mx-auto grid max-w-7xl gap-6 lg:grid-cols-3;
+  }
+
+  .services-overview-card,
+  .services-category-panel,
+  .contact-info-panel,
+  .contact-form-panel {
+    @apply rounded-[30px] border border-white/10 bg-white/[0.04] p-6 shadow-luxury;
+  }
+
+  .services-overview-card-header {
+    @apply flex items-center justify-between gap-4;
+  }
+
+  .services-overview-card-metric {
+    @apply rounded-full border border-luxury-blue/20 bg-luxury-blue/10 px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-luxury-blue;
+  }
+
+  .services-overview-card-title {
+    @apply mt-5 font-display text-3xl uppercase text-white;
+  }
+
+  .services-categories-shell {
+    @apply mx-auto max-w-7xl space-y-8;
+  }
+
+  .services-category-panel {
+    @apply overflow-hidden rounded-[36px] sm:p-8;
+  }
+
+  .services-category-copy {
+    @apply max-w-3xl;
+  }
+
+  .services-category-eyebrow {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em] text-luxury-gold;
+  }
+
+  .services-category-title {
+    @apply mt-3 font-display text-3xl uppercase text-white sm:text-4xl;
+  }
+
+  .services-category-description {
+    @apply mt-4 text-sm leading-7 text-white/[0.62];
+  }
+
+  .services-category-grid {
+    @apply mt-8 grid gap-5 xl:grid-cols-2;
+  }
+
+  .services-category-card {
+    @apply rounded-[28px] border border-white/10 bg-black/20 p-5;
+  }
+
+  .services-category-card-title {
+    @apply font-display text-2xl uppercase text-white;
+  }
+
+  .services-category-items {
+    @apply mt-4 space-y-3;
+  }
+
+  .services-category-item {
+    @apply flex items-start gap-3;
+  }
+
+  .services-category-item-icon {
+    @apply mt-1 shrink-0 text-luxury-gold;
+  }
+
+  .services-category-item-text {
+    @apply text-sm leading-7 text-white/[0.66];
+  }
+}
+
+@layer components {
+  /* Page: Gallery */
+  .gallery-page {
+    @apply pb-12 pt-28 sm:pt-32;
+  }
+
+  .gallery-eyebrow {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-luxury-blue;
+  }
+
+  .gallery-title {
+    @apply max-w-4xl;
+  }
+
+  .gallery-grid {
+    @apply mx-auto grid max-w-7xl gap-6 md:grid-cols-2 xl:grid-cols-3;
+  }
+
+  .gallery-card {
+    @apply overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.04] shadow-luxury;
+  }
+
+  .gallery-card-media {
+    @apply relative overflow-hidden;
+  }
+
+  .gallery-card-image {
+    @apply h-80 w-full object-cover transition duration-700;
+  }
+
+  .gallery-card:hover .gallery-card-image {
+    transform: scale(1.05);
+  }
+
+  .gallery-card-overlay {
+    @apply absolute inset-0;
+    background-image: linear-gradient(180deg, rgba(5, 7, 12, 0.08), rgba(5, 7, 12, 0.8));
+  }
+
+  .gallery-card-content {
+    @apply absolute bottom-0 left-0 right-0 p-6;
+  }
+
+  .gallery-card-tag {
+    @apply inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-luxury-gold backdrop-blur-xl;
+  }
+
+  .gallery-card-title {
+    @apply mt-4 font-display text-3xl uppercase text-white;
+  }
+
+  /* Page: Contact */
+  .contact-page {
+    @apply pb-16 pt-28 lg:pt-32;
+  }
+
+  .contact-shell {
+    @apply mx-auto max-w-7xl;
+  }
+
+  .contact-grid {
+    @apply grid gap-8 lg:grid-cols-[0.9fr_1.1fr];
+  }
+
+  .contact-info-panel,
+  .contact-form-panel {
+    @apply min-w-0 rounded-[28px] sm:rounded-[36px] sm:p-10;
+  }
+
+  .contact-eyebrow {
+    @apply text-luxury-gold;
+  }
+
+  .contact-title {
+    @apply mt-4 max-w-xl text-balance font-display text-4xl uppercase leading-[0.95] text-white sm:text-5xl lg:text-6xl;
+  }
+
+  .contact-description {
+    @apply mt-5 max-w-lg text-base leading-8 text-white/[0.6];
+  }
+
+  .contact-cards {
+    @apply mt-10 grid gap-4;
+  }
+
+  .contact-card,
+  .contact-experience-card {
+    @apply rounded-[28px] border p-5;
+  }
+
+  .contact-card {
+    @apply border-white/10 bg-black/20;
+  }
+
+  .contact-experience-card {
+    @apply mt-8 border-luxury-blue/20 bg-luxury-blue/10;
+  }
+
+  .contact-card-shell,
+  .contact-experience-shell {
+    @apply flex items-start gap-4;
+  }
+
+  .contact-card-title,
+  .contact-experience-title {
+    @apply text-xs uppercase tracking-[0.26em];
+  }
+
+  .contact-card-title {
+    @apply text-white/[0.42];
+  }
+
+  .contact-experience-title {
+    @apply text-luxury-blue;
+  }
+
+  .contact-card-text,
+  .contact-experience-text {
+    @apply mt-2 break-words text-sm leading-7 text-white/[0.7];
+  }
+
+  .contact-experience-text {
+    @apply text-white/[0.68];
+  }
+
+  .contact-form {
+    @apply grid gap-5;
+  }
+
+  .contact-form-row {
+    @apply grid gap-5 md:grid-cols-2;
+  }
+
+  .contact-field-group,
+  .contact-submit {
+    @apply min-w-0;
+  }
+
+  .contact-select,
+  .contact-textarea {
+    @apply min-w-0;
+  }
+
+  .contact-textarea {
+    @apply resize-none;
+  }
+
+  .contact-success {
+    @apply rounded-[24px] border border-emerald-400/20 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200;
+  }
+
+  .contact-submit {
+    @apply pt-2;
+  }
+
+  .contact-submit-button {
+    @apply w-full justify-center px-4 text-[11px] tracking-[0.18em] sm:px-6 sm:text-xs sm:tracking-[0.26em];
+  }
+
+  /* Page: About */
+  .about-page {
+    @apply pb-12 pt-20 sm:pt-24;
+  }
+
+  .about-page-hero-section {
+    @apply relative overflow-hidden;
+  }
+
+  .about-page-hero-stage {
+    @apply relative h-[55vh] min-h-[24rem] w-full lg:h-[75vh];
+  }
+
+  .about-page-hero-image {
+    @apply h-full w-full rounded-b-[40px] object-cover object-center;
+  }
+
+  .about-page-hero-overlay {
+    @apply absolute inset-0 rounded-b-[40px];
+    background-image: linear-gradient(180deg, rgba(5, 7, 12, 0.12), rgba(5, 7, 12, 0.44) 40%, rgba(5, 7, 12, 0.88));
+  }
+
+  .about-page-hero-content {
+    @apply absolute inset-x-0 bottom-0 z-10 px-4 pb-6 sm:px-6 sm:pb-8 lg:px-8 lg:pb-10;
+  }
+
+  .about-page-hero-shell {
+    @apply mx-auto max-w-7xl;
+  }
+
+  .about-page-hero-copy {
+    @apply max-w-4xl;
+  }
+
+  .about-page-hero-eyebrow {
+    @apply inline-flex max-w-full flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-luxury-blue sm:text-xs sm:tracking-[0.26em] lg:text-sm lg:tracking-[0.32em];
+  }
+
+  .about-page-hero-eyebrow-icon {
+    @apply shrink-0 lg:h-[18px] lg:w-[18px];
+  }
+
+  .about-page-slide-label {
+    @apply mt-4 text-[15px] uppercase tracking-[0.35em] text-luxury-gold;
+  }
+
+  .about-page-slide-title {
+    @apply mt-3 max-w-4xl font-display text-3xl uppercase leading-[1] text-white sm:text-4xl lg:text-5xl;
+  }
+
+  .about-page-slide-title-main {
+    @apply block text-white;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  }
+
+  .about-page-slide-title-accent {
+    @apply mt-2 block bg-gradient-to-r from-luxury-blue via-white to-luxury-gold bg-clip-text text-transparent;
+    text-shadow: 0 10px 30px rgba(9, 78, 120, 0.22);
+  }
+
+  .about-page-slide-description {
+    @apply mt-5 max-w-3xl text-base leading-8 text-white/[0.78] sm:text-lg sm:leading-9;
+  }
+
+  .about-page-slide-dots {
+    @apply mt-6 flex gap-2;
+  }
+
+  .about-page-slide-dot {
+    @apply h-2.5 rounded-full transition;
+  }
+
+  .about-page-slide-dot-active {
+    @apply w-10 bg-luxury-gold;
+  }
+
+  .about-page-slide-dot-idle {
+    @apply w-2.5 bg-white/[0.4] hover:bg-white/[0.6];
+  }
+
+  .about-page-story-section,
+  .about-page-stats-section,
+  .about-page-pillars-section,
+  .about-page-timeline-section,
+  .cars-brand-section,
+  .cars-summary-section,
+  .car-details-page,
+  .car-details-missing-page {
+    @apply px-4 sm:px-6 lg:px-8;
+  }
+
+  .about-page-story-shell,
+  .about-page-stats-grid,
+  .cars-summary-panel,
+  .car-details-shell {
+    @apply mx-auto max-w-7xl;
+  }
+
+  .about-page-story-shell {
+    @apply py-10 sm:py-12;
+  }
+
+  .about-page-story-grid {
+    @apply grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start;
+  }
+
+  .about-page-story-title {
+    @apply mt-4 max-w-4xl font-display text-3xl uppercase leading-[0.95] text-white sm:text-5xl;
+  }
+
+  .about-page-story-paragraph {
+    @apply mt-5 max-w-3xl text-lg leading-9;
+  }
+
+  .about-page-story-paragraph-strong {
+    @apply text-white/[0.72];
+  }
+
+  .about-page-story-paragraph-mid {
+    @apply text-white/[0.68];
+  }
+
+  .about-page-story-paragraph-soft {
+    @apply text-white/[0.64];
+  }
+
+  .about-page-mission-grid {
+    @apply grid gap-4 lg:grid-cols-2;
+  }
+
+  .about-page-mission-card,
+  .about-page-stat-card,
+  .about-page-pillar-card,
+  .about-page-timeline-card,
+  .cars-empty-state,
+  .car-details-empty,
+  .car-details-info-card {
+    @apply rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-luxury;
+  }
+
+  .about-page-mission-header {
+    @apply flex items-center gap-4;
+  }
+
+  .about-page-mission-title {
+    @apply font-display text-2xl uppercase tracking-[0.14em] text-luxury-gold sm:text-3xl;
+  }
+
+  .about-page-mission-description {
+    @apply mt-5 text-base leading-8 text-white/[0.7] sm:text-lg sm:leading-9;
+  }
+
+  .about-page-stats-section,
+  .about-page-pillars-section,
+  .about-page-timeline-section {
+    @apply py-12;
+  }
+
+  .about-page-stats-grid {
+    @apply grid gap-5 lg:grid-cols-4;
+  }
+
+  .about-page-stat-card {
+    @apply glass-panel;
+  }
+
+  .about-page-stat-value {
+    @apply mt-5 font-display text-4xl uppercase text-white;
+  }
+
+  .about-page-stat-label {
+    @apply mt-3 text-xs uppercase tracking-[0.24em] text-white/[0.45];
+  }
+
+  .about-page-pillars-grid,
+  .cars-type-groups-grid {
+    @apply grid gap-5 lg:grid-cols-3;
+  }
+
+  .about-page-pillar-eyebrow,
+  .cars-empty-eyebrow {
+    @apply text-xs uppercase tracking-[0.28em] text-luxury-gold;
+  }
+
+  .about-page-pillar-title,
+  .cars-empty-title {
+    @apply mt-4 font-display text-3xl uppercase text-white;
+  }
+
+  .about-page-pillar-description,
+  .cars-empty-description {
+    @apply mt-4 text-sm leading-7 text-white/[0.6];
+  }
+
+  .about-page-timeline-panel {
+    @apply mx-auto max-w-7xl overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.04] p-8 shadow-luxury sm:p-10;
+  }
+
+  .about-page-timeline-header {
+    @apply flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between;
+  }
+
+  .about-page-timeline-eyebrow {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-luxury-blue;
+  }
+
+  .about-page-timeline-title {
+    @apply mt-4 font-display text-4xl uppercase text-white sm:text-5xl;
+  }
+
+  .about-page-timeline-link {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-luxury-gold;
+  }
+
+  .about-page-timeline-grid {
+    @apply mt-8 grid gap-5 lg:grid-cols-4;
+  }
+
+  .about-page-timeline-card {
+    @apply bg-black/20;
+  }
+
+  .about-page-timeline-year {
+    @apply font-display text-3xl uppercase text-luxury-gold;
+  }
+
+  .about-page-timeline-card-title {
+    @apply mt-4 font-display text-2xl uppercase text-white;
+  }
+
+  .about-page-timeline-card-description {
+    @apply mt-3 text-sm leading-7 text-white/[0.6];
+  }
+
+  /* Page: Cars */
+  .cars-page {
+    @apply pb-12 pt-28 sm:pt-32;
+  }
+
+  .cars-hero-layout {
+    @apply grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end;
+  }
+
+  .cars-title {
+    @apply mt-4 max-w-4xl font-display text-5xl uppercase leading-[0.95] text-white sm:text-6xl;
+  }
+
+  .cars-description {
+    @apply mt-5 max-w-2xl text-base leading-8 text-white/[0.62];
+  }
+
+  .cars-filter-panel {
+    @apply rounded-[30px] border border-white/10 bg-black/20 p-6 shadow-luxury;
+  }
+
+  .cars-filter-panel-label {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.28em] text-luxury-gold;
+  }
+
+  .cars-search-row {
+    @apply mt-4 flex items-center gap-3 rounded-[20px] border border-white/10 bg-white/5 px-4 py-3;
+  }
+
+  .cars-search-icon {
+    @apply text-white/[0.45];
+  }
+
+  .cars-search-input {
+    @apply w-full bg-transparent text-sm text-white placeholder:text-white/30;
+  }
+
+  .cars-filter-groups {
+    @apply mt-5 grid gap-4 lg:grid-cols-2;
+  }
+
+  .cars-filter-group-title {
+    @apply inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-white/[0.45];
+  }
+
+  .cars-filter-chip-row,
+  .cars-type-chip-row,
+  .cars-brand-group-row,
+  .cars-summary-chip-row {
+    @apply mt-3 flex flex-wrap gap-2;
+  }
+
+  .cars-filter-block {
+    @apply mt-5;
+  }
+
+  .cars-brand-section,
+  .cars-summary-section {
+    @apply py-4;
+  }
+
+  .cars-summary-section {
+    @apply py-8;
+  }
+
+  .cars-brand-group-pill {
+    @apply rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-white/[0.55];
+  }
+
+  .cars-brand-grid {
+    @apply grid gap-4 xl:grid-cols-4;
+  }
+
+  .brand-card {
+    @apply rounded-[28px] border p-5 text-left transition;
+  }
+
+  .brand-card-idle {
+    @apply border-white/10 bg-white/[0.04] hover:border-white/20;
+  }
+
+  .brand-card-active,
+  .brand-card-active-all {
+    @apply border-luxury-gold;
+  }
+
+  .brand-card-active {
+    @apply bg-white/[0.08];
+  }
+
+  .brand-card-active-all {
+    @apply bg-luxury-gold/10;
+  }
+
+  .brand-card-label {
+    @apply text-[10px] uppercase tracking-[0.24em];
+  }
+
+  .brand-card-label-blue {
+    @apply text-luxury-blue;
+  }
+
+  .brand-card-label-gold,
+  .brand-card-footnote {
+    @apply text-luxury-gold;
+  }
+
+  .brand-card-title {
+    @apply mt-3 font-display text-2xl uppercase text-white;
+  }
+
+  .brand-card-description {
+    @apply mt-2 text-sm leading-7 text-white/[0.58];
+  }
+
+  .brand-card-footnote {
+    @apply mt-4 text-xs uppercase tracking-[0.24em];
+  }
+
+  .cars-summary-panel {
+    @apply overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.04] p-6 shadow-luxury;
+  }
+
+  .cars-summary-header {
+    @apply flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between;
+  }
+
+  .cars-summary-copy {
+    @apply max-w-3xl;
+  }
+
+  .cars-summary-eyebrow {
+    @apply text-xs uppercase tracking-[0.28em] text-luxury-gold;
+  }
+
+  .cars-summary-title {
+    @apply mt-3 font-display text-3xl uppercase text-white sm:text-4xl;
+  }
+
+  .cars-summary-description {
+    @apply mt-3 text-sm leading-7 text-white/[0.6];
+  }
+
+  .cars-summary-stats {
+    @apply grid gap-3 sm:grid-cols-3;
+  }
+
+  .cars-summary-stat,
+  .cars-type-group-card,
+  .car-details-spec-card {
+    @apply rounded-[24px] border border-white/10 bg-black/20 p-4;
+  }
+
+  .cars-summary-stat-label,
+  .cars-type-group-title,
+  .car-details-spec-label {
+    @apply text-xs uppercase tracking-[0.24em] text-white/[0.42];
+  }
+
+  .cars-summary-stat-value,
+  .car-details-spec-value {
+    @apply mt-2 font-display text-xl uppercase text-white;
+  }
+
+  .cars-summary-stat-value-lg {
+    @apply text-3xl;
+  }
+
+  .cars-type-group-title {
+    @apply text-luxury-blue;
+  }
+
+  .cars-type-group-description {
+    @apply mt-3 text-sm leading-7 text-white/[0.58];
+  }
+
+  .cars-results-section {
+    @apply py-12;
+  }
+
+  .cars-empty-state {
+    @apply p-10 text-center;
+  }
+
+  /* Page: Car Details */
+  .car-details-missing-page,
+  .car-details-page {
+    @apply overflow-x-hidden pb-16 pt-28 sm:pt-32;
+  }
+
+  .car-details-missing-page {
+    @apply pt-36;
+  }
+
+  .car-details-empty {
+    @apply max-w-3xl p-10 text-center;
+  }
+
+  .car-details-empty-eyebrow {
+    @apply text-xs uppercase tracking-[0.35em] text-luxury-gold;
+  }
+
+  .car-details-empty-title {
+    @apply mt-4 font-display text-4xl uppercase text-white;
+  }
+
+  .car-details-empty-description {
+    @apply mt-4 text-white/[0.6];
+  }
+
+  .car-details-empty-action {
+    @apply mt-8 flex justify-center;
+  }
+
+  .car-details-back-link {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.28em] text-white/[0.55] transition hover:text-white;
+  }
+
+  .car-details-grid {
+    @apply mt-8 grid gap-8 lg:grid-cols-[1.1fr_0.9fr];
+  }
+
+  .car-details-gallery-panel {
+    @apply overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.04] p-3 shadow-luxury sm:p-5;
+  }
+
+  .car-details-gallery-stage {
+    @apply relative overflow-hidden rounded-[28px] border border-white/10;
+  }
+
+  .car-details-gallery-image {
+    @apply h-[20rem] w-full object-cover object-center sm:h-[30rem] lg:h-[36rem];
+  }
+
+  .car-details-gallery-overlay {
+    @apply absolute inset-0;
+    background-image: linear-gradient(180deg, rgba(5, 7, 12, 0.12), rgba(5, 7, 12, 0.68));
+  }
+
+  .car-details-gallery-control {
+    @apply absolute top-1/2 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/10 bg-black/35 text-white backdrop-blur-xl transition hover:bg-black/55 sm:h-11 sm:w-11;
+  }
+
+  .car-details-gallery-control-prev {
+    @apply left-3 sm:left-4;
+  }
+
+  .car-details-gallery-control-next {
+    @apply right-3 sm:right-4;
+  }
+
+  .car-details-gallery-copy {
+    @apply absolute bottom-0 left-0 right-0 p-4 sm:p-8;
+  }
+
+  .car-details-type-pill {
+    @apply inline-flex max-w-full rounded-full border border-white/10 bg-black/30 px-3 py-1.5 text-[10px] uppercase tracking-[0.22em] text-luxury-blue backdrop-blur-xl sm:px-4 sm:py-2 sm:text-xs sm:tracking-[0.28em];
+  }
+
+  .car-details-title {
+    @apply mt-4 break-words font-display text-3xl uppercase text-white sm:text-5xl;
+  }
+
+  .car-details-description {
+    @apply mt-3 max-w-2xl text-sm leading-6 text-white/[0.68] sm:leading-7;
+  }
+
+  .car-details-thumbnails {
+    @apply mt-4 grid grid-cols-2 gap-4 sm:grid-cols-3;
+  }
+
+  .car-details-thumbnail {
+    @apply overflow-hidden rounded-[22px] border transition;
+  }
+
+  .car-details-thumbnail-active {
+    @apply border-luxury-gold;
+  }
+
+  .car-details-thumbnail-idle {
+    @apply border-white/10 hover:border-white/20;
+  }
+
+  .car-details-thumbnail-image {
+    @apply h-24 w-full object-cover;
+  }
+
+  .car-details-side {
+    @apply space-y-6;
+  }
+
+  .car-details-price-row {
+    @apply flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between;
+  }
+
+  .car-details-price-label,
+  .car-details-card-eyebrow {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.3em];
+  }
+
+  .car-details-price-label {
+    @apply text-white/[0.45];
+  }
+
+  .car-details-card-eyebrow-gold {
+    @apply text-luxury-gold;
+  }
+
+  .car-details-card-eyebrow-blue {
+    @apply text-luxury-blue;
+  }
+
+  .car-details-price-value {
+    @apply mt-3 break-words font-display text-3xl uppercase text-white sm:text-4xl;
+  }
+
+  .car-details-drivetrain-pill {
+    @apply inline-flex max-w-full rounded-full border border-luxury-blue/20 bg-luxury-blue/10 px-4 py-2 text-[10px] uppercase tracking-[0.18em] text-luxury-blue sm:text-xs sm:tracking-[0.26em];
+  }
+
+  .car-details-specs-grid {
+    @apply mt-6 grid gap-4 sm:grid-cols-2;
+  }
+
+  .car-details-highlights {
+    @apply mt-5 space-y-4;
+  }
+
+  .car-details-highlight-item {
+    @apply flex items-start gap-3;
+  }
+
+  .car-details-highlight-icon {
+    @apply mt-1 text-luxury-gold;
+  }
+
+  .car-details-highlight-text,
+  .car-details-concierge-text {
+    @apply text-sm leading-7 text-white/[0.62];
+  }
+
+  .car-details-concierge-text {
+    @apply mt-4;
+  }
+
+  .car-details-actions {
+    @apply mt-6 flex flex-col gap-3 sm:flex-row;
+  }
+
+  .car-details-action-button {
+    @apply w-full justify-center sm:w-auto;
   }
 }
 
