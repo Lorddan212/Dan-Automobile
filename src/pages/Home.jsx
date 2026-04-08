@@ -33,12 +33,12 @@ function Home() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -18 }}
       transition={{ duration: 0.45 }}
-      className="pb-8"
+      className="home-page"
     >
       <Hero />
 
-      <section className="px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-3">
+      <section className="home-highlights-section">
+        <div className="home-highlights-grid">
           {homeHighlights.map((item, index) => {
             const Icon = item.icon;
 
@@ -49,15 +49,13 @@ function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ delay: index * 0.08 }}
-                className="glass-panel rounded-[28px] p-6"
+                className="home-highlight-card"
               >
                 <span className="icon-shell">
                   <Icon size={18} />
                 </span>
-                <h3 className="mt-5 font-display text-2xl uppercase text-white">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-white/60">{item.description}</p>
+                <h3 className="home-highlight-title">{item.title}</h3>
+                <p className="home-highlight-description">{item.description}</p>
               </motion.div>
             );
           })}
@@ -75,15 +73,15 @@ function Home() {
 
       <Technology />
 
-      <section className="px-4 py-24 sm:px-6 lg:px-8 lg:py-28">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.04] p-8 shadow-luxury sm:p-10">
-          <div className="flex flex-col gap-8 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-luxury-gold">
+      <section className="home-services-section">
+        <div className="home-services-panel">
+          <div className="home-services-header">
+            <div className="home-services-copy">
+              <span className="home-services-eyebrow">
                 <BrainCircuit size={14} />
                 Services
               </span>
-              <h2 className="mt-4 font-display text-4xl uppercase leading-tight text-white sm:text-5xl">
+              <h2 className="home-services-title">
                 DanAuto doesn’t just build cars. We build the full premium experience.
               </h2>
             </div>
@@ -92,7 +90,7 @@ function Home() {
             </Button>
           </div>
 
-          <div className="mt-10 grid gap-5 lg:grid-cols-3">
+          <div className="home-services-grid">
             {services.slice(0, 3).map((service, index) => (
               <motion.div
                 key={service.title}
@@ -100,20 +98,18 @@ function Home() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-[28px] border border-white/10 bg-black/20 p-6"
+                className="home-service-card"
               >
-                <div className="flex items-center gap-3">
+                <div className="home-service-card-header">
                   <span className="icon-shell">
                     <BrainCircuit size={18} />
                   </span>
-                  <span className="rounded-full border border-luxury-blue/20 bg-luxury-blue/10 px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-luxury-blue">
+                  <span className="home-service-card-metric">
                     {service.metric}
                   </span>
                 </div>
-                <h3 className="mt-5 font-display text-2xl uppercase text-white">
-                  {service.title}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-white/60">{service.description}</p>
+                <h3 className="home-service-card-title">{service.title}</h3>
+                <p className="home-service-card-description">{service.description}</p>
               </motion.div>
             ))}
           </div>
@@ -123,18 +119,18 @@ function Home() {
       <About />
       <Testimonials />
 
-      <section className="px-4 pb-16 pt-6 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-[36px] border border-white/10 bg-[radial-gradient(circle_at_top_left,rgba(201,164,92,0.12),transparent_28%),radial-gradient(circle_at_bottom_right,rgba(125,211,252,0.12),transparent_28%),rgba(255,255,255,0.035)] p-8 shadow-luxury sm:p-10">
-          <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
-            <div className="max-w-2xl">
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-luxury-gold">
+      <section className="home-cta-section">
+        <div className="home-cta-panel">
+          <div className="home-cta-layout">
+            <div className="home-cta-copy">
+              <span className="home-cta-eyebrow">
                 <CalendarClock size={14} />
                 Booking
               </span>
-              <h2 className="mt-4 font-display text-4xl uppercase leading-tight text-white sm:text-5xl">
+              <h2 className="home-cta-title">
                 Reserve a private DanAuto consultation today.
               </h2>
-              <p className="mt-4 text-base leading-8 text-white/60">
+              <p className="home-cta-description">
                 Explore the lineup, compare models, configure finishes, and schedule a
                 premium DanAuto experience with our concierge team.
               </p>

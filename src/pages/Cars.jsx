@@ -72,59 +72,59 @@ function Cars() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -18 }}
       transition={{ duration: 0.45 }}
-      className="pb-12 pt-28 sm:pt-32"
+      className="cars-page"
     >
-      <section className="px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl px-2 py-10 sm:px-0 sm:py-12">
-          <div className="grid gap-8 lg:grid-cols-[1.05fr_0.95fr] lg:items-end">
+      <section className="cars-hero-section">
+        <div className="cars-hero-shell">
+          <div className="cars-hero-layout">
             <div>
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-luxury-blue">
+              <span className="cars-eyebrow">
                 <LayoutGrid size={14} />
                 DanAuto Cars
               </span>
-              <h1 className="mt-4 max-w-4xl font-display text-5xl uppercase leading-[0.95] text-white sm:text-6xl">
+              <h1 className="cars-title">
                 Browse brands, compare models, and filter the future of mobility.
               </h1>
-              <p className="mt-5 max-w-2xl text-base leading-8 text-white/62">
+              <p className="cars-description">
                 Explore global automotive brands in a premium DanAuto catalog with
                 curated pricing in Naira, EV highlights, body-style filters, fuel
                 profiles, and a fast search experience built for modern discovery.
               </p>
             </div>
 
-            <div className="rounded-[30px] border border-white/10 bg-black/20 p-6 shadow-luxury">
-              <p className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.28em] text-luxury-gold">
+            <div className="cars-filter-panel">
+              <p className="cars-filter-panel-label">
                 <Filter size={14} />
                 Search + filters
               </p>
 
-              <label className="mt-4 flex items-center gap-3 rounded-[20px] border border-white/10 bg-white/5 px-4 py-3">
-                <Search size={16} className="text-white/45" />
+              <label className="cars-search-row">
+                <Search size={16} className="cars-search-icon" />
                 <input
                   value={searchTerm}
                   onChange={(event) => setSearchTerm(event.target.value)}
-                  className="w-full bg-transparent text-sm text-white placeholder:text-white/30"
+                  className="cars-search-input"
                   placeholder="Search brand, model, type, or fuel"
                 />
               </label>
 
-              <div className="mt-5 grid gap-4 lg:grid-cols-2">
+              <div className="cars-filter-groups">
                 <div>
-                  <p className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-white/45">
+                  <p className="cars-filter-group-title">
                     <Fuel size={13} />
                     Fuel type
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
+                  <div className="cars-filter-chip-row">
                     {fuelTypeOptions.map((fuelType) => (
                       <button
                         key={fuelType}
                         type="button"
                         onClick={() => setActiveFuelType(fuelType)}
                         className={[
-                          "rounded-full border px-4 py-2 text-[10px] uppercase tracking-[0.2em] transition",
+                          "filter-chip",
                           activeFuelType === fuelType
-                            ? "border-luxury-blue bg-luxury-blue/10 text-white"
-                            : "border-white/10 bg-white/5 text-white/70 hover:border-white/20 hover:text-white"
+                            ? "filter-chip-active-blue"
+                            : "filter-chip-idle"
                         ].join(" ")}
                       >
                         {fuelType}
@@ -134,21 +134,21 @@ function Cars() {
                 </div>
 
                 <div>
-                  <p className="inline-flex items-center gap-2 text-[11px] uppercase tracking-[0.24em] text-white/45">
+                  <p className="cars-filter-group-title">
                     <SlidersHorizontal size={13} />
                     Price range
                   </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
+                  <div className="cars-filter-chip-row">
                     {priceRangeOptions.map((range) => (
                       <button
                         key={range.value}
                         type="button"
                         onClick={() => setActivePriceRange(range.value)}
                         className={[
-                          "rounded-full border px-4 py-2 text-[10px] uppercase tracking-[0.2em] transition",
+                          "filter-chip",
                           activePriceRange === range.value
-                            ? "border-luxury-gold bg-luxury-gold/10 text-white"
-                            : "border-white/10 bg-white/5 text-white/70 hover:border-white/20 hover:text-white"
+                            ? "filter-chip-active-gold"
+                            : "filter-chip-idle"
                         ].join(" ")}
                       >
                         {range.label}
@@ -158,21 +158,19 @@ function Cars() {
                 </div>
               </div>
 
-              <div className="mt-5">
-                <p className="text-[11px] uppercase tracking-[0.24em] text-white/45">
-                  Vehicle type
-                </p>
-                <div className="mt-3 flex flex-wrap gap-3">
+              <div className="cars-filter-block">
+                <p className="cars-filter-group-title">Vehicle type</p>
+                <div className="cars-type-chip-row">
                   {vehicleTypeTabs.slice(0, 10).map((type) => (
                     <button
                       key={type}
                       type="button"
                       onClick={() => setActiveType(type)}
                       className={[
-                        "rounded-full border px-4 py-2 text-xs uppercase tracking-[0.22em] transition",
+                        "filter-chip filter-chip-sm",
                         activeType === type
-                          ? "border-luxury-gold bg-luxury-gold/10 text-white"
-                          : "border-white/10 bg-white/5 text-white/70 hover:border-white/20 hover:text-white"
+                          ? "filter-chip-active-gold"
+                          : "filter-chip-idle"
                       ].join(" ")}
                     >
                       {type}
@@ -185,20 +183,17 @@ function Cars() {
         </div>
       </section>
 
-      <section className="px-4 py-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="mb-4 flex flex-wrap gap-3">
+      <section className="cars-brand-section">
+        <div className="cars-brand-shell">
+          <div className="cars-brand-group-row">
             {brandGroups.map((group) => (
-              <div
-                key={group.title}
-                className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-white/55"
-              >
+              <div key={group.title} className="cars-brand-group-pill">
                 {group.title}
               </div>
             ))}
           </div>
 
-          <div className="grid gap-4 xl:grid-cols-4">
+          <div className="cars-brand-grid">
             <motion.button
               type="button"
               onClick={() => setActiveBrandId("all")}
@@ -206,17 +201,15 @@ function Cars() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
               className={[
-                "rounded-[28px] border p-5 text-left transition",
+                "brand-card",
                 activeBrandId === "all"
-                  ? "border-luxury-gold bg-luxury-gold/10"
-                  : "border-white/10 bg-white/[0.04] hover:border-white/20"
+                  ? "brand-card-active-all"
+                  : "brand-card-idle"
               ].join(" ")}
             >
-              <p className="text-xs uppercase tracking-[0.26em] text-luxury-gold">All Brands</p>
-              <p className="mt-3 font-display text-2xl uppercase text-white">Global Catalog</p>
-              <p className="mt-2 text-sm leading-7 text-white/58">
-                Search across every integrated brand and model.
-              </p>
+              <p className="brand-card-label brand-card-label-gold">All Brands</p>
+              <p className="brand-card-title">Global Catalog</p>
+              <p className="brand-card-description">Search across every integrated brand and model.</p>
             </motion.button>
 
             {brandGroups.flatMap((group) =>
@@ -233,18 +226,16 @@ function Cars() {
                     viewport={{ once: true, amount: 0.12 }}
                     transition={{ delay: index * 0.02 }}
                     className={[
-                      "rounded-[28px] border p-5 text-left transition",
+                      "brand-card",
                       activeBrandId === brand.id
-                        ? "border-luxury-gold bg-white/[0.08]"
-                        : "border-white/10 bg-white/[0.04] hover:border-white/20"
+                        ? "brand-card-active"
+                        : "brand-card-idle"
                     ].join(" ")}
                   >
-                    <p className="text-[10px] uppercase tracking-[0.24em] text-luxury-blue">
-                      {brand.group}
-                    </p>
-                    <p className="mt-3 font-display text-2xl uppercase text-white">{brand.name}</p>
-                    <p className="mt-2 text-sm leading-7 text-white/58">{brand.description}</p>
-                    <p className="mt-4 text-xs uppercase tracking-[0.24em] text-luxury-gold">
+                    <p className="brand-card-label brand-card-label-blue">{brand.group}</p>
+                    <p className="brand-card-title">{brand.name}</p>
+                    <p className="brand-card-description">{brand.description}</p>
+                    <p className="brand-card-footnote">
                       {brand.modelCount > 0
                         ? `${brand.modelCount} models available`
                         : "Brand profile ready"}
@@ -257,64 +248,54 @@ function Cars() {
         </div>
       </section>
 
-      <section className="px-4 py-8 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.04] p-6 shadow-luxury">
-          <div className="flex flex-col gap-5 lg:flex-row lg:items-end lg:justify-between">
-            <div className="max-w-3xl">
-              <p className="text-xs uppercase tracking-[0.28em] text-luxury-gold">
+      <section className="cars-summary-section">
+        <div className="cars-summary-panel">
+          <div className="cars-summary-header">
+            <div className="cars-summary-copy">
+              <p className="cars-summary-eyebrow">
                 {selectedBrand ? selectedBrand.name : "All Brands"}
               </p>
-              <h2 className="mt-3 font-display text-3xl uppercase text-white sm:text-4xl">
+              <h2 className="cars-summary-title">
                 {selectedBrand ? "Click to view models" : "Browse all available models"}
               </h2>
-              <p className="mt-3 text-sm leading-7 text-white/60">
+              <p className="cars-summary-description">
                 {selectedBrand
                   ? selectedBrand.description
                   : "Use the brand cards, type tabs, fuel choices, price ranges, and search field together to narrow the catalog quickly."}
               </p>
             </div>
 
-            <div className="grid gap-3 sm:grid-cols-3">
-              <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
-                <p className="text-xs uppercase tracking-[0.24em] text-white/42">
-                  Matching models
-                </p>
-                <p className="mt-2 font-display text-3xl uppercase text-white">
-                  {filteredCars.length}
-                </p>
+            <div className="cars-summary-stats">
+              <div className="cars-summary-stat">
+                <p className="cars-summary-stat-label">Matching models</p>
+                <p className="cars-summary-stat-value cars-summary-stat-value-lg">{filteredCars.length}</p>
               </div>
 
-              <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
-                <p className="text-xs uppercase tracking-[0.24em] text-white/42">
-                  Fuel profile
-                </p>
-                <p className="mt-2 font-display text-xl uppercase text-white">
-                  {activeFuelType}
-                </p>
+              <div className="cars-summary-stat">
+                <p className="cars-summary-stat-label">Fuel profile</p>
+                <p className="cars-summary-stat-value">{activeFuelType}</p>
               </div>
 
-              <div className="rounded-[24px] border border-white/10 bg-black/20 p-4">
-                <p className="text-xs uppercase tracking-[0.24em] text-white/42">
-                  Price band
-                </p>
-                <p className="mt-2 font-display text-xl uppercase text-white">
+              <div className="cars-summary-stat">
+                <p className="cars-summary-stat-label">Price band</p>
+                <p className="cars-summary-stat-value">
                   {priceRangeOptions.find((range) => range.value === activePriceRange)?.label}
                 </p>
               </div>
             </div>
           </div>
 
-          <div className="mt-6 flex flex-wrap gap-3">
+          <div className="cars-summary-chip-row">
             {vehicleTypeTabs.map((type) => (
               <button
                 key={type}
                 type="button"
                 onClick={() => setActiveType(type)}
                 className={[
-                  "rounded-full border px-4 py-2 text-xs uppercase tracking-[0.22em] transition",
+                  "filter-chip filter-chip-sm",
                   activeType === type
-                    ? "border-luxury-gold bg-luxury-gold/10 text-white"
-                    : "border-white/10 bg-white/5 text-white/70 hover:border-white/20 hover:text-white"
+                    ? "filter-chip-active-gold"
+                    : "filter-chip-idle"
                 ].join(" ")}
               >
                 {type}
@@ -322,21 +303,21 @@ function Cars() {
             ))}
           </div>
 
-          <div className="mt-8 grid gap-4 lg:grid-cols-3">
+          <div className="cars-type-groups-grid">
             {vehicleTypeGroups.map((group) => (
-              <div key={group.title} className="rounded-[24px] border border-white/10 bg-black/20 p-4">
-                <p className="text-xs uppercase tracking-[0.24em] text-luxury-blue">{group.title}</p>
-                <p className="mt-3 text-sm leading-7 text-white/58">{group.types.join(" • ")}</p>
+              <div key={group.title} className="cars-type-group-card">
+                <p className="cars-type-group-title">{group.title}</p>
+                <p className="cars-type-group-description">{group.types.join(" • ")}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
+      <section className="cars-results-section">
+        <div className="cars-results-shell">
           {filteredCars.length > 0 ? (
-            <div className="grid gap-6 lg:grid-cols-3">
+            <div className="cars-results-grid">
               {filteredCars.map((model, index) => (
                 <motion.div
                   key={model.id}
@@ -350,14 +331,10 @@ function Cars() {
               ))}
             </div>
           ) : (
-            <div className="rounded-[30px] border border-white/10 bg-white/[0.04] p-10 text-center shadow-luxury">
-              <p className="text-xs uppercase tracking-[0.28em] text-luxury-gold">
-                No matching models
-              </p>
-              <h3 className="mt-4 font-display text-3xl uppercase text-white">
-                Try another brand, type, fuel profile, or price band.
-              </h3>
-              <p className="mt-4 text-sm leading-7 text-white/60">
+            <div className="cars-empty-state">
+              <p className="cars-empty-eyebrow">No matching models</p>
+              <h3 className="cars-empty-title">Try another brand, type, fuel profile, or price band.</h3>
+              <p className="cars-empty-description">
                 The catalog is now grouped by brand and model family, so small filter
                 changes can quickly surface a very different part of the market.
               </p>

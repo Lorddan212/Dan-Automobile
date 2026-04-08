@@ -77,10 +77,10 @@ function AboutPage() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -18 }}
       transition={{ duration: 0.45 }}
-      className="pb-12 pt-20 sm:pt-24"
+      className="about-page"
     >
-      <section className="relative overflow-hidden">
-        <div className="relative h-[55vh] min-h-[24rem] w-full lg:h-[75vh]">
+      <section className="about-page-hero-section">
+        <div className="about-page-hero-stage">
           <AnimatePresence mode="wait">
             <motion.img
               key={aboutSlides[activeSlide].image}
@@ -90,19 +90,19 @@ function AboutPage() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 0.98 }}
               transition={{ duration: 0.7, ease: "easeOut" }}
-              className="h-full w-full rounded-b-[40px] object-cover object-center"
+              className="about-page-hero-image"
               loading="lazy"
               decoding="async"
             />
           </AnimatePresence>
 
-          <div className="absolute inset-0 rounded-b-[40px] bg-[linear-gradient(180deg,rgba(5,7,12,0.12),rgba(5,7,12,0.44)_40%,rgba(5,7,12,0.88))]" />
+          <div className="about-page-hero-overlay" />
 
-          <div className="absolute inset-x-0 bottom-0 z-10 px-4 pb-6 sm:px-6 sm:pb-8 lg:px-8 lg:pb-10">
-            <div className="mx-auto max-w-7xl">
-              <div className="max-w-4xl">
-                <p className="inline-flex max-w-full flex-wrap items-center gap-2 text-[11px] uppercase tracking-[0.18em] text-luxury-blue sm:text-xs sm:tracking-[0.26em] lg:text-sm lg:tracking-[0.32em]">
-                  <Building2 size={16} className="shrink-0 lg:h-[18px] lg:w-[18px]" />
+          <div className="about-page-hero-content">
+            <div className="about-page-hero-shell">
+              <div className="about-page-hero-copy">
+                <p className="about-page-hero-eyebrow">
+                  <Building2 size={16} className="about-page-hero-eyebrow-icon" />
                   <span>About {companyName}</span>
                 </p>
                 <AnimatePresence mode="wait">
@@ -113,25 +113,23 @@ function AboutPage() {
                     exit={{ opacity: 0, y: -18 }}
                     transition={{ duration: 0.45 }}
                   >
-                    <p className="mt-4 text-[11px] uppercase tracking-[0.3em] text-luxury-gold">
-                      {aboutSlides[activeSlide].eyebrow}
-                    </p>
-                    <h1 className="mt-3 max-w-4xl font-display text-3xl uppercase leading-[1] text-white sm:text-4xl lg:text-5xl">
-                      <span className="block text-white [text-shadow:0_10px_30px_rgba(0,0,0,0.4)]">
+                    <p className="about-page-slide-label">{aboutSlides[activeSlide].eyebrow}</p>
+                    <h1 className="about-page-slide-title">
+                      <span className="about-page-slide-title-main">
                         {aboutSlides[activeSlide].title.split(" ").slice(0, -2).join(" ")}
                       </span>
-                      <span className="mt-2 block bg-gradient-to-r from-luxury-blue via-white to-luxury-gold bg-clip-text text-transparent [text-shadow:0_10px_30px_rgba(9,78,120,0.22)]">
+                      <span className="about-page-slide-title-accent">
                         {aboutSlides[activeSlide].title.split(" ").slice(-2).join(" ")}
                       </span>
                     </h1>
-                    <p className="mt-5 max-w-3xl text-base leading-8 text-white/78 sm:text-lg sm:leading-9">
+                    <p className="about-page-slide-description">
                       {aboutSlides[activeSlide].description}
                     </p>
                   </motion.div>
                 </AnimatePresence>
               </div>
 
-              <div className="mt-6 flex gap-2">
+              <div className="about-page-slide-dots">
                 {aboutSlides.map((slide, index) => (
                   <button
                     key={slide.id}
@@ -139,10 +137,10 @@ function AboutPage() {
                     onClick={() => setActiveSlide(index)}
                     aria-label={`Show slide ${index + 1}`}
                     className={[
-                      "h-2.5 rounded-full transition",
+                      "about-page-slide-dot",
                       activeSlide === index
-                        ? "w-10 bg-luxury-gold"
-                        : "w-2.5 bg-white/40 hover:bg-white/60"
+                        ? "about-page-slide-dot-active"
+                        : "about-page-slide-dot-idle"
                     ].join(" ")}
                   />
                 ))}
@@ -152,32 +150,32 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="px-4 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl py-10 sm:py-12">
-          <div className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-start">
+      <section className="about-page-story-section">
+        <div className="about-page-story-shell">
+          <div className="about-page-story-grid">
             <div>
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-luxury-blue">
+              <span className="about-page-story-eyebrow">
                 <Sparkles size={14} />
                 Brand Story
               </span>
-              <h2 className="mt-4 max-w-4xl font-display text-3xl uppercase leading-[0.95] text-white sm:text-5xl">
+              <h2 className="about-page-story-title">
                 {companyName} is designing a more thoughtful future for premium automobiles.
               </h2>
-              <p className="mt-5 max-w-3xl text-lg leading-9 text-white/72">
+              <p className="about-page-story-paragraph about-page-story-paragraph-strong">
                 {companyName} was created around a clear belief: luxury mobility should
                 feel intelligent, elegant, and deeply human. We combine futuristic
                 aesthetics, calm digital experiences, and advanced vehicle technology
                 to create automobiles that do more than move people. They express
                 confidence, reduce friction, and bring modern prestige to every journey.
               </p>
-              <p className="mt-5 max-w-3xl text-lg leading-9 text-white/68">
+              <p className="about-page-story-paragraph about-page-story-paragraph-mid">
                 Our approach is not built on noise or gimmicks. It is built on balance:
                 strong design without excess, AI without confusion, and performance
                 without compromise. That is how {companyName} aims to feel both
                 international in standard and relevant to the roads, ambitions, and
                 lifestyles of a new generation of drivers.
               </p>
-              <p className="mt-5 max-w-3xl text-lg leading-9 text-white/64">
+              <p className="about-page-story-paragraph about-page-story-paragraph-soft">
                 Beyond manufacturing vehicles, {companyName} is shaping an ownership
                 experience built around confidence. We think about the full rhythm of
                 modern mobility: the emotion of first sight, the intelligence of the
@@ -188,7 +186,7 @@ function AboutPage() {
               </p>
             </div>
 
-            <div className="grid gap-4 lg:grid-cols-2">
+            <div className="about-page-mission-grid">
               {missionVision.map((item, index) => {
                 const Icon = item.icon;
 
@@ -199,19 +197,15 @@ function AboutPage() {
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ delay: index * 0.08 }}
-                    className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-luxury"
+                    className="about-page-mission-card"
                   >
-                    <div className="flex items-center gap-4">
+                    <div className="about-page-mission-header">
                       <span className="icon-shell">
                         <Icon size={18} />
                       </span>
-                      <p className="font-display text-2xl uppercase tracking-[0.14em] text-luxury-gold sm:text-3xl">
-                        {item.title}
-                      </p>
+                      <p className="about-page-mission-title">{item.title}</p>
                     </div>
-                    <p className="mt-5 text-base leading-8 text-white/70 sm:text-lg sm:leading-9">
-                      {item.description}
-                    </p>
+                    <p className="about-page-mission-description">{item.description}</p>
                   </motion.div>
                 );
               })}
@@ -220,8 +214,8 @@ function AboutPage() {
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto grid max-w-7xl gap-5 lg:grid-cols-4">
+      <section className="about-page-stats-section">
+        <div className="about-page-stats-grid">
           {brandStats.map((stat, index) => {
             const Icon = statIcons[index] || Sparkles;
 
@@ -232,24 +226,22 @@ function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.25 }}
                 transition={{ delay: index * 0.08 }}
-                className="glass-panel rounded-[28px] p-6"
+                className="about-page-stat-card"
               >
                 <span className="icon-shell">
                   <Icon size={18} />
                 </span>
-                <p className="mt-5 font-display text-4xl uppercase text-white">{stat.value}</p>
-                <p className="mt-3 text-xs uppercase tracking-[0.24em] text-white/45">
-                  {stat.label}
-                </p>
+                <p className="about-page-stat-value">{stat.value}</p>
+                <p className="about-page-stat-label">{stat.label}</p>
               </motion.div>
             );
           })}
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl">
-          <div className="grid gap-5 lg:grid-cols-3">
+      <section className="about-page-pillars-section">
+        <div className="about-page-pillars-shell">
+          <div className="about-page-pillars-grid">
             {brandPillars.map((pillar, index) => (
               <motion.div
                 key={pillar.title}
@@ -257,43 +249,34 @@ function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-[30px] border border-white/10 bg-white/[0.04] p-6 shadow-luxury"
+                className="about-page-pillar-card"
               >
-                <p className="text-xs uppercase tracking-[0.28em] text-luxury-gold">
-                  Brand Pillar
-                </p>
-                <h2 className="mt-4 font-display text-3xl uppercase text-white">
-                  {pillar.title}
-                </h2>
-                <p className="mt-4 text-sm leading-7 text-white/60">{pillar.description}</p>
+                <p className="about-page-pillar-eyebrow">Brand Pillar</p>
+                <h2 className="about-page-pillar-title">{pillar.title}</h2>
+                <p className="about-page-pillar-description">{pillar.description}</p>
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="px-4 py-12 sm:px-6 lg:px-8">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-[40px] border border-white/10 bg-white/[0.04] p-8 shadow-luxury sm:p-10">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
+      <section className="about-page-timeline-section">
+        <div className="about-page-timeline-panel">
+          <div className="about-page-timeline-header">
             <div>
-              <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-luxury-blue">
+              <span className="about-page-timeline-eyebrow">
                 <Clock3 size={20} />
                 Timeline
               </span>
-              <h2 className="mt-4 font-display text-4xl uppercase text-white sm:text-5xl">
-                The {companyName} story so far.
-              </h2>
+              <h2 className="about-page-timeline-title">The {companyName} story so far.</h2>
             </div>
-            <Link
-              to="/cars"
-              className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.24em] text-luxury-gold"
-            >
+            <Link to="/cars" className="about-page-timeline-link">
               Explore Cars
               <ArrowRight size={20} />
             </Link>
           </div>
 
-          <div className="mt-8 grid gap-5 lg:grid-cols-4">
+          <div className="about-page-timeline-grid">
             {timeline.map((item, index) => (
               <motion.div
                 key={item.year}
@@ -301,13 +284,11 @@ function AboutPage() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.2 }}
                 transition={{ delay: index * 0.08 }}
-                className="rounded-[28px] border border-white/10 bg-black/20 p-6"
+                className="about-page-timeline-card"
               >
-                <p className="font-display text-3xl uppercase text-luxury-gold">{item.year}</p>
-                <h3 className="mt-4 font-display text-2xl uppercase text-white">
-                  {item.title}
-                </h3>
-                <p className="mt-3 text-sm leading-7 text-white/60">{item.description}</p>
+                <p className="about-page-timeline-year">{item.year}</p>
+                <h3 className="about-page-timeline-card-title">{item.title}</h3>
+                <p className="about-page-timeline-card-description">{item.description}</p>
               </motion.div>
             ))}
           </div>

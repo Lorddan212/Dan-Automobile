@@ -3,16 +3,14 @@ import { motion } from "framer-motion";
 function Loader({ compact = false }) {
   if (compact) {
     return (
-      <div className="flex min-h-[40vh] items-center justify-center">
-        <div className="flex items-center gap-4 rounded-full border border-white/10 bg-white/5 px-5 py-3 backdrop-blur-xl">
+      <div className="loader-compact">
+        <div className="loader-compact-shell">
           <motion.div
             animate={{ rotate: 360 }}
             transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-            className="h-5 w-5 rounded-full border-2 border-luxury-gold/30 border-t-luxury-gold"
+            className="loader-compact-spinner"
           />
-          <p className="text-xs uppercase tracking-[0.32em] text-white/60">
-            Loading DanAuto
-          </p>
+          <p className="loader-compact-text">Loading DanAuto</p>
         </div>
       </div>
     );
@@ -22,10 +20,10 @@ function Loader({ compact = false }) {
     <motion.div
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#04060b]"
+      className="loader-screen"
     >
-      <div className="relative text-center">
-        <div className="absolute inset-0 rounded-full bg-luxury-blue/15 blur-3xl" />
+      <div className="loader-inner">
+        <div className="loader-glow" />
         <motion.div
           animate={{
             backgroundImage: [
@@ -35,23 +33,21 @@ function Loader({ compact = false }) {
             ]
           }}
           transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
-          className="relative bg-clip-text font-display text-4xl uppercase tracking-[0.55em] text-transparent sm:text-5xl"
+          className="loader-wordmark"
         >
           DanAuto
         </motion.div>
 
-        <div className="mx-auto mt-5 h-px w-32 overflow-hidden rounded-full bg-white/10">
+        <div className="loader-progress-track">
           <motion.div
             initial={{ x: "-100%" }}
             animate={{ x: "100%" }}
             transition={{ duration: 1.4, repeat: Infinity, ease: "easeInOut" }}
-            className="h-full w-1/2 bg-gradient-to-r from-transparent via-luxury-gold to-transparent"
+            className="loader-progress-bar"
           />
         </div>
 
-        <p className="mt-5 text-xs uppercase tracking-[0.32em] text-white/45">
-          Initializing AI luxury experience
-        </p>
+        <p className="loader-caption">Initializing AI luxury experience</p>
       </div>
     </motion.div>
   );

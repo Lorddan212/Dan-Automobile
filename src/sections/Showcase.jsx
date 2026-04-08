@@ -13,29 +13,27 @@ function Showcase({
   showAllLink = false
 }) {
   return (
-    <section id={sectionId} className="px-4 py-24 sm:px-6 lg:px-8 lg:py-28">
-      <div className="mx-auto max-w-7xl">
+    <section id={sectionId} className="showcase-section">
+      <div className="showcase-shell">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.25 }}
-          className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between"
+          className="showcase-header"
         >
-          <div className="max-w-2xl">
-            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-luxury-blue">
-              <CarFront size={14} />
+          <div className="showcase-copy">
+            <span className="showcase-eyebrow">
+              <CarFront size={25} />
               {eyebrow}
             </span>
-            <h2 className="mt-4 font-display text-4xl uppercase leading-tight text-white sm:text-5xl">
-              {title}
-            </h2>
-            <p className="mt-5 text-base leading-8 text-white/60">{description}</p>
+            <h2 className="showcase-title">{title}</h2>
+            <p className="showcase-description">{description}</p>
           </div>
 
           {showAllLink ? (
             <Link
               to="/cars"
-              className="inline-flex items-center gap-3 self-start rounded-full border border-white/10 bg-white/[0.04] px-5 py-3 text-xs uppercase tracking-[0.28em] text-white/70 transition hover:border-luxury-gold/30 hover:text-white"
+              className="showcase-link"
             >
               View All Cars
               <ArrowRight size={16} />
@@ -43,7 +41,7 @@ function Showcase({
           ) : null}
         </motion.div>
 
-        <div className="mt-12 grid gap-6 lg:grid-cols-3">
+        <div className="showcase-grid">
           {items.map((car, index) => (
             <motion.div
               key={car.id}

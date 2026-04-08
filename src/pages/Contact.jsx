@@ -97,41 +97,36 @@ function Contact() {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -18 }}
       transition={{ duration: 0.45 }}
-      className="px-4 pb-16 pt-28 sm:px-6 lg:px-8 lg:pt-32"
+      className="contact-page"
     >
-      <div className="mx-auto max-w-7xl">
-        <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="rounded-[36px] border border-white/10 bg-white/[0.04] p-8 shadow-luxury sm:p-10">
-            <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-luxury-gold">
+      <div className="contact-shell">
+        <div className="contact-grid">
+          <div className="contact-info-panel">
+            <span className="contact-eyebrow">
               <Send size={14} />
               Contact DanAuto
             </span>
-            <h1 className="mt-4 max-w-xl font-display text-5xl uppercase leading-[0.95] text-white sm:text-6xl">
+            <h1 className="contact-title">
               Book a premium DanAuto appointment.
             </h1>
-            <p className="mt-5 max-w-lg text-base leading-8 text-white/60">
+            <p className="contact-description">
               Schedule a test drive, request a private showroom session, or speak to
               our team about custom orders and corporate fleet solutions.
             </p>
 
-            <div className="mt-10 grid gap-4">
+            <div className="contact-cards">
               {contactCards.map((card) => {
                 const Icon = card.icon;
 
                 return (
-                  <div
-                    key={card.title}
-                    className="rounded-[28px] border border-white/10 bg-black/20 p-5"
-                  >
-                    <div className="flex items-start gap-4">
-                      <span className="icon-shell mt-1">
+                  <div key={card.title} className="contact-card">
+                    <div className="contact-card-shell">
+                      <span className="contact-card-icon">
                         <Icon size={18} />
                       </span>
-                      <div>
-                        <p className="text-xs uppercase tracking-[0.26em] text-white/42">
-                          {card.title}
-                        </p>
-                        <p className="mt-2 text-sm leading-7 text-white/70">{card.text}</p>
+                      <div className="contact-card-copy">
+                        <p className="contact-card-title">{card.title}</p>
+                        <p className="contact-card-text">{card.text}</p>
                       </div>
                     </div>
                   </div>
@@ -139,16 +134,14 @@ function Contact() {
               })}
             </div>
 
-            <div className="mt-8 rounded-[28px] border border-luxury-blue/20 bg-luxury-blue/10 p-5">
-              <div className="flex items-start gap-4">
-                <span className="icon-shell mt-1">
+            <div className="contact-experience-card">
+              <div className="contact-experience-shell">
+                <span className="contact-experience-icon">
                   <CalendarClock size={18} />
                 </span>
-                <div>
-                  <p className="text-xs uppercase tracking-[0.26em] text-luxury-blue">
-                    White-Glove Experience
-                  </p>
-                  <p className="mt-2 text-sm leading-7 text-white/68">
+                <div className="contact-experience-copy">
+                  <p className="contact-experience-title">White-Glove Experience</p>
+                  <p className="contact-experience-text">
                     Every DanAuto booking includes guided model comparison, AI feature
                     walkthrough, and tailored recommendations for your needs.
                   </p>
@@ -157,9 +150,9 @@ function Contact() {
             </div>
           </div>
 
-          <div className="rounded-[36px] border border-white/10 bg-white/[0.04] p-8 shadow-luxury sm:p-10">
-            <form onSubmit={handleSubmit} className="grid gap-5">
-              <div className="grid gap-5 md:grid-cols-2">
+          <div className="contact-form-panel">
+            <form onSubmit={handleSubmit} className="contact-form">
+              <div className="contact-form-row">
                 <Field
                   label="Full Name"
                   name="name"
@@ -179,7 +172,7 @@ function Contact() {
                 />
               </div>
 
-              <div className="grid gap-5 md:grid-cols-2">
+              <div className="contact-form-row">
                 <Field
                   label="Phone"
                   name="phone"
@@ -188,7 +181,7 @@ function Contact() {
                   error={errors.phone}
                   placeholder="+234 800 000 2026"
                 />
-                <div>
+                <div className="contact-field-group">
                   <label className="field-label" htmlFor="interest">
                     Preferred Car
                   </label>
@@ -197,7 +190,7 @@ function Contact() {
                     name="interest"
                     value={formState.interest}
                     onChange={handleChange}
-                    className="field-input"
+                    className="field-input contact-select"
                   >
                     {cars.map((car) => (
                       <option key={car.id}>{car.name}</option>
@@ -215,7 +208,7 @@ function Contact() {
                 error={errors.preferredDate}
               />
 
-              <div>
+              <div className="contact-field-group">
                 <label className="field-label" htmlFor="message">
                   How can DanAuto help?
                 </label>
@@ -225,22 +218,22 @@ function Contact() {
                   rows="5"
                   value={formState.message}
                   onChange={handleChange}
-                  className="field-input resize-none"
+                  className="field-input contact-textarea"
                   placeholder="Tell us the model, service, or showroom experience you’re interested in."
                 />
                 {errors.message ? <p className="field-error">{errors.message}</p> : null}
               </div>
 
               {isSubmitted ? (
-                <div className="rounded-[24px] border border-emerald-400/20 bg-emerald-400/10 px-4 py-3 text-sm text-emerald-200">
+                <div className="contact-success">
                   Your request has been received. The DanAuto concierge team will contact you shortly.
                 </div>
               ) : null}
 
-              <div className="pt-2">
+              <div className="contact-submit">
                 <Button
                   type="submit"
-                  className="w-full justify-center"
+                  className="contact-submit-button"
                   icon={CalendarClock}
                   disabled={isSubmitting}
                 >
@@ -265,7 +258,7 @@ function Field({
   placeholder = ""
 }) {
   return (
-    <div>
+    <div className="contact-field-group">
       <label className="field-label" htmlFor={name}>
         {label}
       </label>

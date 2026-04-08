@@ -17,25 +17,23 @@ function Testimonials() {
   const activeTestimonial = testimonials[activeIndex];
 
   return (
-    <section className="px-4 py-24 sm:px-6 lg:px-8 lg:py-28">
-      <div className="mx-auto max-w-5xl">
+    <section className="testimonials-section">
+      <div className="testimonials-shell">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
-          className="text-center"
+          className="testimonials-header"
         >
-          <span className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-luxury-blue">
+          <span className="testimonials-eyebrow">
             <MessageSquareQuote size={14} />
             Testimonials
           </span>
-          <h2 className="mt-4 font-display text-4xl uppercase text-white sm:text-5xl">
-            What premium drivers are saying.
-          </h2>
+          <h2 className="testimonials-title">What premium drivers are saying.</h2>
         </motion.div>
 
-        <div className="relative mt-12 overflow-hidden rounded-[36px] border border-white/10 bg-white/[0.04] p-6 shadow-luxury backdrop-blur-2xl sm:p-10">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,rgba(201,164,92,0.14),transparent_30%),linear-gradient(180deg,rgba(255,255,255,0.04),transparent_35%,rgba(125,211,252,0.08))]" />
+        <div className="testimonials-card">
+          <div className="testimonials-card-glow" />
 
           <AnimatePresence mode="wait">
             <motion.div
@@ -44,38 +42,34 @@ function Testimonials() {
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: -18 }}
               transition={{ duration: 0.35 }}
-              className="relative"
+              className="testimonials-slide"
             >
-              <div className="flex justify-center gap-2">
+              <div className="testimonials-stars">
                 {[0, 1, 2, 3, 4].map((item) => (
-                  <Star key={item} size={18} className="fill-luxury-gold text-luxury-gold" />
+                  <Star key={item} size={18} className="testimonials-star" />
                 ))}
               </div>
 
-              <p className="mx-auto mt-8 max-w-3xl text-center text-xl leading-9 text-white/88 sm:text-2xl">
+              <p className="testimonials-quote">
                 “{activeTestimonial.quote}”
               </p>
 
-              <div className="mt-8 text-center">
-                <p className="font-display text-2xl uppercase text-white">
-                  {activeTestimonial.name}
-                </p>
-                <p className="mt-2 text-sm uppercase tracking-[0.28em] text-white/45">
-                  {activeTestimonial.role}
-                </p>
+              <div className="testimonials-author">
+                <p className="testimonials-author-name">{activeTestimonial.name}</p>
+                <p className="testimonials-author-role">{activeTestimonial.role}</p>
               </div>
             </motion.div>
           </AnimatePresence>
 
-          <div className="relative mt-8 flex justify-center gap-2">
+          <div className="testimonials-dots">
             {testimonials.map((testimonial, index) => (
               <button
                 key={testimonial.name}
                 type="button"
                 onClick={() => setActiveIndex(index)}
                 className={[
-                  "h-2 rounded-full transition-all duration-300",
-                  index === activeIndex ? "w-10 bg-luxury-gold" : "w-2 bg-white/25"
+                  "testimonials-dot",
+                  index === activeIndex ? "testimonials-dot-active" : "testimonials-dot-idle"
                 ].join(" ")}
                 aria-label={`Show testimonial ${index + 1}`}
               />
