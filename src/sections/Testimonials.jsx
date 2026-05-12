@@ -29,7 +29,7 @@ function Testimonials() {
             <MessageSquareQuote size={14} />
             Testimonials
           </span>
-          <h2 className="testimonials-title">What premium drivers are saying.</h2>
+          <h2 className="testimonials-title">What recent clients are saying.</h2>
         </motion.div>
 
         <div className="testimonials-card">
@@ -51,7 +51,7 @@ function Testimonials() {
               </div>
 
               <p className="testimonials-quote">
-                “{activeTestimonial.quote}”
+                "{activeTestimonial.quote}"
               </p>
 
               <div className="testimonials-author">

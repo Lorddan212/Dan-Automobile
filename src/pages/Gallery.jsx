@@ -18,11 +18,12 @@ function Gallery() {
             DanAuto Gallery
           </span>
           <h1 className="gallery-title">
-            A visual archive of DanAuto design, cabins, performance, and experience.
+            A closer look at the vehicles, interiors, workshop checks, and delivery moments clients ask about
           </h1>
           <p className="gallery-description">
-            Explore the future-facing surfaces, lighting moods, and premium moments
-            that define the DanAuto brand.
+            The gallery gives buyers a realistic sense of showroom visits,
+            inspection details, cabin finishes, delivery preparation, and vehicle
+            condition before an appointment.
           </p>
         </div>
       </section>

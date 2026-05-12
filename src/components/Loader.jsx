@@ -47,7 +47,7 @@ function Loader({ compact = false }) {
           />
         </div>
 
-        <p className="loader-caption">Initializing AI luxury experience</p>
+        <p className="loader-caption">Initializing Dan Automobile</p>
       </div>
     </motion.div>
   );

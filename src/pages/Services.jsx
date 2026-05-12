@@ -45,12 +45,12 @@ function Services() {
             DanAuto Services
           </span>
           <h1 className="services-title">
-            Premium services that extend the DanAuto experience beyond the vehicle.
+            Practical vehicle services for buying, servicing, and managing premium cars.
           </h1>
           <p className="services-description">
-            Our service model combines private consultation, AI diagnostics, premium
-            support, and corporate mobility solutions so owning a DanAuto feels
-            seamless from day one.
+            From verified sourcing and pre-purchase inspection to workshop care, EV
+            support, fleet maintenance, and registration assistance, DanAuto keeps
+            the ownership process clear.
           </p>
         </div>
       </section>
@@ -142,9 +142,9 @@ function Services() {
         <div className="services-cta-panel">
           <div className="services-cta-layout">
             <div className="services-cta-copy">
-              <span className="services-cta-eyebrow">Concierge</span>
+              <span className="services-cta-eyebrow">Advisor Support</span>
               <h2 className="services-cta-title">
-                Speak with the DanAuto team about private buying or fleet service.
+                Speak with DanAuto about a vehicle search, inspection, workshop visit, or fleet plan.
               </h2>
             </div>
             <Button to="/contact">Contact DanAuto</Button>

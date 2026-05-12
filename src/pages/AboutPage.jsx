@@ -20,28 +20,28 @@ const aboutSlides = [
     id: "design-lounge",
     image:
       "https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=1600&q=80",
-    eyebrow: "Immersive Design",
-    title: "A design language shaped to feel calm, advanced, and unmistakably premium.",
+    eyebrow: "Showroom Advisory",
+    title: "Clear vehicle guidance for buyers who want fewer surprises.",
     description:
-      "DanAuto brings architectural thinking into mobility, blending sculpted surfaces, futuristic cabins, and elegant restraint."
+      "DanAuto helps clients compare options, check documents, understand condition, and choose vehicles that fit daily use, image, and budget."
   },
   {
-    id: "future-drive",
+    id: "inspection-support",
     image:
       "https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1600&q=80",
-    eyebrow: "AI-Led Experience",
-    title: "Software and intelligence are designed into the drive, not added after the fact.",
+    eyebrow: "Inspection Support",
+    title: "Proper checks come before every serious recommendation.",
     description:
-      "From guidance and safety to predictive service and personalization, every layer is built to make ownership feel smoother."
+      "We look at physical condition, service history, diagnostic scans, market pricing, and ownership documents before clients move forward."
   },
   {
     id: "luxury-motion",
     image:
       "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=1600&q=80",
-    eyebrow: "Future Mobility",
-    title: "Luxury performance meets relevance for modern roads, cities, families, and fleets.",
+    eyebrow: "After-Sales Care",
+    title: "Premium ownership continues after delivery.",
     description:
-      "The DanAuto range is imagined for forward-looking drivers who want beauty, confidence, and intelligent capability in one system."
+      "Clients can return for workshop checks, detailing, EV support, registration help, fleet planning, and practical maintenance advice."
   }
 ];
 
@@ -50,13 +50,13 @@ const missionVision = [
     title: "Mission",
     icon: Compass,
     description:
-      "To build a refined automobile brand that pairs luxury craftsmanship, intelligent software, and dependable engineering for the realities of modern mobility."
+      "To make premium vehicle buying and ownership easier to understand through honest advice, careful inspection, and dependable service support."
   },
   {
     title: "Vision",
     icon: Eye,
     description:
-      "To make DanAuto a benchmark for premium African-rooted automotive innovation, where futuristic design and AI-led ownership feel natural, trusted, and globally respected."
+      "To become a trusted Lagos destination for clients who want quality vehicles, transparent guidance, and long-term ownership care."
   }
 ];
 
@@ -159,30 +159,26 @@ function AboutPage() {
                 Brand Story
               </span>
               <h2 className="about-page-story-title">
-                {companyName} is designing a more thoughtful future for premium automobiles.
+                {companyName} is building a clearer way to buy and maintain premium vehicles.
               </h2>
               <p className="about-page-story-paragraph about-page-story-paragraph-strong">
-                {companyName} was created around a clear belief: luxury mobility should
-                feel intelligent, elegant, and deeply human. We combine futuristic
-                aesthetics, calm digital experiences, and advanced vehicle technology
-                to create automobiles that do more than move people. They express
-                confidence, reduce friction, and bring modern prestige to every journey.
+                {companyName} works with buyers who want the confidence of a premium
+                vehicle without the guesswork that often comes with sourcing,
+                inspecting, pricing, and documentation. Our team helps clients compare
+                suitable options, understand condition, and plan the next step before
+                money changes hands.
               </p>
               <p className="about-page-story-paragraph about-page-story-paragraph-mid">
-                Our approach is not built on noise or gimmicks. It is built on balance:
-                strong design without excess, AI without confusion, and performance
-                without compromise. That is how {companyName} aims to feel both
-                international in standard and relevant to the roads, ambitions, and
-                lifestyles of a new generation of drivers.
+                Our approach is practical: clear advice, realistic price context,
+                diagnostic checks where required, and help with registration,
+                insurance, delivery, workshop care, and fleet planning. The goal is to
+                make each decision feel informed rather than rushed.
               </p>
               <p className="about-page-story-paragraph about-page-story-paragraph-soft">
-                Beyond manufacturing vehicles, {companyName} is shaping an ownership
-                experience built around confidence. We think about the full rhythm of
-                modern mobility: the emotion of first sight, the intelligence of the
-                cockpit, the comfort of every seat, the trust built through safety, and
-                the seamless support that continues long after delivery. That wider view
-                is what helps us create a brand that feels aspirational, useful, and
-                enduring at the same time.
+                Beyond vehicle sales, {companyName} supports the daily realities of
+                ownership. That includes service reminders, bodywork and detailing
+                referrals, EV charging advice, pickup and drop-off coordination, and
+                maintenance planning for private owners and business fleets.
               </p>
             </div>
 
