@@ -23,7 +23,7 @@ function About() {
                 About DanAuto
               </span>
               <p className="about-media-title">
-                Premium electric mobility shaped with intelligence and restraint.
+                A Lagos team for sourcing, inspecting, and maintaining premium vehicles.
               </p>
             </div>
           </div>
@@ -36,15 +36,15 @@ function About() {
             >
               <span className="about-copy-eyebrow">
                 <Sparkles size={14} />
-                Design Philosophy
+                How We Work
               </span>
               <h2 className="about-copy-title">
-                A more standard premium brand, elevated by AI and future-facing design.
+                A practical premium car service, built around clear advice and proper checks.
               </h2>
               <p className="about-copy-description">
-                DanAuto blends luxury product thinking, intelligent vehicle software,
-                and modern automotive craftsmanship into a refined electric lineup for
-                drivers, families, fleets, and executives.
+                DanAuto helps clients move from search to ownership with verified
+                options, inspection support, price guidance, documentation help, and
+                aftersales care for private and business vehicles.
               </p>
 
               <div className="about-pillars-grid">

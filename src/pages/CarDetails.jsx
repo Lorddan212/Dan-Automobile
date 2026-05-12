@@ -19,9 +19,9 @@ function CarDetails() {
       <main className="car-details-missing-page">
         <div className="car-details-empty">
           <p className="car-details-empty-eyebrow">Car Unavailable</p>
-          <h1 className="car-details-empty-title">We couldn’t find that DanAuto model.</h1>
+          <h1 className="car-details-empty-title">We could not find that vehicle profile.</h1>
           <p className="car-details-empty-description">
-            The requested car may have moved or is still being prepared for display.
+            The requested vehicle may have moved, sold, or is still being prepared for display.
           </p>
           <div className="car-details-empty-action">
             <Button to="/cars">Return to Cars</Button>
@@ -155,18 +155,18 @@ function CarDetails() {
             <div className="car-details-info-card">
               <p className="car-details-card-eyebrow car-details-card-eyebrow-blue">
                 <UserRoundCog size={14} />
-                DanAuto Concierge
+                DanAuto Advisor
               </p>
               <p className="car-details-concierge-text">
-                Book a guided vehicle consultation to compare trims, review features,
-                and schedule a private drive with the DanAuto experience team.
+                Book a guided consultation to compare trims, check availability,
+                arrange inspection, and review realistic ownership costs.
               </p>
               <div className="car-details-actions">
                 <Button to="/contact" icon={CalendarClock} className="car-details-action-button">
-                  Reserve a Test Drive
+                  Request Appointment
                 </Button>
                 <Button to="/cars" variant="secondary" className="car-details-action-button">
-                  Compare Cars
+                  Compare Vehicles
                 </Button>
               </div>
             </div>

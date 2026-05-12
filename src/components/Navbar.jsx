@@ -12,6 +12,8 @@ const navItems = [
   { label: "Contact", to: "/contact", icon: PhoneCall }
 ];
 
+const mobileMenuId = "mobile-navigation";
+
 function Navbar() {
   const location = useLocation();
   const [isScrolled, setIsScrolled] = useState(false);
@@ -42,6 +44,22 @@ function Navbar() {
     setMenuOpen(false);
   }, [location.pathname]);
 
+  useEffect(() => {
+    if (!menuOpen) {
+      return undefined;
+    }
+
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        setMenuOpen(false);
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [menuOpen]);
+
   return (
     <header className="site-header">
       <motion.nav
@@ -58,7 +76,7 @@ function Navbar() {
           </div>
           <div className="brand-copy">
             <p className="brand-name">DanAuto</p>
-            <p className="brand-tagline">Luxury Mobility</p>
+            <p className="brand-tagline">Sales & Service</p>
           </div>
         </Link>
 
@@ -84,7 +102,9 @@ function Navbar() {
           type="button"
           onClick={() => setMenuOpen((current) => !current)}
           className="nav-toggle"
-          aria-label="Toggle navigation menu"
+          aria-label={menuOpen ? "Close navigation menu" : "Open navigation menu"}
+          aria-controls={mobileMenuId}
+          aria-expanded={menuOpen}
         >
           {menuOpen ? <X size={18} /> : <Menu size={18} />}
         </button>
@@ -92,7 +112,9 @@ function Navbar() {
 
       <AnimatePresence>
         {menuOpen ? (
-          <motion.div
+          <motion.nav
+            id={mobileMenuId}
+            aria-label="Mobile navigation"
             initial={{ opacity: 0, y: -16 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -16 }}
@@ -115,7 +137,7 @@ function Navbar() {
                 );
               })}
             </div>
-          </motion.div>
+          </motion.nav>
         ) : null}
       </AnimatePresence>
     </header>

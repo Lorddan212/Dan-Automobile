@@ -6,9 +6,9 @@ import { cars } from "../utils/data";
 
 function Showcase({
   items = cars,
-  title = "DanAuto Collection",
+  title = "Popular Vehicle Requests",
   eyebrow = "Curated Cars",
-  description = "Explore the DanAuto lineup across premium body types, each shaped with AI-led safety, sculpted design, and refined electric performance.",
+  description = "Explore common vehicle requests across sedans, SUVs, EVs, pickups, sports cars, and executive vans.",
   sectionId = "showcase",
   showAllLink = false
 }) {

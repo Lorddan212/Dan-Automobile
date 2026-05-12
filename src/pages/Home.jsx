@@ -10,18 +10,18 @@ import { cars, services } from "../utils/data";
 
 const homeHighlights = [
   {
-    title: "AI-Driven Safety",
-    description: "Guardian 360 monitors the world around you and responds before you do.",
+    title: "Verified Listings",
+    description: "Recommended vehicles are reviewed for condition, documents, mileage, and ownership history.",
     icon: ShieldCheck
   },
   {
-    title: "Full Vehicle Lineup",
-    description: "Sedans, SUVs, coupes, crossovers, roadsters, pickups, and executive vans.",
+    title: "Broad Vehicle Access",
+    description: "Compare sedans, SUVs, pickups, EVs, family vans, and executive vehicles across trusted brands.",
     icon: CarFront
   },
   {
-    title: "Luxury by Default",
-    description: "Refined materials, calm cabins, premium ergonomics, and layered digital controls.",
+    title: "Ownership Support",
+    description: "Get help with inspection, payment planning, insurance, registration, delivery, and workshop care.",
     icon: Sparkles
   }
 ];
@@ -64,9 +64,9 @@ function Home() {
 
       <Showcase
         items={cars.slice(0, 6)}
-        title="Featured DanAuto models"
-        eyebrow="Luxury Lineup"
-        description="Meet the new DanAuto collection, a complete premium range powered by design, intelligence, and electric performance."
+        title="Popular premium requests"
+        eyebrow="Vehicle Shortlist"
+        description="A closer look at the kinds of vehicles clients often ask us to source, inspect, price, and deliver."
         sectionId="featured-cars"
         showAllLink
       />
@@ -82,7 +82,7 @@ function Home() {
                 Services
               </span>
               <h2 className="home-services-title">
-                DanAuto doesn’t just build cars. We build the full premium experience.
+                DanAuto supports the full ownership process, from first search to scheduled servicing.
               </h2>
             </div>
             <Button to="/services" icon={ArrowRight}>
@@ -128,11 +128,11 @@ function Home() {
                 Booking
               </span>
               <h2 className="home-cta-title">
-                Reserve a private DanAuto consultation today.
+                Book a showroom, sourcing, or service appointment
               </h2>
               <p className="home-cta-description">
-                Explore the lineup, compare models, configure finishes, and schedule a
-                premium DanAuto experience with our concierge team.
+                Tell us your budget, preferred brands, delivery timeline, and service
+                needs. A DanAuto advisor will confirm availability and next steps.
               </p>
             </div>
 

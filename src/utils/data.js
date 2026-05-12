@@ -11,9 +11,9 @@ export function formatNaira(value) {
 }
 
 export const heroMetrics = [
-  { label: "AI Driving Stack", value: "DanAI Sense 4.0", delay: 0.1 },
-  { label: "Vehicle Types", value: "8 premium body styles", delay: 0.2 },
-  { label: "Fast Charging", value: "15 mins to 80%", delay: 0.3 }
+  { label: "Inspection Focus", value: "Docs + condition checks", delay: 0.1 },
+  { label: "Vehicle Types", value: "8 popular body styles", delay: 0.2 },
+  { label: "Support", value: "Sales, service, and fleet", delay: 0.3 }
 ];
 
 export const carTypes = [
@@ -23,7 +23,7 @@ export const carTypes = [
   "Performance Coupe",
   "Roadster",
   "Urban Crossover",
-  "Hyper EV",
+  "Performance EV",
   "Premium Pickup",
   "Executive Van"
 ];
@@ -109,7 +109,7 @@ export const brandGroups = [
     ]
   },
   {
-    title: "Electric & Future Brands",
+    title: "Electric & Hybrid Brands",
     brands: ["Tesla", "Rivian", "Lucid Motors", "BYD", "NIO"]
   },
   {
@@ -204,7 +204,7 @@ const brandCatalogDescriptions = {
   Renault: "Compact mobility and efficient passenger-car engineering.",
   "Mercedes-Benz": "Luxury sedans and SUVs defined by prestige and refinement.",
   BMW: "Driver-focused premium sedans and SUVs with performance DNA.",
-  Audi: "Modern premium mobility with technical styling and strong utility options.",
+  Audi: "Modern premium vehicles with technical styling and strong utility options.",
   Lexus: "Quiet luxury focused on comfort, reliability, and premium SUV ownership.",
   Jaguar: "Elegant premium touring with sharp styling and heritage appeal.",
   "Land Rover": "Luxury off-road capability and commanding SUV presence.",
@@ -212,9 +212,9 @@ const brandCatalogDescriptions = {
   Bentley: "Ultra-luxury craftsmanship with grand touring presence.",
   "Rolls-Royce": "The highest tier of handcrafted luxury motoring.",
   Tesla: "Electric-first product design built around software and EV performance.",
-  Rivian: "Adventure-ready electric utility and off-road future mobility.",
+  Rivian: "Adventure-ready electric utility vehicles with off-road capability.",
   "Lucid Motors": "Advanced luxury EV architecture with range and premium interior focus.",
-  BYD: "Electric and future-focused mobility at global scale.",
+  BYD: "Electric and plug-in hybrid vehicles with strong global scale.",
   NIO: "Software-led EV innovation and premium electric design.",
   Ferrari: "Heritage performance, emotional design, and exotic engineering.",
   Lamborghini: "Extreme supercar theatre and dramatic design language.",
@@ -474,7 +474,7 @@ const electricBrandSet = new Set(["Tesla", "Rivian", "Lucid Motors", "BYD", "NIO
 const premiumBrandBasePrice = {
   "Popular & Luxury Brands": 22000000,
   "Luxury Brands": 60000000,
-  "Electric & Future Brands": 58000000,
+  "Electric & Hybrid Brands": 58000000,
   "Sports & Exotic Brands": 150000000
 };
 const typePriceAdjustments = {
@@ -651,21 +651,21 @@ export const automotiveCatalogModels = automotiveBrands.flatMap((brand) => {
 
 export const cars = [
   {
-    id: "echelon-s",
-    name: "DanAuto Echelon S",
+    id: "mercedes-e300",
+    name: "Mercedes-Benz E 300 AMG Line",
     type: "Luxury Sedan",
-    category: "Flagship Sedan",
-    price: 138000000,
-    acceleration: "3.4s",
+    category: "Executive Sedan",
+    price: 124000000,
+    acceleration: "6.1s",
     topSpeed: "250 km/h",
-    range: "640 km",
-    horsepower: "780 hp",
+    range: "650 km est.",
+    horsepower: "255 hp",
     seats: "5 Seats",
-    drivetrain: "Dual-Motor AWD",
+    drivetrain: "Rear-Wheel Drive",
     shortDescription:
-      "An ultra-refined executive sedan blending silent torque, lounge comfort, and predictive AI assistance.",
+      "A refined executive sedan request with strong cabin comfort, brand presence, and manageable daily ownership.",
     description:
-      "DanAuto Echelon S is the signature luxury sedan in the lineup, created for founders, executives, and families who want elegance without sacrificing performance. The cabin is wrapped in adaptive lighting, active noise control, and a panoramic AI cockpit that learns your route, mood, and drive preferences over time.",
+      "The Mercedes-Benz E 300 AMG Line is a common executive shortlist for clients who want a premium sedan with a quiet cabin, modern driver assistance, strong resale interest, and everyday comfort. DanAuto helps confirm trim, mileage, duty status, service history, and condition before purchase.",
     heroImage:
       "https://images.unsplash.com/photo-1502877338535-766e1452684a?auto=format&fit=crop&w=1600&q=80",
     previewImage:
@@ -677,41 +677,41 @@ export const cars = [
     ],
     accent: "from-luxury-gold/20 via-transparent to-luxury-blue/16",
     specs: [
-      { label: "Price", value: formatNaira(138000000) },
-      { label: "Horsepower", value: "780 hp" },
+      { label: "Price", value: formatNaira(124000000) },
+      { label: "Horsepower", value: "255 hp" },
       { label: "Top Speed", value: "250 km/h" },
-      { label: "Range", value: "640 km" },
-      { label: "Drivetrain", value: "Dual-Motor AWD" },
-      { label: "Charging", value: "18 mins to 80%" }
+      { label: "Range", value: "650 km est." },
+      { label: "Drivetrain", value: "Rear-Wheel Drive" },
+      { label: "Service Focus", value: "Diagnostics + history" }
     ],
     features: [
-      "DanAI Concierge",
-      "Massaging Rear Lounge",
-      "Smart Glass Roof",
-      "Adaptive Air Suspension"
+      "AMG Line Trim",
+      "Digital Cockpit",
+      "Driver Assistance",
+      "Executive Cabin"
     ],
     highlights: [
-      "Rear executive suite with climate-separated seating and privacy glass.",
-      "Predictive AI adjusts ride, drive mode, and route based on traffic conditions.",
-      "Cabin acoustic engineering keeps the interior whisper-quiet in city and highway driving."
+      "A strong fit for executive commuting, client meetings, and family use.",
+      "Inspection should confirm service records, suspension condition, and electronic systems.",
+      "DanAuto can compare Nigerian-used, foreign-used, and available import options."
     ]
   },
   {
-    id: "dominion-x",
-    name: "DanAuto Dominion X",
+    id: "lexus-rx350",
+    name: "Lexus RX 350 F Sport",
     type: "Executive SUV",
     category: "Luxury SUV",
-    price: 162000000,
-    acceleration: "3.8s",
-    topSpeed: "240 km/h",
-    range: "610 km",
-    horsepower: "820 hp",
-    seats: "7 Seats",
-    drivetrain: "Tri-Motor AWD",
+    price: 118000000,
+    acceleration: "7.6s",
+    topSpeed: "200 km/h",
+    range: "690 km est.",
+    horsepower: "275 hp",
+    seats: "5 Seats",
+    drivetrain: "AWD",
     shortDescription:
-      "A high-command SUV built for presence, all-terrain confidence, and elite family comfort.",
+      "A premium SUV shortlist for clients who want comfort, reliability, and a manageable service profile.",
     description:
-      "Dominion X combines commanding road presence with advanced all-wheel-drive intelligence and a polished lounge-style interior. It is designed for premium family mobility, VIP movement, and long-distance confidence across city roads and challenging terrain.",
+      "The Lexus RX 350 F Sport is often requested by clients who want a comfortable SUV with strong reliability, premium finishing, and reasonable day-to-day running expectations. DanAuto helps verify trim level, service history, accident status, and market price before inspection.",
     heroImage:
       "https://images.unsplash.com/photo-1494976388531-d1058494cdd8?auto=format&fit=crop&w=1600&q=80",
     previewImage:
@@ -723,41 +723,41 @@ export const cars = [
     ],
     accent: "from-luxury-blue/18 via-transparent to-luxury-gold/20",
     specs: [
-      { label: "Price", value: formatNaira(162000000) },
-      { label: "Horsepower", value: "820 hp" },
-      { label: "Top Speed", value: "240 km/h" },
-      { label: "Range", value: "610 km" },
-      { label: "Drivetrain", value: "Tri-Motor AWD" },
-      { label: "Charging", value: "19 mins to 80%" }
+      { label: "Price", value: formatNaira(118000000) },
+      { label: "Horsepower", value: "275 hp" },
+      { label: "Top Speed", value: "200 km/h" },
+      { label: "Range", value: "690 km est." },
+      { label: "Drivetrain", value: "AWD" },
+      { label: "Service Focus", value: "Suspension + history" }
     ],
     features: [
-      "Terrain AI Control",
-      "7-Seat Cabin",
-      "360 Guardian Cameras",
-      "Smart Cargo Lift"
+      "F Sport Trim",
+      "Premium Cabin",
+      "Safety Assist",
+      "Family-Friendly Space"
     ],
     highlights: [
-      "AI traction model adapts instantly to rain, gravel, and rough urban roads.",
-      "Large family cabin with layered ambient lighting and multi-zone comfort profiles.",
-      "Safety suite maps blind spots, pedestrian zones, and fatigue in real time."
+      "A balanced option for school runs, executive movement, and weekend travel.",
+      "Inspection should cover suspension health, infotainment, tires, and service records.",
+      "DanAuto can compare RX trims against Mercedes-Benz GLE, BMW X5, and Toyota Land Cruiser options."
     ]
   },
   {
-    id: "velocity-c8",
-    name: "DanAuto Velocity C8",
+    id: "porsche-911-carrera",
+    name: "Porsche 911 Carrera",
     type: "Performance Coupe",
     category: "Sport Coupe",
-    price: 149000000,
-    acceleration: "2.9s",
-    topSpeed: "285 km/h",
-    range: "580 km",
-    horsepower: "910 hp",
+    price: 185000000,
+    acceleration: "4.2s",
+    topSpeed: "293 km/h",
+    range: "560 km est.",
+    horsepower: "379 hp",
     seats: "4 Seats",
-    drivetrain: "Dual-Motor AWD",
+    drivetrain: "Rear-Wheel Drive",
     shortDescription:
-      "A sharp grand coupe tuned for immersive handling, sculpted aerodynamics, and thrilling speed.",
+      "A driver-focused sports coupe request for clients who want performance, collectability, and daily usability.",
     description:
-      "Velocity C8 is DanAuto's performance coupe built for drivers who want emotion, precision, and daily usability in one machine. Every angle channels airflow, every surface supports stability, and every drive is amplified by AI-assisted handling intelligence.",
+      "The Porsche 911 Carrera remains a benchmark performance coupe for clients who want a proper sports-car feel without giving up day-to-day usability. DanAuto focuses on service history, accident inspection, tire condition, trim details, and import documentation before recommending a unit.",
     heroImage:
       "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1600&q=80",
     previewImage:
@@ -769,41 +769,41 @@ export const cars = [
     ],
     accent: "from-luxury-gold/18 via-transparent to-luxury-blue/22",
     specs: [
-      { label: "Price", value: formatNaira(149000000) },
-      { label: "Horsepower", value: "910 hp" },
-      { label: "Top Speed", value: "285 km/h" },
-      { label: "Range", value: "580 km" },
-      { label: "Drivetrain", value: "Dual-Motor AWD" },
-      { label: "Charging", value: "17 mins to 80%" }
+      { label: "Price", value: formatNaira(185000000) },
+      { label: "Horsepower", value: "379 hp" },
+      { label: "Top Speed", value: "293 km/h" },
+      { label: "Range", value: "560 km est." },
+      { label: "Drivetrain", value: "Rear-Wheel Drive" },
+      { label: "Service Focus", value: "History + tires" }
     ],
     features: [
-      "Torque Vector AI",
-      "Track Data Overlay",
-      "Aero Blade Diffuser",
-      "Immersive Driver Pod"
+      "Flat-Six Engine",
+      "Sport Chrono Check",
+      "Leather Interior",
+      "Driver-Focused Cabin"
     ],
     highlights: [
-      "Cornering system predicts yaw demand and reshapes torque split before turn-in.",
-      "Slim, cocooned cockpit gives the coupe a true grand-tourer atmosphere.",
-      "3D instrument cluster projects live apex, braking, and traction guidance."
+      "A strong shortlist for weekend driving, private collections, and brand-conscious buyers.",
+      "Inspection should confirm accident history, underbody condition, tires, brakes, and service intervals.",
+      "DanAuto can compare Carrera, Carrera S, and used 911 alternatives based on budget."
     ]
   },
   {
-    id: "halo-r7",
-    name: "DanAuto Halo R7",
+    id: "bmw-z4-m40i",
+    name: "BMW Z4 M40i Roadster",
     type: "Roadster",
     category: "Open-Air Performance",
-    price: 174000000,
-    acceleration: "2.7s",
-    topSpeed: "290 km/h",
-    range: "540 km",
-    horsepower: "960 hp",
+    price: 98000000,
+    acceleration: "4.5s",
+    topSpeed: "250 km/h",
+    range: "570 km est.",
+    horsepower: "382 hp",
     seats: "2 Seats",
-    drivetrain: "Dual-Motor AWD",
+    drivetrain: "Rear-Wheel Drive",
     shortDescription:
-      "A low-slung electric roadster designed for expressive open-air touring and sculptural drama.",
+      "A compact premium roadster request for open-top driving, weekend use, and expressive city presence.",
     description:
-      "Halo R7 transforms every coastal drive and city night run into an event. The open-air architecture, active aero deck, and emotional lighting signature turn the roadster into a futuristic luxury statement.",
+      "The BMW Z4 M40i Roadster is a practical performance choice for clients who want open-air driving without stepping into exotic maintenance territory. DanAuto reviews roof operation, service history, electronics, tires, and import status before shortlisting.",
     heroImage:
       "https://images.unsplash.com/photo-1511919884226-fd3cad34687c?auto=format&fit=crop&w=1600&q=80",
     previewImage:
@@ -815,41 +815,41 @@ export const cars = [
     ],
     accent: "from-luxury-blue/24 via-transparent to-luxury-gold/18",
     specs: [
-      { label: "Price", value: formatNaira(174000000) },
-      { label: "Horsepower", value: "960 hp" },
-      { label: "Top Speed", value: "290 km/h" },
-      { label: "Range", value: "540 km" },
-      { label: "Drivetrain", value: "Dual-Motor AWD" },
-      { label: "Charging", value: "16 mins to 80%" }
+      { label: "Price", value: formatNaira(98000000) },
+      { label: "Horsepower", value: "382 hp" },
+      { label: "Top Speed", value: "250 km/h" },
+      { label: "Range", value: "570 km est." },
+      { label: "Drivetrain", value: "Rear-Wheel Drive" },
+      { label: "Service Focus", value: "Roof + electronics" }
     ],
     features: [
-      "Open Sky Mode",
-      "Adaptive Rear Aero",
-      "DanAI Touring Maps",
-      "3D Sound Canopy"
+      "Soft-Top Roof",
+      "M Sport Tuning",
+      "Two-Seat Cabin",
+      "Driver Assistance"
     ],
     highlights: [
-      "Convertible roof system stores away in seconds without stealing trunk space.",
-      "Directional audio creates a private concert effect inside the two-seat cockpit.",
-      "A predictive touring assistant recommends scenic routes and charging stops."
+      "Best suited to buyers who want a second car, weekend toy, or stylish daily driver.",
+      "Inspection should test roof movement, water seals, infotainment, suspension, and tire wear.",
+      "DanAuto can compare it against Porsche Boxster, Mercedes-Benz SLK/SLC, and Audi TT options."
     ]
   },
   {
-    id: "pulse-q5",
-    name: "DanAuto Pulse Q5",
+    id: "tesla-model-y-long-range",
+    name: "Tesla Model Y Long Range",
     type: "Urban Crossover",
-    category: "Smart Crossover",
-    price: 94000000,
-    acceleration: "4.9s",
-    topSpeed: "210 km/h",
-    range: "510 km",
-    horsepower: "540 hp",
+    category: "Electric Crossover",
+    price: 76000000,
+    acceleration: "5.0s",
+    topSpeed: "217 km/h",
+    range: "533 km est.",
+    horsepower: "384 hp",
     seats: "5 Seats",
     drivetrain: "Dual-Motor AWD",
     shortDescription:
-      "A sleek city crossover created for premium urban mobility, smart parking, and AI convenience.",
+      "A practical EV crossover request for clients comparing charging, range, and family usability.",
     description:
-      "Pulse Q5 makes daily premium driving easy. It packs AI-guided parking, intuitive voice workflows, and elegant proportions into a crossover designed for Lagos traffic, modern family movement, and agile city life.",
+      "The Tesla Model Y Long Range is a frequent EV shortlist because it combines cabin space, strong range, and low routine maintenance needs. DanAuto helps clients check charging plans, battery condition indicators, software status, import documents, and realistic ownership fit.",
     heroImage:
       "https://images.unsplash.com/photo-1519641471654-76ce0107ad1b?auto=format&fit=crop&w=1600&q=80",
     previewImage:
@@ -861,41 +861,41 @@ export const cars = [
     ],
     accent: "from-luxury-blue/18 via-transparent to-luxury-gold/14",
     specs: [
-      { label: "Price", value: formatNaira(94000000) },
-      { label: "Horsepower", value: "540 hp" },
-      { label: "Top Speed", value: "210 km/h" },
-      { label: "Range", value: "510 km" },
+      { label: "Price", value: formatNaira(76000000) },
+      { label: "Horsepower", value: "384 hp" },
+      { label: "Top Speed", value: "217 km/h" },
+      { label: "Range", value: "533 km est." },
       { label: "Drivetrain", value: "Dual-Motor AWD" },
-      { label: "Charging", value: "20 mins to 80%" }
+      { label: "Fast Charging", value: "27 mins 10-80%" }
     ],
     features: [
-      "Auto-Park AI",
-      "Urban Navigation Brain",
-      "Family Safety Assist",
-      "Smart Frunk Storage"
+      "Long Range Battery",
+      "Glass Roof",
+      "Large Cargo Space",
+      "EV Ownership Review"
     ],
     highlights: [
-      "Designed for premium city living with compact agility and elevated seating.",
-      "AI traffic prediction continuously reroutes to preserve time and battery range.",
-      "Interior finishes deliver luxury feel without sacrificing practicality."
+      "A strong choice for clients who can plan home or workplace charging.",
+      "Inspection should review battery indicators, suspension, tires, screen function, and charging accessories.",
+      "DanAuto can compare it with BYD, Mercedes-Benz EQ, BMW iX, and hybrid alternatives."
     ]
   },
   {
-    id: "zenith-gt",
-    name: "DanAuto Zenith GT",
-    type: "Hyper EV",
-    category: "Halo Hypercar",
-    price: 285000000,
-    acceleration: "1.9s",
-    topSpeed: "330 km/h",
-    range: "500 km",
-    horsepower: "1,280 hp",
-    seats: "2 Seats",
-    drivetrain: "Quad-Motor Vectoring",
+    id: "porsche-taycan-4s",
+    name: "Porsche Taycan 4S",
+    type: "Performance EV",
+    category: "Performance EV",
+    price: 142000000,
+    acceleration: "4.0s",
+    topSpeed: "250 km/h",
+    range: "470 km est.",
+    horsepower: "522 hp",
+    seats: "4 Seats",
+    drivetrain: "Dual-Motor AWD",
     shortDescription:
-      "DanAuto's halo hyper EV pairing aerospace-inspired design with uncompromising electric aggression.",
+      "A performance EV request for clients who want Porsche handling with electric running costs.",
     description:
-      "Zenith GT exists to define the future of African luxury performance. It is the most aggressive machine in the DanAuto family, combining 3D aero channels, quad-motor intelligence, and a cockpit built like a private jet instrument bay.",
+      "The Porsche Taycan 4S is a premium EV choice for buyers who want performance, badge strength, and a more engaging drive than many electric SUVs. DanAuto reviews battery health indicators, charging hardware, suspension, tires, brakes, software, and service records.",
     heroImage:
       "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=1600&q=80",
     previewImage:
@@ -907,41 +907,41 @@ export const cars = [
     ],
     accent: "from-luxury-gold/18 via-transparent to-luxury-blue/28",
     specs: [
-      { label: "Price", value: formatNaira(285000000) },
-      { label: "Horsepower", value: "1,280 hp" },
-      { label: "Top Speed", value: "330 km/h" },
-      { label: "Range", value: "500 km" },
-      { label: "Drivetrain", value: "Quad-Motor Vectoring" },
-      { label: "Charging", value: "15 mins to 80%" }
+      { label: "Price", value: formatNaira(142000000) },
+      { label: "Horsepower", value: "522 hp" },
+      { label: "Top Speed", value: "250 km/h" },
+      { label: "Range", value: "470 km est." },
+      { label: "Drivetrain", value: "Dual-Motor AWD" },
+      { label: "Fast Charging", value: "23 mins 5-80%" }
     ],
     features: [
-      "DanAI Race Brain",
-      "3D Aero Tunnels",
-      "Carbon Monocoque",
-      "Telemetry Cloud Sync"
+      "800V EV Platform",
+      "Air Suspension Check",
+      "Performance Brakes",
+      "Battery Review"
     ],
     highlights: [
-      "Quad-motor setup monitors wheel slip with millisecond torque balancing.",
-      "A carbon architecture keeps the car brutally fast yet visually elegant.",
-      "Every drive can be analyzed through a cloud telemetry suite built for enthusiasts."
+      "A strong fit for buyers who want an EV that still feels like a performance car.",
+      "Inspection should confirm charging behavior, brake wear, tire condition, and suspension health.",
+      "DanAuto can compare Taycan trims against Tesla Model S, Mercedes-Benz EQS, and BMW i models."
     ]
   },
   {
-    id: "terrain-px",
-    name: "DanAuto Terrain PX",
+    id: "toyota-hilux-gr-sport",
+    name: "Toyota Hilux GR Sport",
     type: "Premium Pickup",
     category: "Lifestyle Utility",
-    price: 117000000,
-    acceleration: "4.6s",
-    topSpeed: "210 km/h",
-    range: "560 km",
-    horsepower: "620 hp",
+    price: 76000000,
+    acceleration: "10.7s",
+    topSpeed: "175 km/h",
+    range: "760 km est.",
+    horsepower: "201 hp",
     seats: "5 Seats",
-    drivetrain: "Dual-Motor AWD",
+    drivetrain: "4x4",
     shortDescription:
-      "A futuristic premium pickup engineered for business, adventure, and powerful utility with comfort.",
+      "A durable pickup request for clients who need work capability, road presence, and proven dependability.",
     description:
-      "Terrain PX brings DanAuto's luxury DNA to utility driving. It is built for founders, creators, and explorers who need load flexibility, off-road confidence, and a cabin that still feels premium and intelligent.",
+      "The Toyota Hilux GR Sport is often shortlisted for business owners, site visits, security support, and mixed road conditions. DanAuto checks frame condition, suspension, tires, service history, customs documents, and accessory quality before recommending a unit.",
     heroImage:
       "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=1600&q=80",
     previewImage:
@@ -953,41 +953,41 @@ export const cars = [
     ],
     accent: "from-luxury-blue/20 via-transparent to-luxury-gold/18",
     specs: [
-      { label: "Price", value: formatNaira(117000000) },
-      { label: "Horsepower", value: "620 hp" },
-      { label: "Top Speed", value: "210 km/h" },
-      { label: "Range", value: "560 km" },
-      { label: "Drivetrain", value: "Dual-Motor AWD" },
-      { label: "Charging", value: "21 mins to 80%" }
+      { label: "Price", value: formatNaira(76000000) },
+      { label: "Horsepower", value: "201 hp" },
+      { label: "Top Speed", value: "175 km/h" },
+      { label: "Range", value: "760 km est." },
+      { label: "Drivetrain", value: "4x4" },
+      { label: "Service Focus", value: "Frame + suspension" }
     ],
     features: [
-      "Load-Balance AI",
-      "Adaptive Bed Lighting",
-      "Off-Road Camera Grid",
-      "Tool Storage Vault"
+      "Diesel Engine",
+      "4x4 Capability",
+      "Bed Utility",
+      "Fleet Ready"
     ],
     highlights: [
-      "Adaptive payload software stabilizes braking and ride comfort under heavy load.",
-      "Bed architecture supports work, travel, and premium adventure use cases.",
-      "Interior durability is paired with soft-touch finishes and premium displays."
+      "Useful for businesses that need a premium-looking pickup without giving up durability.",
+      "Inspection should confirm chassis condition, previous commercial use, suspension wear, and tire age.",
+      "DanAuto can compare Hilux, Ford Ranger, Isuzu D-Max, and Toyota Tacoma options."
     ]
   },
   {
-    id: "aerovan-l7",
-    name: "DanAuto AeroVan L7",
+    id: "mercedes-v-class",
+    name: "Mercedes-Benz V-Class Exclusive",
     type: "Executive Van",
     category: "VIP Shuttle",
-    price: 154000000,
-    acceleration: "5.2s",
+    price: 132000000,
+    acceleration: "9.1s",
     topSpeed: "195 km/h",
-    range: "590 km",
-    horsepower: "500 hp",
+    range: "720 km est.",
+    horsepower: "237 hp",
     seats: "6 Seats",
-    drivetrain: "Dual-Motor AWD",
+    drivetrain: "Rear-Wheel Drive",
     shortDescription:
-      "A premium people-mover with private-jet seating, AI fleet control, and refined business-class comfort.",
+      "A VIP van request for hospitality, executive movement, airport transfer, and family chauffeur use.",
     description:
-      "AeroVan L7 is built for executives, hotels, embassies, and luxury logistics. The cabin is arranged like a mobile suite with lounge seating, rear productivity screens, and smart fleet intelligence for dispatch and route efficiency.",
+      "The Mercedes-Benz V-Class Exclusive is a frequent request from hotels, executives, embassies, and large families who need a comfortable people-mover with a premium cabin. DanAuto checks seating layout, air-conditioning, sliding doors, service history, mileage, and fleet-use records.",
     heroImage:
       "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1600&q=80",
     previewImage:
@@ -999,68 +999,68 @@ export const cars = [
     ],
     accent: "from-luxury-gold/16 via-transparent to-luxury-blue/18",
     specs: [
-      { label: "Price", value: formatNaira(154000000) },
-      { label: "Horsepower", value: "500 hp" },
+      { label: "Price", value: formatNaira(132000000) },
+      { label: "Horsepower", value: "237 hp" },
       { label: "Top Speed", value: "195 km/h" },
-      { label: "Range", value: "590 km" },
-      { label: "Drivetrain", value: "Dual-Motor AWD" },
-      { label: "Charging", value: "22 mins to 80%" }
+      { label: "Range", value: "720 km est." },
+      { label: "Drivetrain", value: "Rear-Wheel Drive" },
+      { label: "Service Focus", value: "A/C + doors" }
     ],
     features: [
-      "VIP Lounge Seats",
-      "Fleet AI Routing",
-      "Privacy Display Glass",
-      "Conference Cabin Mode"
+      "Captain Seats",
+      "Rear A/C",
+      "Sliding Door Check",
+      "Fleet Support"
     ],
     highlights: [
-      "Designed for hospitality, embassy, and corporate fleet mobility at the highest standard.",
-      "Smart route planning reduces downtime and charging friction across busy schedules.",
-      "The rear cabin shifts from relaxation to mobile office in seconds."
+      "Designed for hospitality, embassy, corporate, and premium family movement.",
+      "Inspection should test air-conditioning performance, sliding doors, interior wear, and service records.",
+      "DanAuto can help plan chauffeur use, maintenance schedules, and replacement timelines for fleets."
     ]
   }
 ];
 
 export const services = [
   {
-    title: "Vehicle Sales & Leasing",
-    metric: "Flexible Ownership",
+    title: "Vehicle Sourcing & Sales",
+    metric: "Verified Options",
     description:
-      "Buy brand new or certified pre-owned DanAuto vehicles with flexible payment plans, lease-to-own options, and fleet purchase support.",
+      "Shortlist brand new, foreign-used, and certified pre-owned vehicles with condition checks, price guidance, and document review before purchase.",
     icon: "sales"
   },
   {
     title: "Maintenance & Repairs",
-    metric: "Full Workshop Care",
+    metric: "Workshop Care",
     description:
-      "Routine servicing, diagnostics, mechanical and electrical repairs, tire care, bodywork, detailing, and refurbishing under one premium service system.",
+      "Routine servicing, diagnostics, mechanical and electrical repairs, tire care, bodywork, detailing, and refurbishing through trusted service partners.",
     icon: "maintenance"
   },
   {
-    title: "Premium EV & Custom Services",
-    metric: "Future-Ready",
+    title: "EV & Hybrid Support",
+    metric: "Battery Checks",
     description:
-      "Battery checks, charging setup, interactive 3D configuration, interior upgrades, exterior kits, and vehicle inspection services for premium owners.",
+      "Battery health checks, charging advice, hybrid system reviews, ownership cost planning, and service support for modern electric and hybrid vehicles.",
     icon: "premium"
   },
   {
     title: "Customer Support & Mobility Care",
-    metric: "Always Available",
+    metric: "Booking Support",
     description:
-      "Test drive booking, delivery, pickup and drop-off, insurance assistance, warranties, roadside support, and towing services.",
+      "Appointment scheduling, vehicle delivery, pickup and drop-off coordination, insurance assistance, warranty guidance, and roadside support.",
     icon: "support"
   },
   {
     title: "Fleet Management",
-    metric: "Operational Control",
+    metric: "Business Vehicles",
     description:
-      "Vehicle tracking, preventive maintenance scheduling, corporate fleet reporting, and mobility planning for business operations.",
+      "Fleet acquisition support, maintenance scheduling, vehicle tracking advice, driver coordination, and reporting for growing business operations.",
     icon: "fleet"
   },
   {
-    title: "Driving School & Training",
-    metric: "Skill Building",
+    title: "Driver Training & Handover",
+    metric: "Confident Use",
     description:
-      "Beginner driving lessons, advanced driving training, and practical driver confidence programs supported by modern learning tools.",
+      "New-driver lessons, handover sessions, feature walkthroughs, and practical guidance for owners moving into premium, EV, or larger vehicles.",
     icon: "training"
   }
 ];
@@ -1069,30 +1069,30 @@ export const serviceCategories = [
   {
     title: "Sales",
     description:
-      "Flexible acquisition and mobility options for individual buyers, executives, and corporate customers.",
+      "Vehicle acquisition support for individual buyers, executives, families, and corporate customers.",
     sections: [
       {
-        name: "Vehicle Sales",
+        name: "Vehicle Sourcing",
         items: [
-          "Brand new cars",
-          "Certified pre-owned vehicles",
-          "Fleet sales"
+          "Brand new and foreign-used cars",
+          "Certified pre-owned options",
+          "Availability and price checks"
         ]
       },
       {
-        name: "Car Leasing & Financing",
+        name: "Payment Planning",
         items: [
-          "Flexible payment plans",
-          "Lease-to-own options",
-          "Auto loan assistance"
+          "Deposit and balance planning",
+          "Lease-to-own introductions",
+          "Auto loan guidance"
         ]
       },
       {
-        name: "Car Rental Services",
+        name: "Corporate Mobility",
         items: [
-          "Short-term rentals",
-          "Long-term rentals",
-          "Chauffeur services"
+          "Executive vehicle sourcing",
+          "Long-term vehicle supply",
+          "Chauffeur service referrals"
         ]
       }
     ]
@@ -1100,19 +1100,19 @@ export const serviceCategories = [
   {
     title: "Maintenance",
     description:
-      "Workshop, service bay, and restoration support designed to keep every vehicle performing and looking its best.",
+      "Workshop, service bay, and restoration support designed to keep vehicles performing and looking their best.",
     sections: [
       {
         name: "Vehicle Maintenance & Servicing",
         items: [
-          "Oil change, filters",
-          "Routine servicing"
+          "Oil, filters, and fluids",
+          "Scheduled servicing"
         ]
       },
       {
         name: "Auto Repairs",
         items: [
-          "Mechanical, electrical, transmission repairs"
+          "Mechanical, electrical, and transmission repairs"
         ]
       },
       {
@@ -1163,13 +1163,13 @@ export const serviceCategories = [
   {
     title: "Premium Services",
     description:
-      "High-value advanced services tailored for electric mobility, personalization, compliance, and premium ownership.",
+      "Higher-touch support for EVs, customization, compliance, and pre-purchase confidence.",
     sections: [
       {
         name: "Electric Vehicle (EV) Services",
         items: [
-          "Battery checks",
-          "Charging system setup"
+          "Battery health review",
+          "Home and workplace charging advice"
         ]
       },
       {
@@ -1180,9 +1180,9 @@ export const serviceCategories = [
         ]
       },
       {
-        name: "3D Car Configuration",
+        name: "Vehicle Specification Guidance",
         items: [
-          "Interactive customization (colors, rims, accessories)"
+          "Colors, rims, accessories, and trim choices"
         ]
       },
       {
@@ -1195,15 +1195,15 @@ export const serviceCategories = [
       {
         name: "Fleet Management",
         items: [
-          "Vehicle tracking",
+          "Vehicle tracking guidance",
           "Maintenance scheduling"
         ]
       },
       {
-        name: "Driving School",
+        name: "Driver Training",
         items: [
           "Beginner driving lessons",
-          "Advanced driving training"
+          "Advanced and defensive driving training"
         ]
       }
     ]
@@ -1211,7 +1211,7 @@ export const serviceCategories = [
   {
     title: "Customer Support",
     description:
-      "Convenience, assurance, and emergency support services built around the customer experience.",
+      "Convenience, assurance, and emergency support services built around real ownership needs.",
     sections: [
       {
         name: "Test Drive Booking",
@@ -1222,13 +1222,13 @@ export const serviceCategories = [
       {
         name: "Car Delivery Services",
         items: [
-          "Home/office delivery"
+          "Home and office delivery"
         ]
       },
       {
         name: "Pickup & Drop-off Service",
         items: [
-          "Vehicle collection & return"
+          "Vehicle collection and return"
         ]
       },
       {
@@ -1265,160 +1265,160 @@ export const serviceCategories = [
 export const technologies = [
   {
     icon: "cpu",
-    title: "DanAI Sense",
-    metric: "Proactive Intelligence",
+    title: "Diagnostic Scan",
+    metric: "OBD Review",
     description:
-      "Our AI stack predicts traffic, driver intent, battery demand, and safety risks to keep every journey seamless."
+      "We review key vehicle systems, warning codes, service indicators, and common fault areas before advising on a purchase or repair."
   },
   {
     icon: "battery",
-    title: "800V Energy Platform",
-    metric: "Fast Charging",
+    title: "EV Battery Review",
+    metric: "Range Check",
     description:
-      "Long-range electric architecture designed for premium daily use, fast turnaround, and confident touring."
+      "For EVs and hybrids, we look at charging behavior, displayed range, battery condition indicators, and service history."
   },
   {
     icon: "shield",
-    title: "Guardian Perception",
-    metric: "360 Protection",
+    title: "Document Verification",
+    metric: "Ownership Confidence",
     description:
-      "Advanced camera, radar, and scene analysis deliver intelligent braking, lane awareness, and fatigue support."
+      "VIN details, registration records, duty documents, service records, and ownership history are reviewed where available."
   },
   {
     icon: "wind",
-    title: "Adaptive Aero Form",
-    metric: "3D Surface Flow",
+    title: "Market Comparison",
+    metric: "Fair-Price Context",
     description:
-      "Body surfaces and cooling paths adjust dynamically for lower drag, stronger stability, and futuristic presence."
+      "We compare similar listings, trims, mileage, exchange-rate effects, and import costs so clients understand the price band."
   }
 ];
 
 export const testimonials = [
   {
     name: "Ifeoma Okonkwo",
-    role: "Investment Executive",
+    role: "Lekki-Based Business Owner",
     quote:
-      "DanAuto feels international in quality but deeply tuned to the way we actually move and live in Nigeria."
+      "DanAuto helped me compare two SUVs, check the documents, and understand the service costs before I made a decision."
   },
   {
     name: "Tunde Adebayo",
-    role: "Luxury Hospitality Founder",
+    role: "Hotel Operations Lead",
     quote:
-      "The AeroVan L7 completely changed how we handle VIP movement. Clients notice the difference instantly."
+      "We needed three reliable vehicles for guest movement. The team handled sourcing, inspection, and delivery without drama."
   },
   {
     name: "Zainab Mahmud",
-    role: "Tech Entrepreneur",
+    role: "EV Owner",
     quote:
-      "The AI features are not gimmicks. They genuinely make the drive feel calmer, smarter, and more premium."
+      "The EV guidance was practical. They explained charging, battery checks, and what to watch for before I bought."
   }
 ];
 
 export const brandStats = [
-  { value: "8", label: "DanAuto Vehicle Types" },
-  { value: "640km", label: "Longest Electric Range" },
-  { value: "24/7", label: "Concierge Support" },
-  { value: "100%", label: "Electric Premium Lineup" }
+  { value: "8", label: "Vehicle Categories" },
+  { value: "40+", label: "Brands Covered" },
+  { value: "24h", label: "Response Target" },
+  { value: "6", label: "Core Service Areas" }
 ];
 
 export const brandPillars = [
   {
-    title: "Luxury by Design",
+    title: "Clear Advice",
     description:
-      "Every DanAuto cabin is designed like an immersive lounge with layered lighting, tactile materials, and calm acoustics."
+      "Clients get plain-language guidance on condition, price, documents, ownership costs, and next steps before committing."
   },
   {
-    title: "AI by Default",
+    title: "Proper Checks",
     description:
-      "Our software is not an add-on. It powers safety, personalization, maintenance, route intelligence, and customer care."
+      "Inspections, diagnostic scans, service-history reviews, and market comparisons help reduce avoidable buying risk."
   },
   {
-    title: "Built for Modern Africa",
+    title: "Built for Lagos Ownership",
     description:
-      "DanAuto combines global premium design standards with the practical realities of African roads, cities, and mobility needs."
+      "Support covers traffic-heavy daily use, road conditions, documentation, delivery, servicing, and business fleet needs."
   }
 ];
 
 export const timeline = [
   {
     year: "2019",
-    title: "DanAuto Design Lab Launch",
+    title: "Independent Vehicle Advisory Begins",
     description:
-      "The brand began as a premium mobility studio focused on intelligent electric platforms."
+      "DanAuto started by helping private buyers compare imported and locally available premium vehicles."
   },
   {
     year: "2022",
-    title: "DanAI Operating Stack Debuts",
+    title: "Workshop and Inspection Network",
     description:
-      "Our first proprietary AI cockpit and predictive maintenance layer entered pilot production."
+      "The team expanded inspection, diagnostic, detailing, and maintenance support through trusted partners."
   },
   {
     year: "2024",
-    title: "Luxury Lineup Expansion",
+    title: "Business Fleet Support",
     description:
-      "DanAuto expanded into SUVs, executive shuttles, and performance coupes for broader premium use cases."
+      "DanAuto added fleet planning, delivery coordination, service scheduling, and vehicle reporting for companies."
   },
   {
     year: "2026",
-    title: "Flagship Experience Centers",
+    title: "Lekki Showroom and Service Desk",
     description:
-      "Immersive urban showrooms now provide booking, design consultation, and AI-assisted service support."
+      "The brand now gives clients one place to start vehicle searches, book inspections, and arrange aftersales support."
   }
 ];
 
 export const galleryItems = [
   {
     id: "gallery-1",
-    title: "Future-facing exterior lines",
+    title: "Exterior condition walkaround",
     category: "Exterior",
     image:
       "https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?auto=format&fit=crop&w=1400&q=80"
   },
   {
     id: "gallery-2",
-    title: "AI cockpit architecture",
+    title: "Cabin trim and controls review",
     category: "Interior",
     image:
       "https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1400&q=80"
   },
   {
     id: "gallery-3",
-    title: "Executive showroom moments",
+    title: "Showroom appointment preparation",
     category: "Experience",
     image:
       "https://images.unsplash.com/photo-1489824904134-891ab64532f1?auto=format&fit=crop&w=1400&q=80"
   },
   {
     id: "gallery-4",
-    title: "Performance form in motion",
+    title: "Road test and handling notes",
     category: "Performance",
     image:
       "https://images.unsplash.com/photo-1544636331-e26879cd4d9b?auto=format&fit=crop&w=1400&q=80"
   },
   {
     id: "gallery-5",
-    title: "Luxury SUV command stance",
+    title: "SUV shortlist for family use",
     category: "Exterior",
     image:
       "https://images.unsplash.com/photo-1606664515524-ed2f786a0bd6?auto=format&fit=crop&w=1400&q=80"
   },
   {
     id: "gallery-6",
-    title: "Night-drive ambient details",
+    title: "Lighting and comfort checks",
     category: "Interior",
     image:
       "https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&w=1400&q=80"
   },
   {
     id: "gallery-7",
-    title: "Premium fleet mobility",
+    title: "Corporate vehicle handover",
     category: "Experience",
     image:
       "https://images.unsplash.com/photo-1542282088-fe8426682b8f?auto=format&fit=crop&w=1400&q=80"
   },
   {
     id: "gallery-8",
-    title: "Adventure-ready utility design",
+    title: "Pickup and utility inspection",
     category: "Performance",
     image:
       "https://images.unsplash.com/photo-1559416523-140ddc3d238c?auto=format&fit=crop&w=1400&q=80"

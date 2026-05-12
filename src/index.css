@@ -47,6 +47,19 @@
     overflow-x: hidden;
   }
 
+  .skip-link {
+    @apply fixed left-4 top-4 z-[120] rounded-full border border-luxury-gold/30 bg-[#05070c] px-4 py-3 text-xs font-medium uppercase tracking-[0.24em] text-white shadow-luxury transition;
+    transform: translateY(-180%);
+  }
+
+  .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  .main-content-anchor {
+    @apply outline-none;
+  }
+
   .site-shell::before {
     content: "";
     position: fixed;
@@ -226,7 +239,8 @@
 
   /* Shared: Footer */
   .site-footer {
-    @apply border-t border-white/10 px-4 pb-8 pt-14 sm:px-6 lg:px-8;
+    @apply px-4 pb-8 pt-14 sm:px-6 lg:px-8;
+    border-top: 3px solid #ffffff;
   }
 
   .site-footer-inner {
@@ -288,6 +302,51 @@
 
   .site-footer-meta-link {
     @apply transition hover:text-white/[0.6];
+  }
+
+  /* Shared: Legal pages */
+  .legal-page {
+    @apply px-4 pb-16 pt-32 sm:px-6 lg:px-8;
+  }
+
+  .legal-shell {
+    @apply mx-auto max-w-5xl;
+  }
+
+  .legal-back-link {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.28em] text-white/[0.55] transition hover:text-white;
+  }
+
+  .legal-header {
+    @apply mt-10 max-w-3xl;
+  }
+
+  .legal-eyebrow {
+    @apply inline-flex items-center gap-2 text-xs uppercase tracking-[0.35em] text-luxury-blue;
+  }
+
+  .legal-title {
+    @apply mt-5 font-display text-4xl uppercase leading-tight text-white sm:text-5xl;
+  }
+
+  .legal-description {
+    @apply mt-5 text-base leading-8 text-white/[0.64];
+  }
+
+  .legal-panel {
+    @apply mt-10 grid gap-5;
+  }
+
+  .legal-card {
+    @apply rounded-[28px] border border-white/10 bg-white/[0.04] p-6 shadow-luxury;
+  }
+
+  .legal-card-title {
+    @apply font-display text-2xl uppercase text-white;
+  }
+
+  .legal-card-text {
+    @apply mt-3 text-sm leading-7 text-white/[0.64];
   }
 
   /* Shared: Loader */
@@ -401,7 +460,7 @@
   }
 
   .hero-title {
-    @apply mt-7 max-w-4xl font-display text-5xl uppercase leading-[0.95] text-white sm:text-6xl lg:text-7xl xl:text-[5.2rem];
+    @apply mt-7 max-w-4xl font-display text-4xl uppercase leading-[1] text-white sm:text-5xl lg:text-6xl xl:text-[4.25rem];
   }
 
   .hero-description {
@@ -419,50 +478,33 @@
       radial-gradient(circle at 70% 30%, rgba(201, 164, 92, 0.16), transparent 32%);
   }
 
-  .hero-visual-stack {
-    @apply flex flex-col gap-4 sm:gap-5;
+  .hero-visual-carousel {
+    @apply relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.04] p-2 shadow-luxury backdrop-blur-xl sm:rounded-[36px] sm:p-3;
   }
 
   .hero-visual-card {
-    @apply relative overflow-hidden rounded-[28px];
-    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.28);
-  }
-
-  .hero-visual-card-left {
-    @apply mr-8 sm:mr-12 lg:mr-16;
-  }
-
-  .hero-visual-card-right {
-    @apply ml-8 sm:ml-12 lg:ml-16;
-  }
-
-  .hero-visual-card-featured {
-    @apply sm:rounded-[34px];
+    @apply relative min-h-[24rem] overflow-hidden rounded-[24px] sm:min-h-[30rem] sm:rounded-[30px] lg:min-h-[34rem];
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.32);
   }
 
   .hero-visual-image {
-    @apply w-full object-cover object-center transition duration-700;
+    @apply absolute inset-0 h-full w-full object-cover object-center transition duration-700;
+    filter: brightness(1.24) contrast(1.04) saturate(1.12);
   }
 
   .hero-visual-card:hover .hero-visual-image {
     transform: scale(1.03);
   }
 
-  .hero-visual-image-standard {
-    @apply h-24 sm:h-28 lg:h-24 xl:h-32;
-  }
-
-  .hero-visual-image-featured {
-    @apply h-36 sm:h-44 lg:h-40 xl:h-48;
-  }
-
   .hero-visual-overlay {
     @apply absolute inset-0;
-    background-image: linear-gradient(90deg, rgba(5, 7, 12, 0.72), rgba(5, 7, 12, 0.16) 45%, rgba(5, 7, 12, 0.55));
+    background-image:
+      linear-gradient(90deg, rgba(5, 7, 12, 0.24), transparent 44%, rgba(5, 7, 12, 0.2)),
+      linear-gradient(180deg, transparent 42%, rgba(5, 7, 12, 0.72));
   }
 
   .hero-visual-caption {
-    @apply absolute bottom-3 left-4 right-4 flex items-end justify-between gap-4 sm:bottom-4 sm:left-5 sm:right-5;
+    @apply absolute bottom-4 left-4 right-4 flex items-end justify-between gap-4 sm:bottom-6 sm:left-6 sm:right-6;
   }
 
   .hero-visual-copy {
@@ -478,7 +520,23 @@
   }
 
   .hero-visual-index {
-    @apply hidden text-[10px] uppercase tracking-[0.3em] text-white/[0.55] sm:inline;
+    @apply hidden rounded-full border border-white/10 bg-black/30 px-3 py-2 text-[10px] uppercase tracking-[0.3em] text-white/[0.62] backdrop-blur-xl sm:inline;
+  }
+
+  .hero-visual-dots {
+    @apply mt-5 flex items-center justify-center gap-2;
+  }
+
+  .hero-visual-dot {
+    @apply h-2.5 rounded-full border border-white/10 transition duration-300;
+  }
+
+  .hero-visual-dot-active {
+    @apply w-10 bg-luxury-gold;
+  }
+
+  .hero-visual-dot-idle {
+    @apply w-2.5 bg-white/[0.28] hover:bg-white/[0.45];
   }
 
   /* Shared: Cards */

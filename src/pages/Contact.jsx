@@ -1,14 +1,22 @@
 import { useMemo, useState } from "react";
 import { motion } from "framer-motion";
-import { CalendarClock, Mail, MapPin, Phone, Send } from "lucide-react";
+import { CalendarClock, Clock3, Mail, MapPin, Phone, Send } from "lucide-react";
 import Button from "../components/Button";
 import { cars } from "../utils/data";
+
+const interestOptions = [
+  "Vehicle sourcing consultation",
+  "Pre-purchase inspection",
+  "Workshop service visit",
+  "Fleet support discussion",
+  ...cars.map((car) => car.name)
+];
 
 const initialState = {
   name: "",
   email: "",
   phone: "",
-  interest: cars[0].name,
+  interest: interestOptions[0],
   preferredDate: "",
   message: ""
 };
@@ -23,18 +31,23 @@ function Contact() {
     () => [
       {
         icon: MapPin,
-        title: "Flagship Experience Centre",
-        text: "12 Meridian Avenue, Victoria Island, Lagos"
+        title: "Lekki Showroom & Service Desk",
+        text: "Plot 14 Admiralty Way, Lekki Phase 1, Lagos"
       },
       {
         icon: Phone,
-        title: "DanAuto Concierge",
+        title: "Sales & Service Desk",
         text: "+234 (0) 800 000 2026"
       },
       {
         icon: Mail,
-        title: "Email",
-        text: "concierge@danauto.africa"
+        title: "Bookings Email",
+        text: "bookings@danauto.africa"
+      },
+      {
+        icon: Clock3,
+        title: "Opening Hours",
+        text: "Monday to Saturday, 9:00 AM - 6:00 PM"
       }
     ],
     []
@@ -107,11 +120,11 @@ function Contact() {
               Contact DanAuto
             </span>
             <h1 className="contact-title">
-              Book a premium DanAuto appointment.
+              Book a DanAuto showroom or service appointment
             </h1>
             <p className="contact-description">
-              Schedule a test drive, request a private showroom session, or speak to
-              our team about custom orders and corporate fleet solutions.
+              Schedule a vehicle search, pre-purchase inspection, workshop visit,
+              test drive, delivery discussion, or fleet support call with our team.
             </p>
 
             <div className="contact-cards">
@@ -140,10 +153,10 @@ function Contact() {
                   <CalendarClock size={18} />
                 </span>
                 <div className="contact-experience-copy">
-                  <p className="contact-experience-title">White-Glove Experience</p>
+                  <p className="contact-experience-title">What Happens Next</p>
                   <p className="contact-experience-text">
-                    Every DanAuto booking includes guided model comparison, AI feature
-                    walkthrough, and tailored recommendations for your needs.
+                    We confirm availability, ask for documents or vehicle details if
+                    needed, and send appointment instructions before your visit.
                   </p>
                 </div>
               </div>
@@ -179,11 +192,11 @@ function Contact() {
                   value={formState.phone}
                   onChange={handleChange}
                   error={errors.phone}
-                  placeholder="+234 800 000 2026"
+                  placeholder="+234 801 234 5678"
                 />
                 <div className="contact-field-group">
                   <label className="field-label" htmlFor="interest">
-                    Preferred Car
+                    Vehicle or Service Interest
                   </label>
                   <select
                     id="interest"
@@ -192,8 +205,8 @@ function Contact() {
                     onChange={handleChange}
                     className="field-input contact-select"
                   >
-                    {cars.map((car) => (
-                      <option key={car.id}>{car.name}</option>
+                    {interestOptions.map((option) => (
+                      <option key={option}>{option}</option>
                     ))}
                   </select>
                 </div>
@@ -210,7 +223,7 @@ function Contact() {
 
               <div className="contact-field-group">
                 <label className="field-label" htmlFor="message">
-                  How can DanAuto help?
+                  What should we prepare?
                 </label>
                 <textarea
                   id="message"
@@ -219,14 +232,14 @@ function Contact() {
                   value={formState.message}
                   onChange={handleChange}
                   className="field-input contact-textarea"
-                  placeholder="Tell us the model, service, or showroom experience you’re interested in."
+                  placeholder="Share your budget, preferred model year, trade-in details, or service concern."
                 />
                 {errors.message ? <p className="field-error">{errors.message}</p> : null}
               </div>
 
               {isSubmitted ? (
                 <div className="contact-success">
-                  Your request has been received. The DanAuto concierge team will contact you shortly.
+                  Your request has been received. A DanAuto advisor will call or email you to confirm the appointment.
                 </div>
               ) : null}
 
@@ -237,7 +250,7 @@ function Contact() {
                   icon={CalendarClock}
                   disabled={isSubmitting}
                 >
-                  {isSubmitting ? "Sending Request" : "Book DanAuto Appointment"}
+                  {isSubmitting ? "Sending Request" : "Request Appointment"}
                 </Button>
               </div>
             </form>

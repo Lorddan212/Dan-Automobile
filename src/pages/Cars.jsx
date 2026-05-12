@@ -80,15 +80,15 @@ function Cars() {
             <div>
               <span className="cars-eyebrow">
                 <LayoutGrid size={14} />
-                DanAuto Cars
+                Vehicle Catalog
               </span>
               <h1 className="cars-title">
-                Browse brands, compare models, and filter the future of mobility.
+                Browse brands, compare models, and shortlist vehicles with real buying criteria.
               </h1>
               <p className="cars-description">
-                Explore global automotive brands in a premium DanAuto catalog with
-                curated pricing in Naira, EV highlights, body-style filters, fuel
-                profiles, and a fast search experience built for modern discovery.
+                Use this catalog to narrow body style, fuel type, estimated price,
+                and brand preference before requesting a physical inspection,
+                availability check, or import quote from the DanAuto team.
               </p>
             </div>
 
@@ -208,8 +208,8 @@ function Cars() {
               ].join(" ")}
             >
               <p className="brand-card-label brand-card-label-gold">All Brands</p>
-              <p className="brand-card-title">Global Catalog</p>
-              <p className="brand-card-description">Search across every integrated brand and model.</p>
+              <p className="brand-card-title">Full Market View</p>
+              <p className="brand-card-description">Search across brands we can help source, compare, or inspect.</p>
             </motion.button>
 
             {brandGroups.flatMap((group) =>
@@ -256,12 +256,12 @@ function Cars() {
                 {selectedBrand ? selectedBrand.name : "All Brands"}
               </p>
               <h2 className="cars-summary-title">
-                {selectedBrand ? "Click to view models" : "Browse all available models"}
+                {selectedBrand ? "Review matching models" : "Browse all shortlisted models"}
               </h2>
               <p className="cars-summary-description">
                 {selectedBrand
                   ? selectedBrand.description
-                  : "Use the brand cards, type tabs, fuel choices, price ranges, and search field together to narrow the catalog quickly."}
+                  : "Prices are planning estimates. Confirm exact availability, condition, history, duties, and delivery timing with DanAuto before making a buying decision."}
               </p>
             </div>
 
@@ -335,8 +335,8 @@ function Cars() {
               <p className="cars-empty-eyebrow">No matching models</p>
               <h3 className="cars-empty-title">Try another brand, type, fuel profile, or price band.</h3>
               <p className="cars-empty-description">
-                The catalog is now grouped by brand and model family, so small filter
-                changes can quickly surface a very different part of the market.
+                Try widening the price band, clearing the search field, or choosing
+                all fuel types if you want the team to suggest close alternatives.
               </p>
             </div>
           )}

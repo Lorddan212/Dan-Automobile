@@ -49,6 +49,12 @@ const footerLinks = [
   { label: "Contact", to: "/contact" }
 ];
 
+const legalLinks = [
+  { label: "Privacy", to: "/privacy" },
+  { label: "Terms", to: "/terms" },
+  { label: "Cookies", to: "/cookies" }
+];
+
 function Footer() {
   return (
     <footer className="site-footer">
@@ -57,11 +63,11 @@ function Footer() {
           <div>
             <span className="site-footer-badge">DanAuto</span>
             <h2 className="site-footer-title">
-              Luxury, AI-driven automobiles built for the modern African future.
+              Premium vehicle sourcing, sales, leasing, and service support in Lagos
             </h2>
             <p className="site-footer-description">
-              DanAuto delivers futuristic premium vehicles, intelligent services,
-              private consultations, and a multi-model electric lineup priced in Naira.
+              DanAuto helps clients compare vehicles, arrange inspections, plan
+              payments, manage documentation, and keep cars maintained after delivery.
             </p>
           </div>
 
@@ -83,9 +89,10 @@ function Footer() {
           <div>
             <h3 className="site-footer-heading">Contact</h3>
             <div className="site-footer-contact">
-              <p>Flagship Experience Centre, Victoria Island, Lagos</p>
+              <p>Plot 14 Admiralty Way, Lekki Phase 1, Lagos</p>
               <p>+234 (0) 800 000 2026</p>
-              <p>concierge@danauto.africa</p>
+              <p>bookings@danauto.africa</p>
+              <p>Mon-Sat: 9:00 AM - 6:00 PM</p>
             </div>
 
             <div className="site-footer-socials">
@@ -113,15 +120,15 @@ function Footer() {
         <div className="site-footer-bottom">
           <p>© {new Date().getFullYear()} DanAuto. All rights reserved.</p>
           <div className="site-footer-bottom-links">
-            <a href="#" className="site-footer-meta-link">
-              Privacy
-            </a>
-            <a href="#" className="site-footer-meta-link">
-              Terms
-            </a>
-            <a href="#" className="site-footer-meta-link">
-              Cookies
-            </a>
+            {legalLinks.map((item) => (
+              <Link
+                key={item.label}
+                to={item.to}
+                className="site-footer-meta-link"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

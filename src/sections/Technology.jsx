@@ -20,15 +20,14 @@ function Technology() {
         >
           <span className="technology-eyebrow">
             <BrainCircuit size={14} />
-            AI & Technology
+            Inspection & Support
           </span>
           <h2 className="technology-title">
-            DanAuto intelligence flows through every drive.
+            Useful checks behind each recommendation.
           </h2>
           <p className="technology-description">
-            From safety perception to adaptive charging and personalization, DanAuto
-            vehicles are designed to feel aware, calm, responsive, and unmistakably
-            premium.
+            We use inspection checklists, diagnostic scans, market comparison, and
+            ownership-cost reviews to help clients understand what they are buying.
           </p>
 
           <div className="technology-list">
@@ -73,7 +72,7 @@ function Technology() {
           <div className="technology-visual-frame">
             <img
               src="https://images.unsplash.com/photo-1553440569-bcc63803a83d?auto=format&fit=crop&w=1200&q=80"
-              alt="DanAuto AI interior"
+              alt="DanAuto vehicle inspection interior"
               className="technology-visual-image"
               loading="lazy"
               decoding="async"
@@ -83,16 +82,16 @@ function Technology() {
             <div className="technology-visual-content">
               <div className="technology-visual-stats">
                 <div className="technology-visual-stat">
-                  <p className="technology-visual-stat-label">DanAI</p>
-                  <p className="technology-visual-stat-value">Predictive Sense</p>
+                  <p className="technology-visual-stat-label">Diagnostics</p>
+                  <p className="technology-visual-stat-value">OBD + visual checks</p>
                 </div>
                 <div className="technology-visual-stat">
-                  <p className="technology-visual-stat-label">Charging</p>
-                  <p className="technology-visual-stat-value">15-22 min fast top-up</p>
+                  <p className="technology-visual-stat-label">Pricing</p>
+                  <p className="technology-visual-stat-value">Market comparison</p>
                 </div>
                 <div className="technology-visual-stat">
-                  <p className="technology-visual-stat-label">Safety</p>
-                  <p className="technology-visual-stat-value">Guardian 360 AI</p>
+                  <p className="technology-visual-stat-label">Support</p>
+                  <p className="technology-visual-stat-value">Service reminders</p>
                 </div>
               </div>
             </div>

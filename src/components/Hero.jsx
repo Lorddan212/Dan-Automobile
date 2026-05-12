@@ -1,13 +1,31 @@
-import { motion, useScroll, useTransform } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion, useScroll, useTransform } from "framer-motion";
 import { Sparkles } from "lucide-react";
 import { cars } from "../utils/data";
 import Button from "./Button";
 
 function Hero() {
-  const heroCars = cars.slice(0, 5);
+  const heroCars = useMemo(() => cars.slice(0, 5), []);
+  const [activeIndex, setActiveIndex] = useState(0);
   const { scrollY } = useScroll();
   const contentY = useTransform(scrollY, [0, 500], [0, 80]);
   const visualY = useTransform(scrollY, [0, 500], [0, 120]);
+  const activeCar = heroCars[activeIndex];
+
+  useEffect(() => {
+    const timeoutId = window.setTimeout(() => {
+      setActiveIndex((currentIndex) => (currentIndex + 1) % heroCars.length);
+    }, 3800);
+
+    return () => window.clearTimeout(timeoutId);
+  }, [activeIndex, heroCars.length]);
+
+  useEffect(() => {
+    heroCars.forEach((car) => {
+      const image = new window.Image();
+      image.src = car.heroImage;
+    });
+  }, [heroCars]);
 
   return (
     <section className="hero-section">
@@ -28,17 +46,17 @@ function Hero() {
         >
           <span className="hero-eyebrow">
             <Sparkles size={14} />
-            Standard Luxury. Futuristic Intelligence.
+            Lagos showroom. Verified premium vehicles.
           </span>
 
           <h1 className="hero-title">
-            DanAuto drives the future of premium mobility.
+            Find, inspect, and maintain your next premium vehicle
           </h1>
 
           <p className="hero-description">
-            Discover AI-driven cars, luxurious interiors, bold 3D-styled forms, and a
-            complete lineup of premium electric vehicles built for modern African
-            roads, lifestyles, and ambition.
+            DanAuto helps private buyers, families, and businesses compare trusted
+            vehicle options, arrange inspections, review ownership costs, and book
+            aftersales support from one Lagos-based team.
           </p>
 
           <div className="hero-actions">
@@ -59,42 +77,52 @@ function Hero() {
         >
           <div className="hero-visual-glow" />
 
-          <div className="hero-visual-stack">
-            {heroCars.map((car, index) => (
+          <div className="hero-visual-carousel" aria-live="polite">
+            <AnimatePresence mode="wait">
               <motion.div
-                key={car.id}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -28 : 28 }}
-                animate={{ opacity: 1, x: 0 }}
-                transition={{ duration: 0.75, delay: 0.15 + index * 0.08 }}
-                className={[
-                  "hero-visual-card",
-                  index % 2 === 0 ? "hero-visual-card-left" : "hero-visual-card-right",
-                  index === 2 ? "hero-visual-card-featured" : ""
-                ].join(" ")}
+                key={activeCar.id}
+                initial={{ opacity: 0, x: activeIndex % 2 === 0 ? -42 : 42, scale: 0.98 }}
+                animate={{ opacity: 1, x: 0, scale: 1 }}
+                exit={{ opacity: 0, x: activeIndex % 2 === 0 ? 42 : -42, scale: 0.98 }}
+                transition={{ duration: 0.65, ease: "easeOut" }}
+                className="hero-visual-card"
               >
                 <img
-                  src={car.heroImage}
-                  alt={car.name}
-                  className={[
-                    "hero-visual-image",
-                    index === 2 ? "hero-visual-image-featured" : "hero-visual-image-standard"
-                  ].join(" ")}
-                  loading={index === 0 ? "eager" : "lazy"}
+                  src={activeCar.heroImage}
+                  alt={activeCar.name}
+                  className="hero-visual-image"
+                  loading="eager"
                   decoding="async"
                 />
                 <div className="hero-visual-overlay" />
                 <div className="hero-visual-caption">
                   <div className="hero-visual-copy">
                     <p className="hero-visual-label">
-                      {index === 2 ? "Signature Model" : "DanAuto Collection"}
+                      {activeIndex === 2 ? "Popular Request" : "Available Consultation"}
                     </p>
-                    <p className="hero-visual-name">{car.name}</p>
+                    <p className="hero-visual-name">{activeCar.name}</p>
                   </div>
                   <span className="hero-visual-index">
-                    0{index + 1}
+                    0{activeIndex + 1}
                   </span>
                 </div>
               </motion.div>
+            </AnimatePresence>
+          </div>
+
+          <div className="hero-visual-dots" aria-label="Featured car slides">
+            {heroCars.map((car, index) => (
+              <button
+                key={car.id}
+                type="button"
+                className={[
+                  "hero-visual-dot",
+                  index === activeIndex ? "hero-visual-dot-active" : "hero-visual-dot-idle"
+                ].join(" ")}
+                aria-label={`Show ${car.name}`}
+                aria-pressed={index === activeIndex}
+                onClick={() => setActiveIndex(index)}
+              />
             ))}
           </div>
         </motion.div>
