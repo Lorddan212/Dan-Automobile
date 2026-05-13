@@ -18,6 +18,13 @@ import {
   vehicleTypeTabs
 } from "../utils/data";
 
+const brandGroupCardLabels = {
+  "Popular & Luxury Brands": "Popular / Luxury",
+  "Luxury Brands": "Luxury",
+  "Electric & Hybrid Brands": "EV / Hybrid",
+  "Sports & Exotic Brands": "Sports / Exotic"
+};
+
 function Cars() {
   const [activeType, setActiveType] = useState("All");
   const [activeBrandId, setActiveBrandId] = useState("all");
@@ -83,7 +90,7 @@ function Cars() {
                 Vehicle Catalog
               </span>
               <h1 className="cars-title">
-                Browse brands, compare models, and shortlist vehicles with real buying criteria.
+                Browse brands, compare models
               </h1>
               <p className="cars-description">
                 Use this catalog to narrow body style, fuel type, estimated price,
@@ -188,7 +195,7 @@ function Cars() {
           <div className="cars-brand-group-row">
             {brandGroups.map((group) => (
               <div key={group.title} className="cars-brand-group-pill">
-                {group.title}
+                {brandGroupCardLabels[group.title] || group.title}
               </div>
             ))}
           </div>
@@ -232,7 +239,9 @@ function Cars() {
                         : "brand-card-idle"
                     ].join(" ")}
                   >
-                    <p className="brand-card-label brand-card-label-blue">{brand.group}</p>
+                    <p className="brand-card-label brand-card-label-blue">
+                      {brandGroupCardLabels[brand.group] || brand.group}
+                    </p>
                     <p className="brand-card-title">{brand.name}</p>
                     <p className="brand-card-description">{brand.description}</p>
                     <p className="brand-card-footnote">

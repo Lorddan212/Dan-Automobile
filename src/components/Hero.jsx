@@ -46,7 +46,7 @@ function Hero() {
         >
           <span className="hero-eyebrow">
             <Sparkles size={14} />
-            Lagos showroom. Verified premium vehicles.
+            Verified premium Showroom
           </span>
 
           <h1 className="hero-title">

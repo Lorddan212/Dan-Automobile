@@ -1,4 +1,5 @@
-import { motion } from "framer-motion";
+import { useEffect, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import {
   BrainCircuit,
   Briefcase,
@@ -7,11 +8,10 @@ import {
   ShieldCheck,
   Sparkles,
   Headphones,
-  Wrench,
-  Zap
+  Wrench
 } from "lucide-react";
 import Button from "../components/Button";
-import { serviceCategories, services } from "../utils/data";
+import { galleryItems, serviceCategories, services } from "../utils/data";
 
 const iconMap = {
   sales: CarFront,
@@ -29,7 +29,31 @@ const categoryIconMap = {
   "Customer Support": Headphones
 };
 
+const serviceHeroSlides = [
+  galleryItems[2],
+  galleryItems[0],
+  galleryItems[6]
+].filter(Boolean);
+
 function Services() {
+  const [activeSlide, setActiveSlide] = useState(0);
+  const currentSlide = serviceHeroSlides[activeSlide];
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % serviceHeroSlides.length);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  useEffect(() => {
+    serviceHeroSlides.forEach((slide) => {
+      const image = new window.Image();
+      image.src = slide.image;
+    });
+  }, []);
+
   return (
     <motion.main
       initial={{ opacity: 0, y: 18 }}
@@ -39,19 +63,43 @@ function Services() {
       className="services-page"
     >
       <section className="services-hero-section">
-        <div className="services-hero-shell">
-          <span className="services-eyebrow">
-            <Briefcase size={14} />
-            DanAuto Services
-          </span>
-          <h1 className="services-title">
-            Practical vehicle services for buying, servicing, and managing premium cars.
-          </h1>
-          <p className="services-description">
-            From verified sourcing and pre-purchase inspection to workshop care, EV
-            support, fleet maintenance, and registration assistance, DanAuto keeps
-            the ownership process clear.
-          </p>
+        <div className="services-hero-stage" aria-label="Service highlights">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentSlide.id}
+              src={currentSlide.image}
+              alt={currentSlide.title}
+              initial={{ opacity: 0, scale: 1.04 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="services-hero-image"
+              loading="eager"
+              decoding="async"
+            />
+          </AnimatePresence>
+
+          <div className="services-hero-overlay" />
+
+          <div className="services-hero-content">
+            <div className="services-hero-shell">
+              <div className="services-hero-copy">
+                <span className="services-eyebrow">
+                  <Briefcase size={14} />
+                  DanAuto Services
+                </span>
+                <h1 className="services-title">
+                  <span className="services-title-line">Buying, servicing, and</span>
+                  <span className="services-title-line-accent">managing premium cars.</span>
+                </h1>
+                <p className="services-description">
+                  <span className="services-description-line">Verified sourcing, inspections,</span>
+                  <span className="services-description-line">workshop care, EV support,</span>
+                  <span className="services-description-line">fleet upkeep, and paperwork support.</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

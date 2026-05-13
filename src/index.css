@@ -460,7 +460,7 @@
   }
 
   .hero-title {
-    @apply mt-7 max-w-4xl font-display text-4xl uppercase leading-[1] text-white sm:text-5xl lg:text-6xl xl:text-[4.25rem];
+    @apply mt-7 max-w-4xl font-display text-3xl uppercase leading-[1] text-white sm:text-4xl lg:text-5xl xl:text-6xl;
   }
 
   .hero-description {
@@ -468,7 +468,19 @@
   }
 
   .hero-actions {
-    @apply mt-10 flex flex-col gap-4 sm:flex-row;
+    @apply mt-10 flex flex-row gap-3 sm:gap-4;
+  }
+
+  .hero-actions > div {
+    @apply min-w-0 flex-1 sm:flex-none;
+  }
+
+  .hero-actions .button-base {
+    @apply w-full min-w-0 px-3 text-[10px] tracking-[0.18em] sm:w-auto sm:px-6 sm:text-xs sm:tracking-[0.26em];
+  }
+
+  .hero-actions .button-content {
+    @apply whitespace-nowrap;
   }
 
   .hero-visual-glow {
@@ -542,7 +554,7 @@
   /* Shared: Cards */
   .car-card-scene,
   .catalog-card-scene {
-    @apply perspective-1800;
+    @apply h-full perspective-1800;
   }
 
   .car-card,
@@ -550,7 +562,8 @@
     @apply relative overflow-hidden rounded-[30px] border border-white/10 bg-white/[0.045] shadow-luxury backdrop-blur-2xl;
   }
 
-  .car-card {
+  .car-card,
+  .catalog-card {
     @apply h-full;
   }
 
@@ -570,12 +583,16 @@
   }
 
   .car-card-media-wrap {
-    @apply relative overflow-hidden px-5 pt-5;
+    @apply relative overflow-hidden;
   }
 
   .car-card-media-frame,
   .catalog-card-media-frame {
     @apply overflow-hidden rounded-[24px] border border-white/10 bg-black/20;
+  }
+
+  .car-card-media-frame {
+    @apply rounded-t-[30px] rounded-b-[24px] border-x-0 border-t-0;
   }
 
   .car-card-media {
@@ -587,16 +604,19 @@
   }
 
   .car-card-type-tag {
-    @apply absolute left-10 top-10 rounded-full border border-white/10 bg-black/35 px-3 py-1 text-xs uppercase tracking-[0.28em] text-luxury-mist/[0.85] backdrop-blur-xl;
+    @apply absolute left-5 top-5 rounded-full border border-white/10 bg-black/35 px-3 py-1 text-xs uppercase tracking-[0.28em] text-luxury-mist/[0.85] backdrop-blur-xl;
   }
 
   .car-card-body {
     @apply flex flex-1 flex-col p-6;
   }
 
-  .car-card-heading,
-  .catalog-card-heading {
+  .car-card-heading {
     @apply flex items-start justify-between gap-4;
+  }
+
+  .catalog-card-heading {
+    @apply flex flex-col items-start gap-3;
   }
 
   .car-card-copy,
@@ -625,7 +645,7 @@
   .car-card-stat,
   .catalog-card-stat,
   .catalog-card-highlight {
-    @apply rounded-[22px] border border-white/10 bg-black/25 p-4;
+    @apply min-w-0 rounded-[22px] border border-white/10 bg-black/25 p-4;
   }
 
   .car-card-stat-shell,
@@ -638,6 +658,10 @@
     @apply items-start;
   }
 
+  .catalog-card-stat-shell {
+    @apply items-start;
+  }
+
   .car-card-stat-copy,
   .catalog-card-stat-copy,
   .catalog-card-highlight-copy {
@@ -647,12 +671,14 @@
   .car-card-stat-label,
   .catalog-card-stat-label,
   .catalog-card-highlight-label {
-    @apply text-xs uppercase tracking-[0.22em] text-white/[0.42];
+    @apply text-xs uppercase leading-snug tracking-[0.18em] text-white/[0.42];
+    overflow-wrap: anywhere;
   }
 
   .car-card-stat-value,
   .catalog-card-stat-value {
-    @apply mt-1 text-sm font-medium text-white;
+    @apply mt-1 text-sm font-medium leading-snug text-white;
+    overflow-wrap: anywhere;
   }
 
   .car-card-stat-value {
@@ -672,7 +698,9 @@
   .car-card-feature,
   .catalog-card-type-pill,
   .catalog-card-fuel-tag {
-    @apply rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs uppercase tracking-[0.22em] text-white/[0.65];
+    @apply min-w-0 max-w-full rounded-full border border-white/10 bg-white/5 px-3 py-2 text-center text-xs uppercase leading-tight tracking-[0.16em] text-white/[0.65];
+    overflow-wrap: anywhere;
+    white-space: normal;
   }
 
   .catalog-card-type-pill,
@@ -699,7 +727,11 @@
   }
 
   .catalog-card-media-wrap {
-    @apply relative overflow-hidden p-5;
+    @apply relative -mx-5 -mt-5 mb-5 overflow-hidden sm:-mx-6 sm:-mt-6;
+  }
+
+  .catalog-card-media-frame {
+    @apply rounded-t-[30px] rounded-b-[24px] border-x-0 border-t-0;
   }
 
   .catalog-card-media {
@@ -716,20 +748,24 @@
   }
 
   .catalog-card-brand-tag {
-    @apply absolute left-4 top-4 inline-flex items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1 text-[10px] uppercase tracking-[0.24em] text-luxury-mist backdrop-blur-xl;
+    @apply absolute left-4 top-4 inline-flex max-w-[calc(100%-2rem)] items-center gap-2 rounded-full border border-white/10 bg-black/35 px-3 py-1 text-[10px] uppercase leading-tight tracking-[0.18em] text-luxury-mist backdrop-blur-xl;
+    overflow-wrap: anywhere;
   }
 
   .catalog-card-body {
-    @apply relative px-6 pb-6;
+    @apply relative flex h-full flex-col p-5 sm:p-6;
   }
 
   .catalog-card-group-tag,
   .catalog-card-ev-tag {
-    @apply rounded-full border border-luxury-blue/20 bg-luxury-blue/10 px-3 py-2 uppercase tracking-[0.22em] text-luxury-blue;
+    @apply inline-flex min-w-0 max-w-full items-center rounded-full border border-luxury-blue/20 bg-luxury-blue/10 px-3 py-2 text-left uppercase leading-tight tracking-[0.16em] text-luxury-blue;
+    overflow-wrap: anywhere;
+    white-space: normal;
   }
 
   .catalog-card-price-tag {
-    @apply rounded-full border border-luxury-gold/20 bg-luxury-gold/10 px-4 py-2 uppercase tracking-[0.22em] text-luxury-gold;
+    @apply max-w-full rounded-full border border-luxury-gold/20 bg-luxury-gold/10 px-4 py-2 text-center uppercase leading-tight tracking-[0.18em] text-luxury-gold;
+    overflow-wrap: anywhere;
   }
 
   .catalog-card-fuel-tag,
@@ -742,11 +778,16 @@
   }
 
   .catalog-card-stats {
-    @apply mt-6 grid gap-3 sm:grid-cols-3;
+    @apply mt-6 grid gap-3;
+    grid-template-columns: repeat(auto-fit, minmax(min(7.25rem, 100%), 1fr));
   }
 
   .catalog-card-stat {
     @apply rounded-[20px];
+  }
+
+  .catalog-card-highlight {
+    @apply mt-4;
   }
 
   .catalog-card-highlight-icon,
@@ -754,6 +795,11 @@
   .contact-card-icon,
   .contact-experience-icon {
     @apply icon-shell mt-1;
+  }
+
+  .catalog-card-stat-shell .icon-shell,
+  .catalog-card-highlight-icon {
+    @apply h-8 w-8 shrink-0;
   }
 
   .catalog-card-highlight-text {
@@ -787,13 +833,20 @@
     @apply max-w-2xl;
   }
 
-  .showcase-eyebrow,
   .about-media-eyebrow,
   .testimonials-eyebrow,
   .cars-eyebrow,
   .gallery-eyebrow,
   .about-page-story-eyebrow {
     @apply inline-flex items-center gap-3 text-xl uppercase tracking-[0.75em] text-luxury-blue;
+  }
+
+  .showcase-eyebrow {
+    @apply inline-flex max-w-full items-center gap-2 whitespace-nowrap text-[11px] uppercase tracking-[0.28em] text-luxury-blue sm:text-xs sm:tracking-[0.35em] lg:text-sm;
+  }
+
+  .showcase-eyebrow svg {
+    @apply h-4 w-4 shrink-0;
   }
 
   .showcase-title,
@@ -1178,17 +1231,23 @@
 
   /* Page: Services */
   .services-page {
-    @apply pb-12 pt-28 sm:pt-32;
+    @apply pb-12 pt-20 sm:pt-24;
   }
 
   .services-hero-section,
-  .gallery-hero-section,
+  .gallery-hero-section {
+    @apply relative overflow-hidden;
+  }
+
+  .services-hero-shell,
+  .gallery-hero-shell {
+    @apply mx-auto max-w-7xl;
+  }
+
   .cars-hero-section {
     @apply px-4 sm:px-6 lg:px-8;
   }
 
-  .services-hero-shell,
-  .gallery-hero-shell,
   .cars-hero-shell {
     @apply mx-auto max-w-7xl px-2 py-10 sm:px-0 sm:py-12;
   }
@@ -1288,7 +1347,7 @@
 @layer components {
   /* Page: Gallery */
   .gallery-page {
-    @apply pb-12 pt-28 sm:pt-32;
+    @apply pb-12 pt-20 sm:pt-24;
   }
 
   .gallery-eyebrow {
@@ -1297,6 +1356,62 @@
 
   .gallery-title {
     @apply max-w-4xl;
+  }
+
+  .gallery-hero-stage,
+  .services-hero-stage {
+    @apply relative h-[55vh] min-h-[24rem] w-full lg:h-[75vh];
+  }
+
+  .gallery-hero-copy,
+  .services-hero-copy {
+    @apply max-w-4xl;
+  }
+
+  .gallery-hero-image,
+  .services-hero-image {
+    @apply h-full w-full rounded-b-[40px] object-cover object-center;
+  }
+
+  .gallery-hero-overlay,
+  .services-hero-overlay {
+    @apply absolute inset-0 rounded-b-[40px];
+    background-image: linear-gradient(180deg, rgba(5, 7, 12, 0.1), rgba(5, 7, 12, 0.46) 42%, rgba(5, 7, 12, 0.9));
+  }
+
+  .gallery-hero-content,
+  .services-hero-content {
+    @apply absolute inset-x-0 bottom-0 z-10 px-4 pb-6 sm:px-6 sm:pb-8 lg:px-8 lg:pb-10;
+  }
+
+  .gallery-hero-copy .gallery-title,
+  .services-hero-copy .services-title {
+    @apply mt-3 w-full max-w-[calc(100vw-2rem)] break-words text-[1.45rem] leading-[1.08] sm:max-w-4xl sm:text-4xl lg:text-5xl;
+    text-wrap: balance;
+    text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    white-space: normal;
+  }
+
+  .gallery-title-line,
+  .services-title-line {
+    @apply block;
+  }
+
+  .gallery-title-line-accent,
+  .services-title-line-accent {
+    @apply mt-1 block bg-gradient-to-r from-luxury-blue via-white to-luxury-gold bg-clip-text text-transparent;
+    text-shadow: 0 10px 30px rgba(9, 78, 120, 0.22);
+  }
+
+  .gallery-hero-copy .gallery-description,
+  .services-hero-copy .services-description {
+    @apply mt-5 w-full max-w-[calc(100vw-2rem)] break-words text-sm leading-7 text-white/[0.78] sm:max-w-3xl sm:text-lg sm:leading-9;
+    white-space: normal;
+  }
+
+  .gallery-description-line,
+  .services-description-line {
+    @apply block;
   }
 
   .gallery-grid {
@@ -1359,7 +1474,7 @@
   }
 
   .contact-title {
-    @apply mt-4 max-w-xl text-balance font-display text-4xl uppercase leading-[0.95] text-white sm:text-5xl lg:text-6xl;
+    @apply mt-4 max-w-xl text-balance font-display text-3xl uppercase leading-[0.95] text-white sm:text-4xl lg:text-5xl;
   }
 
   .contact-description {
@@ -1688,7 +1803,7 @@
   }
 
   .cars-title {
-    @apply mt-4 max-w-4xl font-display text-5xl uppercase leading-[0.95] text-white sm:text-6xl;
+    @apply mt-4 max-w-4xl font-display text-4xl uppercase leading-[0.95] text-white sm:text-5xl;
   }
 
   .cars-description {
@@ -1725,9 +1840,12 @@
 
   .cars-filter-chip-row,
   .cars-type-chip-row,
-  .cars-brand-group-row,
   .cars-summary-chip-row {
     @apply mt-3 flex flex-wrap gap-2;
+  }
+
+  .cars-brand-group-row {
+    @apply mt-3 grid grid-cols-2 gap-3 sm:flex sm:flex-wrap;
   }
 
   .cars-filter-block {
@@ -1744,11 +1862,11 @@
   }
 
   .cars-brand-group-pill {
-    @apply rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[10px] uppercase tracking-[0.22em] text-white/[0.55];
+    @apply flex min-h-10 items-center justify-center whitespace-nowrap rounded-full border border-white/10 bg-white/[0.04] px-3 py-3 text-center text-[10px] uppercase leading-none tracking-[0.18em] text-white/[0.55] sm:px-5 sm:tracking-[0.22em];
   }
 
   .cars-brand-grid {
-    @apply grid gap-4 xl:grid-cols-4;
+    @apply mt-6 grid gap-4 sm:mt-7 sm:grid-cols-2 lg:mt-8 xl:grid-cols-4;
   }
 
   .brand-card {
@@ -1773,7 +1891,7 @@
   }
 
   .brand-card-label {
-    @apply text-[10px] uppercase tracking-[0.24em];
+    @apply inline-block max-w-full overflow-hidden text-ellipsis whitespace-nowrap rounded-full border border-white/10 bg-white/[0.04] px-3 py-1.5 text-[9px] uppercase leading-none tracking-[0.16em];
   }
 
   .brand-card-label-blue {

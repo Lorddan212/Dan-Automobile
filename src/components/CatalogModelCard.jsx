@@ -38,24 +38,24 @@ function CatalogModelCard({ model }) {
         <div className={`catalog-card-accent bg-gradient-to-br ${model.accent}`} />
         <div className="catalog-card-sheen" />
 
-        <div className="catalog-card-media-wrap">
-          <div className="catalog-card-media-frame">
-            <img
-              src={model.previewImage}
-              alt={model.displayName}
-              className="catalog-card-media"
-              loading="lazy"
-              decoding="async"
-            />
-            <div className="catalog-card-media-overlay" />
-            <div className="catalog-card-brand-tag">
-              <Layers3 size={12} />
-              {model.brand}
+        <div className="catalog-card-body">
+          <div className="catalog-card-media-wrap">
+            <div className="catalog-card-media-frame">
+              <img
+                src={model.previewImage}
+                alt={model.displayName}
+                className="catalog-card-media"
+                loading="lazy"
+                decoding="async"
+              />
+              <div className="catalog-card-media-overlay" />
+              <div className="catalog-card-brand-tag">
+                <Layers3 size={12} />
+                {model.brand}
+              </div>
             </div>
           </div>
-        </div>
 
-        <div className="catalog-card-body">
           <div className="catalog-card-heading">
             <div className="catalog-card-copy">
               <h3 className="catalog-card-name">{model.name}</h3>

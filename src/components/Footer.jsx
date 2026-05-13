@@ -63,7 +63,7 @@ function Footer() {
           <div>
             <span className="site-footer-badge">DanAuto</span>
             <h2 className="site-footer-title">
-              Premium vehicle sourcing, sales, leasing, and service support in Lagos
+              Premium vehicle sourcing, sales, leasing, and service support
             </h2>
             <p className="site-footer-description">
               DanAuto helps clients compare vehicles, arrange inspections, plan

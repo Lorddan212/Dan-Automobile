@@ -1,51 +1,57 @@
 # DanAuto
 
-DanAuto is a modern automobile website built with React, Vite, Tailwind CSS, Framer Motion, and React Router. It presents a luxury, futuristic automotive brand experience with animated page transitions, premium dark styling, a car catalog, services, gallery, and contact flow.
+DanAuto is a responsive automobile website built with React, Vite, Tailwind CSS, Framer Motion, and React Router. The site presents DanAuto as a Lagos-based premium vehicle sourcing, sales, leasing, inspection, and service support business.
 
 ## Overview
 
-This project is designed as a polished front-end experience for an automobile company. The interface focuses on:
+The current experience focuses on practical vehicle ownership needs:
 
-- premium dark visuals
-- futuristic typography and glassmorphism
-- responsive layouts across mobile, tablet, and desktop
-- animated sections and transitions
-- reusable component structure
-- Naira-based vehicle pricing
+- premium vehicle sourcing and shortlist guidance
+- searchable brand and model catalog
+- pre-purchase inspection and document review messaging
+- workshop, EV, fleet, delivery, and customer support services
+- realistic contact and appointment flow
+- legal pages for privacy, terms, and cookies
+- responsive layouts across desktop, tablet, and mobile
 
 ## Pages
 
 - `Home`  
-  Landing experience with hero content, featured models, technology highlights, testimonials, and service previews.
+  Hero section, popular vehicle requests, service previews, practical support highlights, testimonials, and booking CTA.
 
 - `About`  
-  Brand story, mission and vision, animated hero slides, brand stats, pillars, and company timeline.
-
-- `Services`  
-  DanAuto service categories including sales, maintenance, premium services, and customer support.
-
-- `Gallery`  
-  Visual showcase of the DanAuto brand experience and vehicle imagery.
+  DanAuto story, mission, vision, stats, service pillars, and company timeline.
 
 - `Cars`  
-  Searchable and filterable global automotive catalog with brand browsing, type filters, fuel filters, and price ranges.
+  Searchable and filterable catalog with brand groups, fuel filters, vehicle type filters, price bands, and model cards.
 
 - `Car Details`  
-  Dedicated details page for DanAuto vehicle models with specs, highlights, and gallery images.
+  Dedicated vehicle profile pages with estimated pricing, specs, highlights, image gallery, and appointment actions.
+
+- `Services`  
+  Sales, sourcing, maintenance, EV and hybrid support, customer care, fleet services, and driver handover support.
+
+- `Gallery`  
+  Vehicle, interior, inspection, delivery, and showroom-focused visual content.
 
 - `Contact`  
-  Contact and booking page for customer inquiries and appointments.
+  Appointment request form with realistic showroom/service contact details and validation.
+
+- `Legal`  
+  Privacy, terms, and cookie notice pages.
 
 ## Features
 
-- Responsive multi-page React application
-- Animated navigation and page transitions with Framer Motion
-- Tailwind-based luxury design system
-- Loading screen experience
-- Brand and model catalog browsing
-- Vehicle filters by type, fuel type, and price range
-- DanAuto-specific content and Naira pricing
-- Reusable UI sections and components
+- React Router multi-page navigation
+- Framer Motion page and section animations
+- Responsive desktop, tablet, and mobile layouts
+- Brand filters and catalog search
+- Fuel type, vehicle type, and price range filtering
+- Naira-based estimated pricing
+- Reusable UI components and page sections
+- Skip link and improved navigation accessibility
+- Footer legal links and legal route handling
+- Production-ready Vite build setup
 
 ## Tech Stack
 
@@ -75,6 +81,7 @@ src/
 │   ├── Contact.jsx
 │   ├── Gallery.jsx
 │   ├── Home.jsx
+│   ├── Legal.jsx
 │   └── Services.jsx
 ├── sections/
 │   ├── About.jsx
@@ -92,16 +99,16 @@ src/
 
 ### Prerequisites
 
-- Node.js 18+ recommended
+- Node.js 18+
 - npm
 
-### Installation
+### Install dependencies
 
 ```bash
 npm install
 ```
 
-If your terminal has `NODE_ENV=production` set, install with:
+If your terminal has `NODE_ENV=production` set, install dev dependencies with:
 
 ```bash
 npm install --include=dev
@@ -125,20 +132,7 @@ npm run build
 npm run preview
 ```
 
-## Scripts
-
-- `npm run dev`  
-  Starts the Vite development server.
-
-- `npm run build`  
-  Creates a production build.
-
-- `npm run preview`  
-  Serves the production build locally.
-
-## Routing
-
-The app uses React Router and includes these routes:
+## Routes
 
 - `/`
 - `/about`
@@ -147,28 +141,20 @@ The app uses React Router and includes these routes:
 - `/cars`
 - `/cars/:carId`
 - `/contact`
+- `/privacy`
+- `/terms`
+- `/cookies`
 
 Legacy `/models` routes redirect to `/cars`.
 
 ## Customization Notes
 
-- Main content and catalog data are stored in `src/utils/data.js`
-- Global theme and utility styles live in `src/index.css`
-- App routes are defined in `src/App.jsx`
-- Shared UI elements are located in `src/components`
-- Home page content sections are organized in `src/sections`
-
-## Design Direction
-
-The current UI direction uses:
-
-- a dark luxury palette
-- gold and blue accent highlights
-- soft layered shadows
-- rounded premium panels
-- immersive hero layouts
-- motion-driven interactions
+- Main content, brand data, vehicle data, services, testimonials, and gallery items live in `src/utils/data.js`.
+- Global styling and responsive behavior live in `src/index.css`.
+- Routes and lazy-loaded pages are defined in `src/App.jsx`.
+- Shared UI elements live in `src/components`.
+- Homepage sections live in `src/sections`.
 
 ## Status
 
-This project is production-build ready on the front end and currently focuses on presentation, browsing, and branded experience. It does not include a backend API or persistent database integration.
+This is a front-end-only project. It includes presentation, browsing, filtering, appointment UI, and legal content, but it does not include a backend API, payment flow, authentication, or persistent database storage.

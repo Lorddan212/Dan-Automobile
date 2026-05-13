@@ -1,8 +1,28 @@
-import { motion } from "framer-motion";
+import { useEffect, useMemo, useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
 import { GalleryVertical, Image as ImageIcon } from "lucide-react";
 import { galleryItems } from "../utils/data";
 
 function Gallery() {
+  const heroSlides = useMemo(() => galleryItems.slice(0, 3), []);
+  const [activeSlide, setActiveSlide] = useState(0);
+  const currentSlide = heroSlides[activeSlide];
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveSlide((current) => (current + 1) % heroSlides.length);
+    }, 4500);
+
+    return () => window.clearInterval(timer);
+  }, [heroSlides.length]);
+
+  useEffect(() => {
+    heroSlides.forEach((slide) => {
+      const image = new window.Image();
+      image.src = slide.image;
+    });
+  }, [heroSlides]);
+
   return (
     <motion.main
       initial={{ opacity: 0, y: 18 }}
@@ -12,19 +32,44 @@ function Gallery() {
       className="gallery-page"
     >
       <section className="gallery-hero-section">
-        <div className="gallery-hero-shell">
-          <span className="gallery-eyebrow">
-            <GalleryVertical size={14} />
-            DanAuto Gallery
-          </span>
-          <h1 className="gallery-title">
-            A closer look at the vehicles, interiors, workshop checks, and delivery moments clients ask about
-          </h1>
-          <p className="gallery-description">
-            The gallery gives buyers a realistic sense of showroom visits,
-            inspection details, cabin finishes, delivery preparation, and vehicle
-            condition before an appointment.
-          </p>
+        <div className="gallery-hero-stage" aria-label="Gallery highlights">
+          <AnimatePresence mode="wait">
+            <motion.img
+              key={currentSlide.id}
+              src={currentSlide.image}
+              alt={currentSlide.title}
+              initial={{ opacity: 0, scale: 1.04 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.98 }}
+              transition={{ duration: 0.7, ease: "easeOut" }}
+              className="gallery-hero-image"
+              loading="eager"
+              decoding="async"
+            />
+          </AnimatePresence>
+
+          <div className="gallery-hero-overlay" />
+
+          <div className="gallery-hero-content">
+            <div className="gallery-hero-shell">
+              <div className="gallery-hero-copy">
+                <span className="gallery-eyebrow">
+                  <GalleryVertical size={14} />
+                  DanAuto Gallery
+                </span>
+                <h1 className="gallery-title">
+                  <span className="gallery-title-line">Vehicle interiors,</span>
+                  <span className="gallery-title-line">inspection details,</span>
+                  <span className="gallery-title-line-accent">delivery moments.</span>
+                </h1>
+                <p className="gallery-description">
+                  <span className="gallery-description-line">Showroom visits, cabin finishes,</span>
+                  <span className="gallery-description-line">inspection details, and delivery prep.</span>
+                  <span className="gallery-description-line">Vehicle condition before an appointment.</span>
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

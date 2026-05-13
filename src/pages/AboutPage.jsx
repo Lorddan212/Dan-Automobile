@@ -159,7 +159,7 @@ function AboutPage() {
                 Brand Story
               </span>
               <h2 className="about-page-story-title">
-                {companyName} is building a clearer way to buy and maintain premium vehicles.
+                {companyName} is building a clearer way to buy and maintain premium vehicles
               </h2>
               <p className="about-page-story-paragraph about-page-story-paragraph-strong">
                 {companyName} works with buyers who want the confidence of a premium
