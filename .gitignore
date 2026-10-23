@@ -21,6 +21,9 @@ pnpm-debug.log*
 # Coverage
 coverage/
 
+# Local Playwright artifacts (reports, screenshots and traces)
+output/playwright/
+
 # Editor directories and files
 .vscode/
 .idea/
