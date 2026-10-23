@@ -10,6 +10,7 @@ export default defineConfig({
   expect: { timeout: 15_000 },
   outputDir: 'output/playwright/test-results',
   reporter: [
+    ['./tests/e2e/baseline-reporter.ts'],
     ['list'],
     ['html', { outputFolder: 'output/playwright/report', open: 'never' }],
     ['json', { outputFile: 'output/playwright/results.json' }],
