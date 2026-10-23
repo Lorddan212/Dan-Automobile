@@ -1,0 +1,29 @@
+# Optional free/open enrichment review
+
+**Research: 23 October 2026. No new dataset ingested, account created, paid trial activated or exact joins approved.** Measurable benefits below distinguish documented fields from incremental cohort coverage, which remains unmeasured.
+
+| Source and official evidence | Access / rights / storage | Potential benefit | Decision and admission test |
+|---|---|---|---|
+| [EPA Test Car List](https://www.epa.gov/compliance-and-fuel-economy-data/data-cars-used-testing-fuel-economy), [field dictionary](https://www.epa.gov/sites/default/files/2016-07/documents/test-car-list-definitions.pdf), [EPA default license](https://edg.epa.gov/EPA_Data_License.htm) | Public downloads, no trial/key. EPA-produced data defaults to public domain unless metadata says otherwise; inspect each year's metadata and manufacturer-submitted exceptions | Dictionary explicitly distinguishes rated engine horsepower from dynamometer horsepower. Potential power/weight enrichment | Conditional research candidate, not automatically mapped to EPA label IDs. Current-year schema, test-group/configuration crosswalk and rating basis must be tested. Test weight is not curb weight; dyno HP is not engine output. Torque/equipment/MSRP coverage not established |
+| [EPA Automotive Trends](https://www.epa.gov/automotive-trends), same default license | Public official report/data; check file-specific metadata | Horsepower/weight/footprint trends for contextual analysis | Context only: aggregate fleet/model-group facts cannot populate exact trim fields. Zero newly validated cohort joins |
+| [vPIC variables and decode documentation](https://vpic.nhtsa.dot.gov/api/) | Free service, no registration; redistribution clarification still open. VIN input is outside v1 | Some manufacturer-reported power, dimensions, seats and equipment variables may exist for a VIN | Later optional feature only; variable availability is not 30/30 coverage. Do not invent sample VINs or introduce required VIN collection |
+| [2024 Chevrolet manufacturer specification sheet](https://media.chevrolet.com/content/dam/Media/images/US/Vehicles/Chevrolet/Trucks/Silverado/2024/2024-Chevrolet-Silverado-033023.pdf) and [owner manual](https://contentdelivery.ext.gm.com/content/dam/cope/en_us/public/pdf_assets/active/owners_manuals_browse/24_CHEV_Silverado_1500_OM_en_US_U_85516379D_2025JUN26_4P.pdf) | Free to read, not an open dataset/API license. Full-text/image copying, cache and commercial redistribution rights not established; media terms page inaccessible through reading tool | One documented example: Duramax 3.0 power/torque and configuration-dependent towing/payload; manual has capacities | Conditional manual factual reference, not approved bulk extraction. Resolve rights, engine/year/market/standard, cab/bed/options and crosswalk first. Maximum towing/payload is not universal. Does not retroactively change frozen 29/30 result |
+| [CarAPI free API](https://carapi.app/api), [terms](https://carapi.app/terms-of-use/) | No-account free dataset limited to 2015–2020; separate paid coverage. Terms permit plan-governed end-user display but prohibit bulk/standalone redistribution; storage rights must be confirmed | Potential older-year trim/body/engine fields | Requires clarification before persistence/public read API. Not a guaranteed production-free substitute; no current cohort uplift measured. Paid trials stay outside baseline |
+| [Wikidata structured data](https://www.wikidata.org/wiki/Help:Data_access) and [Commons](https://commons.wikimedia.org/wiki/Commons:Reusing_content_outside_Wikimedia) | CC0 structured data; media rights independent. Public access with automation limits | Generation/entity context and additional model photos | Optional reviewed generation crosswalk; no crowdsourced value overrides EPA. Existing five photo audits remain representative |
+| [Unsplash license](https://unsplash.com/license) | General commercial reuse permission; API delivery/attribution terms separate | Editorial business photography | Not configuration evidence; no new exact-image coverage established |
+
+## Gaps deliberately retained
+
+- Horsepower/torque: no complete authorized exact-configuration source proven. Engine-only horsepower is not combined hybrid system output; never sum electric motor descriptors.
+- Dimensions/capacity: EPA class and passenger/cargo volumes are partial; length/width/height/seats/towing require market/body/options and source basis. Missing volumes are not zero.
+- Equipment/trim: marketing trim identity remains distinct from EPA record; reviewed crosswalk required.
+- Photography: free licensing plus correct generation/year/market/trim are independent checks.
+- Pricing: original MSRP needs currency, market, model year, publication date, trim/options and destination-charge basis. Current used price, MSRP and annual fuel cost are different metrics.
+- FuelEconomy.gov comparison-page MSRP/tank-size data can be attributed to Edmunds; an official page displaying third-party facts does not grant its feed's reuse rights for those fields. No website scraping proposed.
+- A public GitHub CSV, a free sample, a trial quota or a permissive code license does not prove data provenance or data redistribution rights. No such source is a required dependency.
+
+## Proposed optional admission experiment
+
+After core rights are clear and a bounded validation task is authorized, select fixed EPA IDs before looking for enrichment; inspect relevant source schemas/metadata; record every candidate, exact field count, join evidence and rejected conflict; separately measure value availability and exact join rate. Publish only validated values. Keep all failed targets in the denominator. Core launch and Phase 1 foundation do not depend on optional enrichment.
+
+See [rights register](PROVIDER_RIGHTS_REGISTER.md) and [accepted benchmark](PHASE_0B_VALIDATION_REPORT.md).
