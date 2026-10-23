@@ -8,6 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "typecheck": "tsc --project tsconfig.json",
+    "test:tooling": "node --test tests/tooling/baseline-reporter.test.mjs",
     "test:e2e": "npm run build && playwright test"
   },
   "engines": {
