@@ -1,14 +1,8 @@
-const nairaFormatter = new Intl.NumberFormat("en-NG", {
-  style: "currency",
-  currency: "NGN",
-  maximumFractionDigits: 0
-});
+import { formatNaira } from "./formatNaira";
 
 export const companyName = "DanAuto";
 
-export function formatNaira(value) {
-  return nairaFormatter.format(value);
-}
+export { formatNaira };
 
 export const heroMetrics = [
   { label: "Inspection Focus", value: "Docs + condition checks", delay: 0.1 },
