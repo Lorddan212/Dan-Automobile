@@ -1,3 +1,266 @@
+# DanAuto Phase 1B.1-S local dependency security remediation
+
+**Status: compatible local remediation PASS; owner review pending. Production release remains NO-GO.**
+
+Assessment date: **2026-10-24 Africa/Lagos**. The owner's Phase 1B.1-S request explicitly authorizes local dependency work independently of the unresolved hosting gate. This supersedes the earlier local-work pause for this scope only. No deployment, hosting change, provider integration, database operation or Phase 1B.2 work occurred. **No Git staging, commit, branch switch, merge, push, PR or tag operation was performed.**
+
+The earlier security assessment is preserved verbatim below as historical evidence, not the current decision. Its original file and the unchanged preview report were also copied into ignored local recovery evidence before editing.
+
+## A. Starting Git branch, HEAD and preservation
+
+| Item | Verified value |
+| --- | --- |
+| Current branch | `modernization/phase-1b1-routing` |
+| Starting and final HEAD | `01cc01139dd5c8d586e85880e5bf7f9b1ae5f3a7` |
+| Local main | `05b0ac136b9075fab0b41a4b31307f54146471ea`, unchanged |
+| Phase 1A closeout | `c6d02aadfab149f75851f4a757e6f8ec00ca0ffc`, preserved in history and on its foundation branch |
+| Baseline tag | `danauto-app-baseline-2026-10-23`, still points to original application commit |
+| Known local origin/main | `caa06557511bbdb28f59d2eb3d1ab4f17e6c76fa`; HEAD is three commits ahead, zero behind this reference |
+| Entry status | Empty index, no tracked changes, one legitimate untracked preview report |
+| Final index | Empty; owner controls all staging and commits |
+
+The comparison uses the known local remote-tracking references; no fetch or remote-reference update was needed. Original recovery bundle and ZIP under `C:\Users\HP\Desktop\DanAuto-Recovery\phase-1a-20261023` retain their recorded SHA-256 hashes, and `git bundle verify` again confirms complete original history. Neither backup was overwritten. The prior reports and pre-change package files were copied to `output/playwright/phase-1b1-security/before/` before dependency changes.
+
+Preserved preview report SHA-256: `F6CEC0BD14CD0D4921D8D4D7BEE618738E9FA07C654D1F786785E391DBEBCDA6`. The old security assessment SHA-256 was `4D4D96C345DEC2C3229D6625CF42F3F5F17522362673698C257603F19BB741A8`; the exact original text remains the suffix of this file and is recoverable from HEAD as well as the local snapshot.
+
+## B. Original and final vulnerability counts
+
+Fresh complete-tree and production-only audits were run before and after changes. The original `05b0ac1` manifest/lockfile was separately audited without installing it: it has the same initial 11 affected package entries and 32 active advisory IDs. All initial findings therefore predate Phase 1A; the added test/TypeScript foundation did not introduce them.
+
+| Audit | Before package entries | After package entries | Before unique advisories | After unique advisories | Final exit |
+| --- | --- | --- | --- | --- | --- |
+| Full, including development | 11: 7 high / 3 moderate / 1 low | **5: 1 high / 4 moderate / 0 low** | 32 | **10** | 1: known findings remain |
+| Production only | 2 high | **0** | 9 | **0** | 0 |
+
+No critical finding before or after. **22 unique active advisories were addressed; no new unique advisory appeared.** Package counts include propagated parent entries and are not advisory counts. The post-remediation moderate count includes unchanged `postcss-nested` and `tailwindcss` parents now reported through the existing parser advisory; it does not represent two new advisories or changed Tailwind code. Before/after JSON evidence retains the exact npm classifications.
+
+All 33 requested GitHub advisory records (32 active plus the known withdrawal) were freshly retrieved from the official [GitHub advisory API](https://docs.github.com/en/rest/security-advisories/global-advisories#get-a-global-security-advisory). Current package versions, engines and parent/peer requirements were checked against the official npm registry. `GHSA-vfj7-8cjw-p6xm` is confirmed withdrawn at `2026-10-23T12:53:02Z`; it is excluded from both initial and final active counts and **not counted as a package patch**.
+
+## C. Exact packages, dependency paths and advisories
+
+| Package | Dependency relationship and exposure | Dependency path | Current context |
+| --- | --- | --- | --- |
+| react-router-dom | Direct, production; inherited router findings | app -> react-router-dom | BrowserRouter application; no framework/RSC server |
+| react-router | Transitive, production | app -> react-router-dom -> react-router | Client navigation is relevant; many listed server/RSC conditions are absent |
+| postcss | Direct, development/build | app -> postcss; shared by Vite/Tailwind | Compiles repository CSS; no public CSS processor |
+| @babel/core | Transitive, development/build | app -> @vitejs/plugin-react -> @babel/core | Compiles repository source; no visitor-controlled compiler input |
+| browserslist | Transitive, development/build | app -> autoprefixer/Babel -> browserslist | Build-time browser queries/statistics |
+| baseline-browser-mapping | Transitive, development/build | app -> browserslist -> baseline-browser-mapping | Invalid build input can terminate Node |
+| nanoid | Transitive, development/build | app -> postcss -> nanoid | No application session/token generation observed |
+| source-map-js | Transitive, development/build | app -> postcss -> source-map-js | Source-map processing rather than public request handling |
+| postcss-selector-parser | Transitive, development/build | app -> tailwindcss -> parser; also postcss-nested -> parser | Selector processing during CSS compilation |
+| vite | Direct, development/build | app -> vite | Windows dev/editor/file-serving issues remain relevant locally |
+| esbuild | Transitive, development/build | app -> vite -> esbuild | Advisory targets esbuild's serve API, not emitted static files |
+
+Reachability distinctions do not dismiss inventory findings. The React Router patch removes the nine affected router advisories without introducing SSR, RSC, loaders or a backend. Source-map/file-disclosure and build-parser fixes reduce developer/build risk even though the application does not expose those processors to visitors.
+
+The following ledger lists every original active advisory, its individual severity, installed-version change and official first-fixed version matching the original affected branch. The react-router-dom parent inherits router findings; it is not nine additional independent advisories. **Every row also existed in the separately audited original baseline.**
+
+| Package | Before -> after | Severity | Advisory | First fixed version | Result |
+| --- | --- | --- | --- | --- | --- |
+| @babel/core | 7.29.0 -> 7.29.7 | low | [GHSA-4x5r-pxfx-6jf8](https://github.com/advisories/GHSA-4x5r-pxfx-6jf8) | 7.29.6 | Addressed |
+| baseline-browser-mapping | 2.10.16 -> 2.11.32 | moderate | [GHSA-w5vr-8v7q-w6rv](https://github.com/advisories/GHSA-w5vr-8v7q-w6rv) | 2.11.0 | Addressed |
+| browserslist | 4.28.2 -> 4.29.4 | high | [GHSA-c83g-rgw3-j3cx](https://github.com/advisories/GHSA-c83g-rgw3-j3cx) | 4.28.7 | Addressed |
+| browserslist | 4.28.2 -> 4.29.4 | high | [GHSA-73wf-gq98-2v4g](https://github.com/advisories/GHSA-73wf-gq98-2v4g) | 4.28.7 | Addressed |
+| esbuild | 0.21.5 -> 0.21.5 | moderate | [GHSA-67mh-4wv8-2f99](https://github.com/advisories/GHSA-67mh-4wv8-2f99) | 0.25.0 | Remains |
+| nanoid | 3.3.11 -> 3.3.20 | high | [GHSA-28wg-ghj8-5hjv](https://github.com/advisories/GHSA-28wg-ghj8-5hjv) | 3.3.16 | Addressed |
+| nanoid | 3.3.11 -> 3.3.20 | high | [GHSA-2v37-7h3g-55p8](https://github.com/advisories/GHSA-2v37-7h3g-55p8) | 3.3.18 | Addressed |
+| nanoid | 3.3.11 -> 3.3.20 | high | [GHSA-xwg4-73v4-xw9w](https://github.com/advisories/GHSA-xwg4-73v4-xw9w) | 3.3.12 | Addressed |
+| postcss | 8.5.8 -> 8.5.31 | moderate | [GHSA-qx2v-qp2m-jg93](https://github.com/advisories/GHSA-qx2v-qp2m-jg93) | 8.5.10 | Addressed |
+| postcss | 8.5.8 -> 8.5.31 | high | [GHSA-6g55-p6wh-862q](https://github.com/advisories/GHSA-6g55-p6wh-862q) | 8.5.12 | Addressed |
+| postcss | 8.5.8 -> 8.5.31 | moderate | [GHSA-fxqj-rqcc-2cmp](https://github.com/advisories/GHSA-fxqj-rqcc-2cmp) | 8.5.23 | Addressed |
+| postcss | 8.5.8 -> 8.5.31 | high | [GHSA-r28c-9q8g-f849](https://github.com/advisories/GHSA-r28c-9q8g-f849) | 8.5.18 | Addressed |
+| postcss-selector-parser | 6.1.2 -> 6.1.5 | low | [GHSA-w9m9-85wc-3x92](https://github.com/advisories/GHSA-w9m9-85wc-3x92) | 6.1.3 | Addressed |
+| postcss-selector-parser | 6.1.2 -> 6.1.5 | moderate | [GHSA-rj75-hqrm-r3gf](https://github.com/advisories/GHSA-rj75-hqrm-r3gf) | 7.1.6 | Remains |
+| react-router | 7.14.0 -> 7.18.4 | high | [GHSA-49rj-9fvp-4h2h](https://github.com/advisories/GHSA-49rj-9fvp-4h2h) | 7.14.2 | Addressed |
+| react-router | 7.14.0 -> 7.18.4 | high | [GHSA-8x6r-g9mw-2r78](https://github.com/advisories/GHSA-8x6r-g9mw-2r78) | 7.15.0 | Addressed |
+| react-router | 7.14.0 -> 7.18.4 | low | [GHSA-84g9-w2xq-vcv6](https://github.com/advisories/GHSA-84g9-w2xq-vcv6) | 7.15.1 | Addressed |
+| react-router | 7.14.0 -> 7.18.4 | moderate | [GHSA-wrjc-x8rr-h8h6](https://github.com/advisories/GHSA-wrjc-x8rr-h8h6) | 7.18.0 | Addressed |
+| react-router | 7.14.0 -> 7.18.4 | moderate | [GHSA-h8fp-f39c-q6mh](https://github.com/advisories/GHSA-h8fp-f39c-q6mh) | 7.18.0 | Addressed |
+| react-router | 7.14.0 -> 7.18.4 | moderate | [GHSA-337j-9hxr-rhxg](https://github.com/advisories/GHSA-337j-9hxr-rhxg) | 7.18.0 | Addressed |
+| react-router | 7.14.0 -> 7.18.4 | high | [GHSA-chx6-hx7r-mcp5](https://github.com/advisories/GHSA-chx6-hx7r-mcp5) | 7.18.0 | Addressed |
+| react-router | 7.14.0 -> 7.18.4 | moderate | [GHSA-2j2x-hqr9-3h42](https://github.com/advisories/GHSA-2j2x-hqr9-3h42) | 7.14.1 | Addressed |
+| react-router | 7.14.0 -> 7.18.4 | high | [GHSA-qwww-vcr4-c8h2](https://github.com/advisories/GHSA-qwww-vcr4-c8h2) | 7.18.2 | Addressed |
+| source-map-js | 1.2.1 -> 1.2.2 | high | [GHSA-68fv-2mgg-jv7q](https://github.com/advisories/GHSA-68fv-2mgg-jv7q) | 1.2.2 | Addressed |
+| vite | 5.4.21 -> 5.4.21 | moderate | [GHSA-4w7w-66w2-5vf9](https://github.com/advisories/GHSA-4w7w-66w2-5vf9) | 6.4.2 | Remains |
+| vite | 5.4.21 -> 5.4.21 | moderate | [GHSA-v6wh-96g9-6wx3](https://github.com/advisories/GHSA-v6wh-96g9-6wx3) | 6.4.3 | Remains |
+| vite | 5.4.21 -> 5.4.21 | high | [GHSA-fx2h-pf6j-xcff](https://github.com/advisories/GHSA-fx2h-pf6j-xcff) | 6.4.3 | Remains |
+| vite | 5.4.21 -> 5.4.21 | moderate | [GHSA-698v-4r3x-3vcv](https://github.com/advisories/GHSA-698v-4r3x-3vcv) | 6.4.4 | Remains |
+| vite | 5.4.21 -> 5.4.21 | moderate | [GHSA-r825-w8mm-5pxw](https://github.com/advisories/GHSA-r825-w8mm-5pxw) | 6.4.4 | Remains |
+| vite | 5.4.21 -> 5.4.21 | high | [GHSA-587h-7wmj-h5pm](https://github.com/advisories/GHSA-587h-7wmj-h5pm) | 6.4.4 | Remains |
+| vite | 5.4.21 -> 5.4.21 | low | [GHSA-9jrq-w75r-8gcw](https://github.com/advisories/GHSA-9jrq-w75r-8gcw) | 6.4.4 | Remains |
+| vite | 5.4.21 -> 5.4.21 | moderate | [GHSA-rq7h-c2jc-7f22](https://github.com/advisories/GHSA-rq7h-c2jc-7f22) | 6.4.4 | Remains |
+
+## D. Dependency versions changed
+
+Only two manifest floors change: `react-router-dom` from `^7.14.0` to `^7.18.4`, and development `postcss` from `^8.5.8` to `^8.5.31`. Node `24.22.1`, npm `11.19.1`, packageManager, engine range, all scripts and exact test/TypeScript pins are unchanged. React/React DOM stay 18.3.1, Vite 5.4.21, Tailwind 3.4.19, Framer Motion 12.38.0 and @vitejs/plugin-react 4.7.0.
+
+The lockfile records **29 version updates**, with no package paths added/removed, no major version changes, no overrides, and no newly introduced install scripts. Supporting Babel patch packages and browser-data updates follow the targeted packages' normal dependency ranges; set-cookie-parser is a compatible router dependency refresh, not a separately claimed advisory fix. All changed packages' declared Node engines accept Node 24.22.1; the complete installed tree is valid.
+
+| Locked package | Before | After |
+| --- | --- | --- |
+| @babel/code-frame | 7.29.0 | 7.29.7 |
+| @babel/compat-data | 7.29.0 | 7.29.7 |
+| @babel/core | 7.29.0 | 7.29.7 |
+| @babel/generator | 7.29.1 | 7.29.8 |
+| @babel/helper-compilation-targets | 7.28.6 | 7.29.7 |
+| @babel/helper-globals | 7.28.0 | 7.29.7 |
+| @babel/helper-module-imports | 7.28.6 | 7.29.7 |
+| @babel/helper-module-transforms | 7.28.6 | 7.29.7 |
+| @babel/helper-string-parser | 7.27.1 | 7.29.11 |
+| @babel/helper-validator-identifier | 7.28.5 | 7.29.7 |
+| @babel/helper-validator-option | 7.27.1 | 7.29.7 |
+| @babel/helpers | 7.29.2 | 7.29.10 |
+| @babel/parser | 7.29.2 | 7.29.11 |
+| @babel/template | 7.28.6 | 7.29.7 |
+| @babel/traverse | 7.29.0 | 7.29.10 |
+| @babel/types | 7.29.0 | 7.29.11 |
+| baseline-browser-mapping | 2.10.16 | 2.11.32 |
+| browserslist | 4.28.2 | 4.29.4 |
+| caniuse-lite | 1.0.30001786 | 1.0.30001819 |
+| electron-to-chromium | 1.5.332 | 1.5.464 |
+| nanoid | 3.3.11 | 3.3.20 |
+| node-releases | 2.0.37 | 2.0.60 |
+| postcss | 8.5.8 | 8.5.31 |
+| postcss-selector-parser | 6.1.2 | 6.1.5 |
+| react-router | 7.14.0 | 7.18.4 |
+| react-router-dom | 7.14.0 | 7.18.4 |
+| set-cookie-parser | 2.7.2 | 2.7.3 |
+| source-map-js | 1.2.1 | 1.2.2 |
+| update-browserslist-db | 1.2.3 | 1.3.4 |
+
+Changes were separated into two steps:
+
+1. Router-only installation, strict typecheck, production build, six focused desktop/mobile query/slash/legacy/wildcard tests, and intermediate full/production audits. All checks passed; production findings fell to zero before build-tool edits.
+2. PostCSS patch and targeted compatible updates to Babel, Browserslist/mapping, nanoid, source-map-js and selector-parser. A clean lockfile install and full verification followed.
+
+No forced audit fix or dependency override was used. No package was added merely to pin a transitive version. The fresh registry metadata showed 5.4.21 and 3.4.19 as the highest compatible Vite 5 and Tailwind 3 versions respectively, so neither was changed.
+
+## E. Remaining vulnerabilities
+
+| Installed package entry | Severity | Remaining finding / relationship | Why retained |
+| --- | --- | --- | --- |
+| vite 5.4.21 | High | Eight direct Vite advisories listed in C, plus esbuild propagation | No compatible Vite 5 patch; major toolchain migration excluded |
+| esbuild 0.21.5 | Moderate | GHSA-67mh-4wv8-2f99 | First fixed 0.25.0 falls outside Vite 5's ^0.21.3 constraint |
+| postcss-selector-parser 6.1.5 | Moderate | GHSA-rj75-hqrm-r3gf | First fixed 7.1.6 is outside Tailwind 3/postcss-nested 6 parser ranges |
+| postcss-nested 6.2.0 | Moderate | Propagated existing parser finding | Parent requires parser ^6.1.1; no independent advisory added |
+| tailwindcss 3.4.19 | Moderate | Propagated existing parser/nested finding | Parent requires parser ^6.1.2 and nested ^6.2.0; no independent advisory added |
+
+Total: **5 affected package entries, 10 unique active advisories, 1 high / 4 moderate / 0 low / 0 critical**, all development/build scope. Full audit intentionally remains exit 1. Production-only audit is zero for the current tree; that is not a blanket application security certification or a deployed improvement.
+
+## F. Future major-upgrade requirements
+
+Vite's listed first-fixed branches reach at least **6.4.4** for the complete known set; current npm remediation points to Vite 8.3.5. These are advisory thresholds/candidates, not an authorization or recommendation to blindly select an older major. Plan a separate, supported Vite/plugin migration with Node compatibility and the same regression gates. Reassess esbuild alongside its owning Vite version; do not force 0.25 into Vite 5.
+
+The remaining parser CPU-exhaustion issue requires parser **7.1.6+**. Tailwind 3 and postcss-nested 6 constrain parser 6.x. A separate parent/parser migration review is needed; npm proposes Tailwind 4.3.3. The 6.1.5 patch fixes the low recursion advisory, not the remaining moderate advisory. No unsupported parser override was used. Keep Vite and Tailwind major migrations separate from each other and from React/routing major changes.
+
+## G. Full verification results
+
+Commands used the existing portable Node 24.22.1/npm 11.19.1 on PATH; no global runtime/package installation. The inherited NODE_ENV is production, so `--include=dev` is required for full audits and reproducible test-tool installation.
+
+| Check | Actual result |
+| --- | --- |
+| `npm ci --include=dev --ignore-scripts --no-audit --no-fund --cache "$env:TEMP/danauto-npm-cache"` | Exit 0; 150 installed packages; approximately four minutes; lockfile checksum unchanged |
+| `npm ls --all --include=dev --json` | Exit 0; complete installed dependency tree valid |
+| `npm run typecheck` | Exit 0 after clean install |
+| `npm run test:tooling` | Exit 0; all **7** reporter tests pass |
+| `npm run build` within `npm run test:e2e` | Exit 0; 2,164 modules, 24 output files |
+| Full `npm run test:e2e` | Exit 0; **36 normal passes + 2 expected gallery failures** |
+| Routing-specific tests within full suite | **6/6 pass**, desktop/mobile query/refresh/slash/assets cases |
+| Initial router-only focused route run | **6/6 pass**, including existing legacy/wildcard behavior |
+| `npm audit --include=dev --json` | Exit 1; 5 known affected development package entries / 10 unique advisories |
+| `npm audit --omit=dev --json` | Exit 0; zero findings |
+| Git diff / whitespace / unstaged scope checks | Pass; source, routing, tests and runtime/tooling config unchanged; empty index |
+
+Full browser run began 2026-10-23T23:43:13.979Z (2026-10-24T00:43:13.979+01:00 Lagos). Duration 3.89 minutes. Zero unexpected results, skips, flaky results or runner errors.
+
+The gallery reporter remains unchanged. Each of the two expected failures contains exactly one error matching the recorded `car-details-gallery-copy` pointer obstruction; no teardown/browser error is hidden. No assertion was weakened or skipped. The suite covers business/legal routes and refresh, 166-card catalog/search/filter behavior, valid/invalid vehicle IDs, usable gallery controls, legacy redirects/wildcard behavior, desktop/mobile menus, and simulated contact validation/success with no delivery request.
+
+Browser fixtures replace external images/stylesheets and reject other external traffic. These results establish local Chromium behavior and emulated mobile coverage, not real image delivery, pixel parity, physical mobile devices, deployed routing or live provider/database integrations. A harmless NO_COLOR/FORCE_COLOR warning remains; the old browser-data warning did not recur after the compatible browser-data refresh.
+
+## H. Application behavior and bundle impact
+
+No application source, design, content, catalog, route declaration or form behavior changed. The accepted regression outcomes are preserved. Dependency bytes and content hashes are expected to change with the router update; the previous 24-file byte-identity claim does not apply to this new build.
+
+| Artifact metric | Original baseline | Updated build |
+| --- | --- | --- |
+| File count | 24 | 24 |
+| Total raw bytes | 553324 | 554616 |
+| Total separately gzipped bytes | 157927 | 158540 |
+| Entry JavaScript | index-C1CJmp3_.js | index-By9vPxOh.js |
+| Entry raw bytes | 325683 | 326975 |
+| Entry gzip bytes | 106403 | 107011 |
+| CSS bytes | 103634 | 103634 |
+
+CSS, public favicon and generated catalog-data chunk remain byte-identical to the recovered baseline. The entry JavaScript grows by **1,292 raw bytes / 608 gzip bytes**. File count stays 24; aggregate emitted bytes grow by 1,292. Changed shared runtime references also change several chunk hashes. No runtime dependency was added and no framework major was upgraded. The build output remains ignored and was not deployed.
+
+## I. Routing and hosting issues left unresolved
+
+Root `vercel.json` is byte-for-byte unchanged from the reviewed 01cc011 correction. Its broad SPA catch-all may serve HTML for missing assets and missing API paths; reserved namespaces still require platform-specific verification. Local Vite fallback passes do not validate Vercel's edge routing.
+
+The prior preview assessment records production's 13 direct-route 404s and the owner's confirmed Hobby commercial-use blocker. Neither was resolved or freshly rechecked through a deployment in this local task. The existing preview report remains unchanged. Defer hosting, domains, protection, routing-boundary correction and any Cloudflare/alternative preview to separate authorization. No production settings, environment variables or remote Git refs were changed, and no provider was contacted or dataset ingested.
+
+## J. Exact file changes and owner Git handoff
+
+Modified tracked files:
+
+- `package.json`: two compatible dependency floors.
+- `package-lock.json`: the corresponding 29 resolved version updates and normal dependency metadata.
+- `docs/vehicle-discovery/Phase-1/PHASE_1B1_SECURITY_REPORT.md`: this current assessment plus the verbatim historical assessment.
+
+Preserved untracked file from before this task: `docs/vehicle-discovery/Phase-1/PHASE_1B1_PREVIEW_VERIFICATION.md`, unchanged by checksum. No non-ignored file was removed or newly added by this task. No source/test/configuration file was modified. Ignored scripts, snapshots, official advisory/package metadata, audits, full dependency trees, version ledger, intermediate/final browser results and build-size evidence are under `output/playwright/phase-1b1-security/`.
+
+Proposed Conventional Commit subject:
+
+```text
+fix(deps): patch compatible dependency vulnerabilities
+```
+
+Optional body:
+
+```text
+Update React Router within v7 and apply compatible build-tool patches.
+Address 22 active advisories; production audit now reports zero findings.
+Document remaining Vite/esbuild/parser risks and preserve prior evidence.
+Verify clean install, build, typecheck, seven tooling tests, and the
+36-pass/two-expected-failure browser baseline without changing app code.
+```
+
+Owner-only commands after reviewing the changes (not executed by Codex):
+
+```powershell
+git status --short --branch
+git diff --check
+git diff -- package.json package-lock.json docs/vehicle-discovery/Phase-1/PHASE_1B1_SECURITY_REPORT.md
+git add -- package.json package-lock.json docs/vehicle-discovery/Phase-1/PHASE_1B1_SECURITY_REPORT.md
+git diff --cached --check
+git diff --cached --stat
+git commit -m "fix(deps): patch compatible dependency vulnerabilities"
+git status --short
+```
+
+These commands include only the three security-task files. The unchanged preview report remains untracked unless the owner separately chooses to include it. No push, PR, merge or release command is proposed as part of this handoff.
+
+## K. Recommended next development phase
+
+First review and checkpoint this local security work. Then separately authorize either the narrowly scoped routing-boundary/eligible hosting preparation or the remaining Vite maintenance migration, with independent rollback/testing. Any Tailwind/parser major migration is a separate task. Phase 1B.2 incremental TypeScript work can be proposed after review; it is not started or implicitly authorized. Keep provider ingestion/publication, database setup and production release gated independently.
+
+## L. Rollback instructions
+
+Owner-controlled rollback, if required before committing: first preserve/review these local edits, then restore only `package.json` and `package-lock.json` from 01cc011 (or their verified `before/` snapshots) and run the same clean-install/test commands with the documented runtime. Leave the preview report and historical security evidence intact. Do not reset the repository or overwrite unrelated work. If later committed, use a reviewed revert of that security commit on a development branch rather than resetting history. Rollback reintroduces the addressed vulnerabilities, so it is a compatibility recovery option, not the preferred security state. No production rollback is needed because nothing was deployed.
+
+## M. Final readiness assessment
+
+**GO for owner review of the local compatible security changes.** All required local stability checks pass, audited production findings are zero, and 22 active advisories were addressed without a major upgrade. Residual development findings are explicit and the full audit remains nonzero.
+
+**NO-GO for production release or a claim that deployment routing is fixed.** Hosting eligibility, missing-asset/API routing boundaries and deployed verification remain unresolved. No files are staged or committed. Stop for owner review; no Phase 1B.2 implementation begins.
+
+---
+
+# Historical assessment preserved from before Phase 1B.1-S
+
+The following assessment described the earlier blocked stage. Its local-work gate is superseded by the explicit Phase 1B.1-S authorization above; its historical evidence is retained unchanged.
+
 # DanAuto Phase 1B.1 security and reconciliation report
 
 Status: **BLOCKED at the Task 1 deployment safety gate. Dependency remediation was not started.**
