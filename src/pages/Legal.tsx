@@ -77,7 +77,13 @@ const legalPages = {
   }
 };
 
-function Legal({ pageId }) {
+export type LegalPageId = keyof typeof legalPages;
+
+export interface LegalProps {
+  pageId: LegalPageId;
+}
+
+function Legal({ pageId }: LegalProps) {
   const page = legalPages[pageId];
 
   if (!page) {
