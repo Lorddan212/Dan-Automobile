@@ -29,7 +29,7 @@ function CarCard({ car, priority = false }) {
         className="car-card"
         style={{ transformStyle: "preserve-3d" }}
       >
-        <div className={`car-card-accent bg-gradient-to-br ${car.accent}`} />
+        <div className={`car-card-accent bg-danauto-accent ${car.accent}`} />
         <div className="car-card-sheen" />
 
         <div className="car-card-inner">

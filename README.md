@@ -55,12 +55,21 @@ The current experience focuses on practical vehicle ownership needs:
 
 ## Tech Stack
 
-- React 18
-- Vite
-- Tailwind CSS
+- React 19.3.1
+- Vite 7.3.7
+- Tailwind CSS 4.3.3 with the official Vite integration
 - Framer Motion
 - React Router DOM
 - Lucide React
+
+## Browser Support Policy
+
+The owner-approved modernization baseline (2026-10-29) is Chrome 111+, Edge 111+,
+Firefox 128+, Safari 16.4+, and equivalent compatible modern mobile browsers.
+Vite's JavaScript and CSS targets follow this policy. They do not polyfill
+Tailwind 4's CSS features or establish support for older browsers. Local browser
+verification and its limits are recorded in the Phase 1B.3C report under
+`docs/vehicle-discovery/Phase-1/`.
 
 ## Project Structure
 

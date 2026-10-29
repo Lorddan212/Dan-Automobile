@@ -1,10 +1,14 @@
 import { defineConfig } from "vite";
 import react from "@vitejs/plugin-react";
+import tailwindcss from "@tailwindcss/vite";
+
+// Owner-approved browser baseline (2026-10-29), for both JS and CSS transforms.
+const browserTargets = ["chrome111", "edge111", "firefox128", "safari16.4"];
 
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
   build: {
-    // Preserve the Vite 5 browser target during the tooling upgrade.
-    target: ["es2020", "edge88", "firefox78", "chrome87", "safari14"]
+    target: browserTargets,
+    cssTarget: browserTargets
   }
 });

@@ -35,7 +35,7 @@ function CatalogModelCard({ model }) {
         className="catalog-card"
         style={{ transformStyle: "preserve-3d" }}
       >
-        <div className={`catalog-card-accent bg-gradient-to-br ${model.accent}`} />
+        <div className={`catalog-card-accent bg-danauto-accent ${model.accent}`} />
         <div className="catalog-card-sheen" />
 
         <div className="catalog-card-body">
