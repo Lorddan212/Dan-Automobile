@@ -7,10 +7,12 @@ const placeholder = '<svg xmlns="http://www.w3.org/2000/svg" width="1200" height
 export const test = base.extend({
   page: async ({ page }, use) => {
     const browserErrors: string[] = [];
+    const browserWarnings: string[] = [];
     const unexpectedExternal: string[] = [];
     page.on('pageerror', error => browserErrors.push(error.message));
     page.on('console', message => {
       if (message.type() === 'error') browserErrors.push(message.text());
+      if (message.type() === 'warning') browserWarnings.push(message.text());
     });
     await page.context().route('**/*', async route => {
       const request = route.request();
@@ -29,6 +31,7 @@ export const test = base.extend({
     await use(page);
     expect(unexpectedExternal, 'No unexpected external traffic').toEqual([]);
     expect(browserErrors, 'No uncaught page or console errors').toEqual([]);
+    expect(browserWarnings, 'No browser console warnings').toEqual([]);
   },
 });
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowLeft, Banknote, CalendarClock, CheckCircle2, ChevronLeft, ChevronRight, Sparkles, UserRoundCog } from "lucide-react";
-import { Link, useParams } from "react-router-dom";
+import { Link, useParams } from "react-router";
 import Button from "../components/Button";
 import { formatNaira, getCarById } from "../utils/data";
 

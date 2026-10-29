@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ["./index.html", "./src/**/*.{js,jsx,ts,tsx}"],
+  // Source detection is explicit in src/index.css; retain the existing theme here.
   theme: {
     extend: {
       colors: {

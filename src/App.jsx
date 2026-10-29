@@ -1,6 +1,6 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 import { AnimatePresence } from "framer-motion";
-import { Navigate, Route, Routes, useLocation, useParams } from "react-router-dom";
+import { Navigate, Route, Routes, useLocation, useParams } from "react-router";
 import Footer from "./components/Footer";
 import Loader from "./components/Loader";
 import Navbar from "./components/Navbar";

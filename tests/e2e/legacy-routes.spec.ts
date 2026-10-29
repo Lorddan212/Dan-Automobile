@@ -41,6 +41,7 @@ test('catalog search filters and empty state preserve current behavior', async (
   await page.getByRole('button', { name: 'Electric', exact: true }).click();
   await expect.poll(() => cards.count()).toBeGreaterThan(0);
   expect(await cards.count()).toBeLessThan(166);
+  await expect(cards.locator('.catalog-card-fuel-tag')).toHaveCount(await cards.count());
   for (const badge of await cards.locator('.catalog-card-fuel-tag').allTextContents()) {
     expect(badge).toBe('Electric');
   }
@@ -49,13 +50,17 @@ test('catalog search filters and empty state preserve current behavior', async (
   await page.getByRole('button', { name: 'Under ₦30M', exact: true }).click();
   await expect.poll(() => cards.count()).toBeGreaterThan(0);
   expect(await cards.count()).toBeLessThan(166);
+  await expect(cards.locator('.catalog-card-price-tag')).toHaveCount(await cards.count());
   for (const price of await cards.locator('.catalog-card-price-tag').allTextContents()) {
+    expect(Number(price.replace(/[^0-9.]/g, ''))).toBeGreaterThan(0);
     expect(Number(price.replace(/[^0-9.]/g, ''))).toBeLessThan(30_000_000);
   }
   await page.getByRole('button', { name: 'All Prices', exact: true }).click();
   await expect(cards).toHaveCount(166);
   await page.locator('.brand-card').filter({ hasText: 'Tesla' }).click();
   await expect.poll(() => cards.count()).toBeGreaterThan(0);
+  expect(await cards.count()).toBeLessThan(166);
+  await expect(cards.locator('.catalog-card-brand-tag')).toHaveCount(await cards.count());
   for (const brand of await cards.locator('.catalog-card-brand-tag').allTextContents()) {
     expect(brand.trim()).toBe('Tesla');
   }
@@ -63,6 +68,8 @@ test('catalog search filters and empty state preserve current behavior', async (
 
 test('valid detail keyboard gallery, thumbnails and appointment action', async ({ page }) => {
   await page.goto('/cars/mercedes-e300');
+  await expect(page.locator('.car-details-title')).toHaveText('Mercedes-Benz E 300 AMG Line');
+  await page.reload({ waitUntil: 'domcontentloaded' });
   await expect(page.locator('.car-details-title')).toHaveText('Mercedes-Benz E 300 AMG Line');
   const image = page.locator('.car-details-gallery-image');
   const first = await image.getAttribute('src');
@@ -136,6 +143,7 @@ test('desktop/mobile navigation and gallery operate', async ({ page }, testInfo)
     await page.getByRole('button', { name: 'Open navigation menu' }).click();
     await page.getByRole('navigation', { name: 'Mobile navigation' }).getByRole('link', { name: 'Gallery', exact: true }).click();
     await expect(page.getByRole('button', { name: 'Open navigation menu' })).toBeVisible();
+    await expect(page.getByRole('navigation', { name: 'Mobile navigation' })).toHaveCount(0);
   } else {
     await page.locator('.desktop-nav').getByRole('link', { name: 'Gallery', exact: true }).click();
   }

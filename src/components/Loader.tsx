@@ -1,6 +1,10 @@
 import { motion } from "framer-motion";
 
-function Loader({ compact = false }) {
+export interface LoaderProps {
+  compact?: boolean;
+}
+
+function Loader({ compact = false }: LoaderProps) {
   if (compact) {
     return (
       <div className="loader-compact">

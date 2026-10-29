@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, Cookie, FileText, ShieldCheck } from "lucide-react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router";
 
 const legalPages = {
   privacy: {
@@ -77,7 +77,13 @@ const legalPages = {
   }
 };
 
-function Legal({ pageId }) {
+export type LegalPageId = keyof typeof legalPages;
+
+export interface LegalProps {
+  pageId: LegalPageId;
+}
+
+function Legal({ pageId }: LegalProps) {
   const page = legalPages[pageId];
 
   if (!page) {

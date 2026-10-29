@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
+import type { JSXElementConstructor, MouseEventHandler, ReactNode } from "react";
+import type { To } from "react-router";
 
 const variants = {
   primary: "button-primary",
@@ -7,7 +9,20 @@ const variants = {
   ghost: "button-ghost"
 };
 
-function content(children, Icon) {
+export interface ButtonProps {
+  children?: ReactNode;
+  to?: To;
+  href?: string;
+  type?: "button" | "submit" | "reset";
+  variant?: keyof typeof variants;
+  className?: string;
+  icon?: JSXElementConstructor<{ size: number }>;
+  /** Used by the native-button branch; link branches keep their existing behavior. */
+  onClick?: MouseEventHandler<HTMLButtonElement>;
+  disabled?: boolean;
+}
+
+function content(children: ReactNode, Icon: ButtonProps["icon"]) {
   return (
     <>
       <span className="button-shine" />
@@ -29,7 +44,7 @@ function Button({
   icon,
   onClick,
   disabled = false
-}) {
+}: ButtonProps) {
   const classes = [
     "button-base",
     variants[variant],

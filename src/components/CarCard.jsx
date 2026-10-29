@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { ArrowRight, Gauge, Zap } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { formatNaira } from "../utils/data";
 
 function CarCard({ car, priority = false }) {
@@ -29,7 +29,7 @@ function CarCard({ car, priority = false }) {
         className="car-card"
         style={{ transformStyle: "preserve-3d" }}
       >
-        <div className={`car-card-accent bg-gradient-to-br ${car.accent}`} />
+        <div className={`car-card-accent bg-danauto-accent ${car.accent}`} />
         <div className="car-card-sheen" />
 
         <div className="car-card-inner">

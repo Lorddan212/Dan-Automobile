@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Building2, Briefcase, CarFront, GalleryVertical, House, Menu, PhoneCall, X } from "lucide-react";
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router";
 
 const navItems = [
   { label: "Home", to: "/", icon: House },

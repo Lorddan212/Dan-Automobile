@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, Building2, Sparkles } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { brandPillars, brandStats } from "../utils/data";
 
 function About() {

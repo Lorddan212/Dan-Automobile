@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowRight, CarFront } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import CarCard from "../components/CarCard";
 import { cars } from "../utils/data";
 

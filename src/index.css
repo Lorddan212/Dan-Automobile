@@ -1,8 +1,73 @@
 @import url("https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap");
 
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss" source(none);
+@config "../tailwind.config.js";
+@source "../index.html";
+@source "./";
+
+/* Preserve the three existing status colors rather than adopting the v4 palette. */
+@theme {
+  --color-rose-300: #fda4af;
+  --color-emerald-200: #a7f3d0;
+  --color-emerald-400: #34d399;
+  /* Match the fixed v3 line heights when a component overrides font-size. */
+  --text-xs--line-height: 1rem;
+  --text-sm--line-height: 1.25rem;
+  --text-base--line-height: 1.5rem;
+  --text-lg--line-height: 1.75rem;
+  --text-xl--line-height: 1.75rem;
+  --text-2xl--line-height: 2rem;
+  --text-3xl--line-height: 2.25rem;
+  --text-4xl--line-height: 2.5rem;
+}
+
+/* Retain the existing hover behavior, including browsers that emulate it on tap. */
+@custom-variant hover (&:hover);
+
+/* These four classes are composed with @apply elsewhere in the stylesheet. */
+@utility glass-panel {
+  @apply border border-white/10 bg-white/[0.05] backdrop-blur-2xl;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 28px 60px rgba(0, 0, 0, 0.3);
+}
+
+@utility icon-shell-base {
+  @apply inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10;
+  background-color: rgba(255, 255, 255, 0.08);
+  color: #c9a45c;
+  box-shadow: 0 8px 20px rgba(5, 7, 12, 0.3);
+}
+
+@utility perspective-1800 {
+  perspective: 1800px;
+}
+
+@utility bg-hero-gradient {
+  background-image:
+    radial-gradient(circle at 20% 20%, rgba(201, 164, 92, 0.12), transparent 25%),
+    radial-gradient(circle at 75% 12%, rgba(125, 211, 252, 0.12), transparent 20%),
+    linear-gradient(180deg, rgba(7, 9, 18, 0.6) 0%, rgba(5, 7, 12, 0.88) 100%);
+}
+
+/* Preserve the rendered v3 accents: non-scale opacity stops were not generated
+   by v3. Accepting them in v4 must not introduce new card backgrounds. */
+@utility bg-danauto-accent {
+  --danauto-accent-to: transparent;
+  background-image: none;
+
+  &.from-luxury-gold\/20 {
+    background-image: linear-gradient(to bottom right, rgba(201, 164, 92, 0.2), transparent, var(--danauto-accent-to));
+  }
+
+  &.from-luxury-blue\/20 {
+    background-image: linear-gradient(to bottom right, rgba(125, 211, 252, 0.2), transparent, var(--danauto-accent-to));
+  }
+
+  &.to-white\/10 {
+    --danauto-accent-to: rgba(255, 255, 255, 0.1);
+  }
+}
 
 @layer base {
   :root {
@@ -11,6 +76,27 @@
 
   * {
     @apply border-white/10;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  input::placeholder,
+  textarea::placeholder {
+    color: #9ca3af;
+    opacity: 1;
+  }
+
+  /* Retain native date-input sizing rather than adopting the new reset. */
+  input[type="date"]::-webkit-datetime-edit {
+    display: revert;
+    padding-block: revert;
+  }
+
+  input[type="date"]::-webkit-datetime-edit-fields-wrapper {
+    padding: revert;
   }
 
   html {
@@ -32,7 +118,8 @@
   input,
   textarea,
   select {
-    @apply outline-none;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
   }
 
   ::selection {
@@ -57,7 +144,13 @@
   }
 
   .main-content-anchor {
-    @apply outline-none;
+    outline: 2px solid transparent;
+    outline-offset: 2px;
+  }
+
+  /* Keep contextual icon sizes above this shared component default. */
+  .icon-shell {
+    @apply icon-shell-base;
   }
 
   .site-shell::before {
@@ -71,20 +164,6 @@
     background-size: 120px 120px;
     mask-image: radial-gradient(circle at center, black 38%, transparent 82%);
     opacity: 0.28;
-  }
-
-  .glass-panel {
-    @apply border border-white/10 bg-white/[0.05] backdrop-blur-2xl;
-    box-shadow:
-      inset 0 1px 0 rgba(255, 255, 255, 0.06),
-      0 28px 60px rgba(0, 0, 0, 0.3);
-  }
-
-  .icon-shell {
-    @apply inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/10;
-    background-color: rgba(255, 255, 255, 0.08);
-    color: #c9a45c;
-    box-shadow: 0 8px 20px rgba(5, 7, 12, 0.3);
   }
 
   .field-label {
@@ -114,7 +193,12 @@
 @layer components {
   /* Shared: Buttons */
   .button-base {
-    @apply relative inline-flex items-center justify-center overflow-hidden rounded-full px-6 py-3 text-xs font-medium uppercase tracking-[0.26em] transition duration-300 hover:-translate-y-0.5;
+    @apply relative inline-flex items-center justify-center overflow-hidden rounded-full px-6 py-3 text-xs font-medium uppercase tracking-[0.26em] transition duration-300;
+  }
+
+  .button-base:hover {
+    /* Keep the v3 transform interaction with Framer Motion's inline transform. */
+    transform: translateY(-0.125rem);
   }
 
   .button-primary {
@@ -326,7 +410,7 @@
   }
 
   .legal-title {
-    @apply mt-5 font-display text-4xl uppercase leading-tight text-white sm:text-5xl;
+    @apply mt-5 font-display text-4xl uppercase leading-tight text-white sm:text-5xl sm:leading-none;
   }
 
   .legal-description {
@@ -387,7 +471,7 @@
   }
 
   .loader-progress-bar {
-    @apply h-full w-1/2 bg-gradient-to-r from-transparent via-luxury-gold to-transparent;
+    @apply h-full w-1/2 bg-linear-to-r/srgb from-transparent via-luxury-gold to-transparent;
   }
 
   .loader-caption {
@@ -460,11 +544,11 @@
   }
 
   .hero-title {
-    @apply mt-7 max-w-4xl font-display text-3xl uppercase leading-[1] text-white sm:text-4xl lg:text-5xl xl:text-6xl;
+    @apply mt-7 max-w-4xl font-display text-3xl uppercase leading-[1] text-white sm:text-4xl sm:leading-10 lg:text-5xl lg:leading-none xl:text-6xl xl:leading-none;
   }
 
   .hero-description {
-    @apply mt-6 max-w-2xl text-base leading-8 text-white/[0.65] sm:text-lg;
+    @apply mt-6 max-w-2xl text-base leading-8 text-white/[0.65] sm:text-lg sm:leading-7;
   }
 
   .hero-actions {
@@ -682,7 +766,7 @@
   }
 
   .car-card-stat-value {
-    @apply text-lg font-semibold;
+    @apply text-lg font-semibold leading-7;
   }
 
   .car-card-features,
@@ -794,7 +878,7 @@
   .technology-card-icon,
   .contact-card-icon,
   .contact-experience-icon {
-    @apply icon-shell mt-1;
+    @apply icon-shell-base mt-1;
   }
 
   .catalog-card-stat-shell .icon-shell,
@@ -855,7 +939,7 @@
   .testimonials-title,
   .gallery-title,
   .services-title {
-    @apply mt-4 font-display text-4xl uppercase leading-tight text-white sm:text-5xl;
+    @apply mt-4 font-display text-4xl uppercase leading-tight text-white sm:text-5xl sm:leading-none;
   }
 
   .showcase-description,
@@ -927,7 +1011,7 @@
   }
 
   .about-copy-title {
-    @apply mt-4 max-w-2xl font-display text-4xl uppercase leading-tight text-white sm:text-5xl;
+    @apply mt-4 max-w-2xl font-display text-4xl uppercase leading-tight text-white sm:text-5xl sm:leading-none;
   }
 
   .about-copy-description {
@@ -1103,7 +1187,7 @@
   }
 
   .testimonials-quote {
-    @apply mx-auto mt-8 max-w-3xl text-center text-xl leading-9 text-white/[0.88] sm:text-2xl;
+    @apply mx-auto mt-8 max-w-3xl text-center text-xl leading-9 text-white/[0.88] sm:text-2xl sm:leading-8;
   }
 
   .testimonials-author {
@@ -1226,7 +1310,7 @@
 
   .home-cta-title,
   .services-cta-title {
-    @apply mt-4 font-display text-4xl uppercase leading-tight text-white sm:text-5xl;
+    @apply mt-4 font-display text-4xl uppercase leading-tight text-white sm:text-5xl sm:leading-none;
   }
 
   /* Page: Services */
@@ -1386,7 +1470,7 @@
 
   .gallery-hero-copy .gallery-title,
   .services-hero-copy .services-title {
-    @apply mt-3 w-full max-w-[calc(100vw-2rem)] break-words text-[1.45rem] leading-[1.08] sm:max-w-4xl sm:text-4xl lg:text-5xl;
+    @apply mt-3 w-full max-w-[calc(100vw-2rem)] break-words text-[1.45rem] leading-[1.08] sm:max-w-4xl sm:text-4xl sm:leading-10 lg:text-5xl lg:leading-none;
     text-wrap: balance;
     text-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     white-space: normal;
@@ -1474,7 +1558,7 @@
   }
 
   .contact-title {
-    @apply mt-4 max-w-xl text-balance font-display text-3xl uppercase leading-[0.95] text-white sm:text-4xl lg:text-5xl;
+    @apply mt-4 max-w-xl text-balance font-display text-3xl uppercase leading-[0.95] text-white sm:text-4xl sm:leading-10 lg:text-5xl lg:leading-none;
   }
 
   .contact-description {
@@ -1606,7 +1690,7 @@
   }
 
   .about-page-slide-title {
-    @apply mt-3 max-w-4xl font-display text-3xl uppercase leading-[1] text-white sm:text-4xl lg:text-5xl;
+    @apply mt-3 max-w-4xl font-display text-3xl uppercase leading-[1] text-white sm:text-4xl sm:leading-10 lg:text-5xl lg:leading-none;
   }
 
   .about-page-slide-title-main {
@@ -1666,7 +1750,7 @@
   }
 
   .about-page-story-title {
-    @apply mt-4 max-w-4xl font-display text-3xl uppercase leading-[0.95] text-white sm:text-5xl;
+    @apply mt-4 max-w-4xl font-display text-3xl uppercase leading-[0.95] text-white sm:text-5xl sm:leading-none;
   }
 
   .about-page-story-paragraph {
@@ -1803,7 +1887,7 @@
   }
 
   .cars-title {
-    @apply mt-4 max-w-4xl font-display text-4xl uppercase leading-[0.95] text-white sm:text-5xl;
+    @apply mt-4 max-w-4xl font-display text-4xl uppercase leading-[0.95] text-white sm:text-5xl sm:leading-none;
   }
 
   .cars-description {
@@ -2147,19 +2231,6 @@
 
   .car-details-action-button {
     @apply w-full justify-center sm:w-auto;
-  }
-}
-
-@layer utilities {
-  .perspective-1800 {
-    perspective: 1800px;
-  }
-
-  .bg-hero-gradient {
-    background-image:
-      radial-gradient(circle at 20% 20%, rgba(201, 164, 92, 0.12), transparent 25%),
-      radial-gradient(circle at 75% 12%, rgba(125, 211, 252, 0.12), transparent 20%),
-      linear-gradient(180deg, rgba(7, 9, 18, 0.6) 0%, rgba(5, 7, 12, 0.88) 100%);
   }
 }
 
