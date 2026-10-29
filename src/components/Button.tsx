@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import type { JSXElementConstructor, MouseEventHandler, ReactNode } from "react";
-import type { To } from "react-router-dom";
+import type { To } from "react-router";
 
 const variants = {
   primary: "button-primary",

@@ -59,7 +59,7 @@ The current experience focuses on practical vehicle ownership needs:
 - Vite 7.3.7
 - Tailwind CSS 4.3.3 with the official Vite integration
 - Framer Motion
-- React Router DOM
+- React Router 8.5.1 (declarative routing)
 - Lucide React
 
 ## Browser Support Policy

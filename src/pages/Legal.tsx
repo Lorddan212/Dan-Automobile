@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 import { ArrowLeft, Cookie, FileText, ShieldCheck } from "lucide-react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Navigate } from "react-router";
 
 const legalPages = {
   privacy: {

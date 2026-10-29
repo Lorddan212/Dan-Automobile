@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFile, mkdir, writeFile } from "node:fs/promises";
 import { createElement } from "react";
 import { renderToStaticMarkup } from "react-dom/server";
-import { Navigate, StaticRouter } from "react-router-dom";
+import { Navigate, StaticRouter } from "react-router";
 import ts from "typescript";
 
 // Reuse the installed compiler, as in the existing Button and layout tests.

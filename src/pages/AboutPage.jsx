@@ -10,7 +10,7 @@ import {
   Layers3,
   Sparkles
 } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link } from "react-router";
 import { brandPillars, brandStats, companyName, timeline } from "../utils/data";
 
 const statIcons = [Layers3, Sparkles, Gem, Clock3];
